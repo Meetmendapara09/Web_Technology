@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="learningPlatform">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply Now - Your Powerful Learning Platform</title>
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- GSAP Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Header -->
+    <header class="bg-white shadow-lg">
+        <div class="container mx-auto py-4 px-4 md:px-8">
+            <div class="flex items-center justify-between">
+                <div>
+                    <a href="#" class="text-xl md:text-2xl font-bold text-gray-800">Your Logo</a>
+                </div>
+                <nav class="hidden md:flex space-x-4">
+                    <a href="#" class="text-gray-600 hover:text-gray-900">Home</a>
+                    <div class="relative">
+                        <button class="text-gray-600 hover:text-gray-900 focus:outline-none">Courses</button>
+                        <div class="absolute hidden mt-2 py-2 w-48 bg-white shadow-lg rounded-lg z-10">
+                            <a href="free-courses.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Free Courses</a>
+                            <a href="paid-courses.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Premium Courses</a>
+                        </div>
+                    </div>
+                    <a href="about-us.html" class="text-gray-600 hover:text-gray-900">About</a>
+                    <a href="contact-us.html" class="text-gray-600 hover:text-gray-900">Contact</a>
+                    <a href="login.html" class="text-gray-600 hover:text-gray-900">Login / Sign Up</a>
+                    <a href="blog.html" class="text-gray-600 hover:text-gray-900">Blog</a>
+                </nav>
+                <!-- Mobile Menu Button (hidden on larger screens) -->
+                <div class="md:hidden">
+                    <button class="text-gray-600 hover:text-gray-900 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Responsive Mobile Menu (hidden by default) -->
+    <div class="md:hidden bg-white shadow-lg" style="display: none;">
+        <nav class="px-2 py-4">
+            <a href="#" class="block py-2 text-center text-gray-600 hover:text-gray-900">Home</a>
+            <a href="free-courses.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">Free Courses</a>
+            <a href="paid-courses.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">Premium Courses</a>
+            <a href="about-us.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">About</a>
+            <a href="contact-us.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">Contact</a>
+            <a href="login.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">Login / Sign Up</a>
+            <a href="blog.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">Blog</a>
+        </nav>
+    </div>
+
+    <!-- Apply Now Hero Section -->
+    <section class="bg-gray-800 text-white py-16 md:py-20">
+        <div class="container mx-auto text-center px-4 md:px-8">
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Apply Now</h1>
+            <p class="text-lg md:text-xl lg:text-2xl mb-8">Submit your application for the position of [Job Title]</p>
+        </div>
+    </section>
+
+    <!-- Application Form Section -->
+    <section class="py-16 md:py-20">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="p-6">
+                    <h2 class="text-2xl font-semibold mb-4">Application Form</h2>
+                    <form action="submit-application.html" method="post">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="mb-4">
+                                <label for="full-name" class="block text-gray-700 text-sm font-medium mb-2">Full Name</label>
+                                <input type="text" id="full-name" name="full-name" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="block text-gray-700 text-sm font-medium mb-2">Email Address</label>
+                                <input type="email" id="email" name="email" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="phone" class="block text-gray-700 text-sm font-medium mb-2">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="resume" class="block text-gray-700 text-sm font-medium mb-2">Resume (PDF)</label>
+                                <input type="file" id="resume" name="resume" accept=".pdf" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none">
+                            </div>
+                            <div class="mb-4">
+                                <label for="cover-letter" class="block text-gray-700 text-sm font-medium mb-2">Cover Letter</label>
+                                <textarea id="cover-letter" name="cover-letter" rows="4" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"></textarea>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="bg-blue-600 text-white py-2 px-6 rounded-lg text-lg hover:bg-blue-700 transition duration-300">Submit Application</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h5 class="text-lg font-semibold mb-4">Company</h5>
+                    <ul class="space-y-2">
+                        <li><a href="about-us.html" class="hover:text-gray-400">About Us</a></li>
+                        <li><a href="press.html" class="hover:text-gray-400">Press</a></li>
+                        <li><a href="careers.html" class="hover:text-gray-400">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-lg font-semibold mb-4">Support</h5>
+                    <ul class="space-y-2">
+                        <li><a href="contact-us.html" class="hover:text-gray-400">Contact Us</a></li>
+                        <li><a href="submit-a-ticket.html" class="hover:text-gray-400">Submit a Ticket</a></li>
+                        <li><a href="faq.html" class="hover:text-gray-400">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-lg font-semibold mb-4">Legal</h5>
+                    <ul class="space-y-2">
+                        <li><a href="terms-of-service.html" class="hover:text-gray-400">Terms of Service</a></li>
+                        <li><a href="privacy-policy.html" class="hover:text-gray-400">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-lg font-semibold mb-4">Follow Us</h5>
+                    <ul class="flex space-x-4">
+                        <li><a href="#" class="hover:text-gray-400"><span>Facebook</span>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M14 2H8a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6v-4H9v-2h3v-2.5A3.5 3.5 0 0 1 16.5 8H17v-2h-1.5A5.5 5.5 0 0 0 10 6V4h4v2h-2a1 1 0 0 0-1 1v2h4v2h-4v4z"></path>
+                                </svg></a></li>
+                        <li><a href="#" class="hover:text-gray-400"><span>Twitter</span>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M23 3a1 1 0 0 1-1 1v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1zm-6 5v2h-2v6h-2v-6H9V8h4V5h2v3h2z"></path>
+                                </svg></a></li>
+                        <li><a href="#" class="hover:text-gray-400"><span>LinkedIn</span>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M21 3a1 1 0 0 1-1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1zm-6 7v2h-2v4h-2v-4H8v-2h5V8h2v2h2z"></path>
+                                </svg></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 text-center text-gray-400">
+                <p>&copy; 2024 Your Powerful Learning Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // GSAP Animation for Mobile Menu
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuButton = document.querySelector('.md:hidden button');
+            const mobileMenu = document.querySelector('.md:hidden + div');
+            
+            menuButton.addEventListener('click', function () {
+                const isVisible = mobileMenu.style.display === 'block';
+                gsap.to(mobileMenu, {
+                    duration: 0.3,
+                    opacity: isVisible ? 0 : 1,
+                    display: isVisible ? 'none' : 'block'
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="learningPlatform">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Center - Your Powerful Learning Platform</title>
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- GSAP Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Header -->
+    <header class="bg-white shadow-lg">
+        <div class="container mx-auto py-4 px-4 md:px-8">
+            <div class="flex items-center justify-between">
+                <div>
+                    <a href="#" class="text-xl md:text-2xl font-bold text-gray-800">Your Logo</a>
+                </div>
+                <nav class="hidden md:flex space-x-4">
+                    <a href="#" class="text-gray-600 hover:text-gray-900">Home</a>
+                    <div class="relative">
+                        <button class="text-gray-600 hover:text-gray-900 focus:outline-none">Courses</button>
+                        <div class="absolute hidden mt-2 py-2 w-48 bg-white shadow-lg rounded-lg z-10">
+                            <a href="free-courses.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Free Courses</a>
+                            <a href="paid-courses.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Premium Courses</a>
+                        </div>
+                    </div>
+                    <a href="about-us.html" class="text-gray-600 hover:text-gray-900">About</a>
+                    <a href="contact-us.html" class="text-gray-600 hover:text-gray-900">Contact</a>
+                    <a href="login.html" class="text-gray-600 hover:text-gray-900">Login / Sign Up</a>
+                </nav>
+                <!-- Mobile Menu Button (hidden on larger screens) -->
+                <div class="md:hidden">
+                    <button class="text-gray-600 hover:text-gray-900 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Responsive Mobile Menu (hidden by default) -->
+    <div class="md:hidden bg-white shadow-lg" style="display: none;">
+        <nav class="px-2 py-4">
+            <a href="#" class="block py-2 text-center text-gray-600 hover:text-gray-900">Home</a>
+            <a href="free-courses.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">Free Courses</a>
+            <a href="paid-courses.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">Premium Courses</a>
+            <a href="about-us.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">About</a>
+            <a href="contact-us.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">Contact</a>
+            <a href="login.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">Login / Sign Up</a>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="bg-gray-800 text-white py-16 md:py-20">
+        <div class="container mx-auto text-center px-4 md:px-8">
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4">Support Center</h1>
+            <p class="text-lg md:text-xl lg:text-2xl mb-8">Here to assist you with any issues or questions you may have. Explore our support resources and contact us if needed.</p>
+        </div>
+    </section>
+
+    <!-- Support Center Content -->
+    <section class="py-16 md:py-20">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="bg-white rounded-lg shadow-md p-6 md:p-8">
+                <h2 class="text-2xl font-semibold mb-6">How Can We Help You?</h2>
+                
+                <!-- Support Topics -->
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold mb-4">Common Support Topics</h3>
+                    <ul class="space-y-4">
+                        <li>
+                            <a href="help-center.html#account" class="text-blue-600 hover:underline">Account Issues</a>
+                            <p class="text-gray-700">Problems with logging in, account settings, or password resets.</p>
+                        </li>
+                        <li>
+                            <a href="help-center.html#payment" class="text-blue-600 hover:underline">Payment & Billing</a>
+                            <p class="text-gray-700">Questions about charges, refunds, or payment methods.</p>
+                        </li>
+                        <li>
+                            <a href="help-center.html#technical" class="text-blue-600 hover:underline">Technical Support</a>
+                            <p class="text-gray-700">Issues with course access, site functionality, or other technical problems.</p>
+                        </li>
+                        <li>
+                            <a href="help-center.html#feedback" class="text-blue-600 hover:underline">Feedback & Suggestions</a>
+                            <p class="text-gray-700">Share your ideas for improving our platform or report issues.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contact Support -->
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold mb-4">Contact Our Support Team</h3>
+                    <p class="text-gray-700 mb-4">If you need further assistance, please reach out to our support team using one of the following methods:</p>
+                    <ul class="list-disc list-inside mb-4 text-gray-700">
+                        <li>Email: <a href="mailto:support@yourlearningplatform.com" class="text-blue-600 hover:underline">support@yourlearningplatform.com</a></li>
+                        <li>Phone: <a href="tel:+911234567890" class="text-blue-600 hover:underline">+91 123 456 7890</a></li>
+                        <li>Live Chat: Available on our website during business hours</li>
+                    </ul>
+                    <p class="text-gray-700">Our support team is available 24/7 to help you with any issues you may have. We aim to respond to all inquiries within 24 hours.</p>
+                </div>
+
+                <!-- Submit a Ticket -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Submit a Support Ticket</h3>
+                    <p class="text-gray-700 mb-4">For detailed assistance, please submit a support ticket. Provide as much information as possible so we can assist you effectively.</p>
+                    <form action="submit-ticket.html" method="post" class="space-y-4">
+                        <label for="name" class="block text-gray-600">Name:</label>
+                        <input type="text" id="name" name="name" class="w-full border-gray-300 rounded-lg p-2" required>
+
+                        <label for="email" class="block text-gray-600">Email:</label>
+                        <input type="email" id="email" name="email" class="w-full border-gray-300 rounded-lg p-2" required>
+
+                        <label for="issue" class="block text-gray-600">Issue:</label>
+                        <textarea id="issue" name="issue" rows="6" class="w-full border-gray-300 rounded-lg p-2" required></textarea>
+
+                        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Submit Ticket</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <h5 class="text-lg font-semibold mb-4">Company</h5>
+                    <ul class="space-y-2">
+                        <li><a href="about-us.html" class="hover:text-gray-400">About Us</a></li>
+                        <li><a href="contact-us.html" class="hover:text-gray-400">Contact Us</a></li>
+                        <li><a href="careers.html" class="hover:text-gray-400">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-lg font-semibold mb-4">Support</h5>
+                    <ul class="space-y-2">
+                        <li><a href="help-center.html" class="hover:text-gray-400">Help Center</a></li>
+                        <li><a href="faq.html" class="hover:text-gray-400">FAQs</a></li>
+                        <li><a href="submit-ticket.html" class="hover:text-gray-400">Submit a Ticket</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-lg font-semibold mb-4">Legal</h5>
+                    <ul class="space-y-2">
+                        <li><a href="terms-and-conditions.html" class="hover:text-gray-400">Terms of Service</a></li>
+                        <li><a href="privacy-policy.html" class="hover:text-gray-400">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-lg font-semibold mb-4">Follow Us</h5>
+                    <ul class="flex space-x-4">
+                        <li><a href="#" class="hover:text-gray-400"><span>Facebook</span>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M14 2H8a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6v-4H9v-2h3v-2.5A3.5 3.5 0 0 1 16.5 8H17v-2h-1.5A5.5 5.5 0 0 0 10 6V4h4v2h-2a1 1 0 0 0-1 1v2h4v2h-4v4z"></path>
+                                </svg></a></li>
+                        <li><a href="#" class="hover:text-gray-400"><span>Twitter</span>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M23 3a1 1 0 0 1-1 1v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1zm-6 5v2h-2v6h-2v-6H9V8h4V5h2v3h2z"></path>
+                                </svg></a></li>
+                        <li><a href="#" class="hover:text-gray-400"><span>LinkedIn</span>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M21 3a1 1 0 0 1-1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1zm-6 7v2h-2v4h-2v-4H8v-2h5V8h2v2h2z"></path>
+                                </svg></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 text-center text-gray-400">
+                <p>&copy; 2024 Your Powerful Learning Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // GSAP Animation for Mobile Menu
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuButton = document.querySelector('.md:hidden button');
+            const mobileMenu = document.querySelector('.md:hidden + div');
+            
+            menuButton.addEventListener('click', function () {
+                const isVisible = mobileMenu.style.display === 'block';
+                gsap.to(mobileMenu, {
+                    duration: 0.3,
+                    opacity: isVisible ? 0 : 1,
+                    display: isVisible ? 'none' : 'block'
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>

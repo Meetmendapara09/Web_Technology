@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="learningPlatform">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Know Us - ZenVedaSync</title>
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- GSAP Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Header -->
+    <header class="bg-white shadow-lg">
+        <div class="container mx-auto py-4 px-4 md:px-8">
+            <div class="flex items-center justify-between">
+                <div>
+                    <a href="#" class="text-xl md:text-2xl font-bold text-gray-800">ZenVedaSync</a>
+                </div>
+                <nav class="hidden md:flex space-x-4">
+                    <a href="../Index.html" class="text-gray-600 hover:text-gray-900">Home</a>
+                    <a href="free-courses.html" class="text-gray-600 hover:text-gray-900">Courses</a>
+                    <a href="about-us.html" class="text-gray-600 hover:text-gray-900">About</a>
+                    <a href="contact-us.html" class="text-gray-600 hover:text-gray-900">Contact</a>
+                    <a href="login.html" class="text-gray-600 hover:text-gray-900">Login / Sign Up</a>
+                    <a href="blog.html" class="text-gray-600 hover:text-gray-900">Blog</a>
+                </nav>
+                <!-- Mobile Menu Button (hidden on larger screens) -->
+                <div class="md:hidden">
+                    <button class="text-gray-600 hover:text-gray-900 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Responsive Mobile Menu (hidden by default) -->
+    <div class="md:hidden bg-white shadow-lg" style="display: none;">
+        <nav class="px-2 py-4">
+            <a href="index.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">Home</a>
+            <a href="courses.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">Courses</a>
+            <a href="about-us.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">About</a>
+            <a href="contact-us.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">Contact</a>
+            <a href="login.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">Login / Sign Up</a>
+            <a href="blog.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">Blog</a>
+        </nav>
+    </div>
+
+    <!-- Main Content Section -->
+    <section class="py-16 md:py-20">
+        <div class="container mx-auto px-4 md:px-8">
+            <article class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="p-6">
+                    <h1 class="text-3xl md:text-4xl font-bold mb-4">Know Us - ZenVedaSync</h1>
+
+                    <h2 class="text-2xl font-semibold mb-4">Our Name: ZenVedaSync</h2>
+                    <p class="mb-4">
+                        At ZenVedaSync, our name represents a harmonious blend of ancient wisdom and modern innovation. "Zen" symbolizes the next generation—Gen Z—who are tech-savvy and forward-thinking. "Veda" draws inspiration from the ancient Indian educational texts that have guided learners through millennia with profound insights and wisdom. "Sync" represents our commitment to synchronizing this rich tradition with the latest technological advancements to offer a cutting-edge educational experience. Together, ZenVedaSync embodies a fusion of timeless knowledge and contemporary technology, designed to meet the evolving needs of today’s learners.
+                    </p>
+
+                    <h2 class="text-2xl font-semibold mb-4">Our Vision</h2>
+                    <p class="mb-4">
+                        Our vision is to transform education by seamlessly integrating the deep-rooted wisdom of the Vedas with modern technological tools and methodologies. We aim to provide learners with an enriching educational experience that bridges the gap between ancient knowledge and contemporary skills. By offering a platform that combines traditional learning with innovative technologies, we strive to create a more inclusive, engaging, and effective learning environment for students of all backgrounds.
+                    </p>
+
+                    <h2 class="text-2xl font-semibold mb-4">Impact on the Education Field</h2>
+                    <p class="mb-4">
+                        ZenVedaSync is poised to make a significant impact on the education field by redefining how knowledge is imparted and absorbed. By merging ancient wisdom with cutting-edge technology, we are not only preserving valuable educational heritage but also adapting it to the needs of the 21st century. Our approach facilitates:
+                    </p>
+                    <ul class="list-disc list-inside mb-4">
+                        <li><strong>Enhanced Learning Experiences:</strong> Interactive and multimedia-rich content that makes learning engaging and effective.</li>
+                        <li><strong>Personalized Education:</strong> Adaptive learning technologies that cater to individual learning styles and needs.</li>
+                        <li><strong>Global Accessibility:</strong> A platform that makes high-quality education accessible to learners worldwide, regardless of their location.</li>
+                        <li><strong>Holistic Development:</strong> Integration of ancient wisdom to promote not just academic excellence but also personal growth and ethical understanding.</li>
+                    </ul>
+                    <p class="mb-4">
+                        Our commitment to this vision ensures that ZenVedaSync remains at the forefront of educational innovation, driving positive change and fostering a generation of learners who are well-equipped for the challenges and opportunities of the future.
+                    </p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div>
+                    <h5 class="text-lg font-semibold mb-4">Company</h5>
+                    <ul class="space-y-2">
+                        <li><a href="about-us.html" class="hover:text-gray-400">About Us</a></li>
+                        <li><a href="careers.html" class="hover:text-gray-400">Careers</a></li>
+                        <li><a href="press.html" class="hover:text-gray-400">Press</a></li>
+                        <li><a href="contact-us.html" class="hover:text-gray-400">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-lg font-semibold mb-4">Quick Links</h5>
+                    <ul class="space-y-2">
+                        <li><a href="courses.html" class="hover:text-gray-400">Courses</a></li>
+                        <li><a href="blog.html" class="hover:text-gray-400">Blog</a></li>
+                        <li><a href="help-center.html" class="hover:text-gray-400">Help Center</a></li>
+                        <li><a href="terms-of-service.html" class="hover:text-gray-400">Terms of Service</a></li>
+                        <li><a href="privacy-policy.html" class="hover:text-gray-400">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-lg font-semibold mb-4">Follow Us</h5>
+                    <ul class="flex space-x-4">
+                        <li><a href="#" class="hover:text-gray-400"><span>Facebook</span>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M14 2H8a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6v-4H9v-2h3v-2.5A3.5 3.5 0 0 1 16.5 8H17v-2h-1.5A5.5 5.5 0 0 0 10 6V4h4v2h-2a1 1 0 0 0-1 1v2h4v2h-4v4z"></path>
+                                </svg></a></li>
+                        <li><a href="#" class="hover:text-gray-400"><span>Twitter</span>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M23 3a1 1 0 0 1-1 1v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1zm-6 5v2h-2v6h-2v-6H9V8h4V5h2v3h2z"></path>
+                                </svg></a></li>
+                        <li><a href="#" class="hover:text-gray-400"><span>LinkedIn</span>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M21 3a1 1 0 0 1-1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1zm-6 7v2h-2v4h-2v-4H8v-2h5V8h2v2h2z"></path>
+                                </svg></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 text-center text-gray-400">
+                <p>&copy; 2024 ZenVedaSync. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // GSAP Animation for Mobile Menu
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuButton = document.querySelector('.md:hidden button');
+            const mobileMenu = document.querySelector('.md:hidden + div');
+            
+            menuButton.addEventListener('click', function () {
+                const isVisible = mobileMenu.style.display === 'block';
+                gsap.to(mobileMenu, {
+                    duration: 0.3,
+                    opacity: isVisible ? 0 : 1,
+                    display: isVisible ? 'none' : 'block'
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>

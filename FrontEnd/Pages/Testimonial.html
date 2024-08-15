@@ -1,41 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Testimonials - ZenVedaSync</title>
-    <!-- Favicon -->
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
-    <!-- Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <!-- GSAP Animation Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <style>
         .testimonial-card {
             transition: transform 0.3s, box-shadow 0.3s;
         }
+
         .testimonial-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
+
         .like-dislike-btn {
             cursor: pointer;
             transition: color 0.3s;
         }
+
         .like-dislike-btn:hover {
             color: #1d4ed8;
         }
     </style>
 </head>
+
 <body class="bg-gray-100">
 
     <!-- Header -->
     <header class="bg-white shadow-lg">
         <div class="container mx-auto py-4 px-4 md:px-8">
             <div class="flex items-center justify-between">
-                <div>
-                    <a href="../index.html" class="text-xl md:text-2xl font-bold text-gray-800">ZenVedaSync</a>
-                </div>
+                <a href="../index.html" class="text-xl md:text-2xl font-bold text-gray-800">ZenVedaSync</a>
                 <nav class="hidden md:flex space-x-4">
                     <a href="../index.html" class="text-gray-600 hover:text-gray-900">Home</a>
                     <div class="relative">
@@ -45,33 +44,54 @@
                             <a href="../Pages/paidcourse.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Premium Courses</a>
                         </div>
                     </div>
-                <a href="../Pages/about-us.html" class="text-gray-600 hover:text-gray-900">About</a>
+                    <a href="../Pages/about-us.html" class="text-gray-600 hover:text-gray-900">About</a>
                     <a href="../Pages/contact-us.html" class="text-gray-600 hover:text-gray-900">Contact</a>
                     <a href="../pages/login.html" class="text-gray-600 hover:text-gray-900">Login</a>
                     <a href="../pages/register.html" class="text-gray-600 hover:text-gray-900">Sign Up</a>
                 </nav>
-                <!-- Mobile Menu Button (hidden on larger screens) -->
                 <div class="md:hidden">
-                    <button class="text-gray-600 hover:text-gray-900 focus:outline-none">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16m-7 6h7"></path>
+                    <button id="mobile-menu-button" class="text-gray-600 hover:text-gray-900 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                         </svg>
                     </button>
+                    <div id="mobile-menu" class="hidden absolute top-16 right-4 bg-white shadow-lg rounded-lg w-48">
+                        <a href="../index.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">Home</a>
+                        <a href="../Pages/free-courses.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">Free Courses</a>
+                        <a href="../Pages/paidcourse.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">Premium Courses</a>
+                        <a href="../Pages/about-us.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">About</a>
+                        <a href="../Pages/contact-us.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">Contact</a>
+                        <a href="../pages/login.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">Login</a>
+                        <a href="../pages/register.html" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">Sign Up</a>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
+    <!-- Review Form Section -->
+    <section class="py-16 md:py-20 bg-gray-100">
+        <div class="container mx-auto px-4 md:px-8">
+            <h2 class="text-3xl md:text-5xl font-bold text-center mb-8">Write Your Review</h2>
+            <form id="review-form" class="bg-white rounded-lg shadow-md p-6">
+                <div class="mb-4">
+                    <label for="name" class="block text-lg font-semibold mb-2">Name</label>
+                    <input type="text" id="name" name="name" class="w-full border border-gray-300 rounded-md p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="review" class="block text-lg font-semibold mb-2">Your Review</label>
+                    <textarea id="review" name="review" rows="4" class="w-full border border-gray-300 rounded-md p-2" required></textarea>
+                </div>
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Submit Review</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
     <main>
-        <!-- Testimonial Section -->
         <section class="py-16 md:py-20 bg-gray-100">
             <div class="container mx-auto px-4 md:px-8">
                 <h2 class="text-3xl md:text-5xl font-bold text-center mb-8">What Our Students Say</h2>
-                
-                <!-- Sorting Options -->
                 <div class="flex justify-center mb-8">
                     <select id="sort-select" class="border border-gray-300 rounded-md p-2">
                         <option value="latest">Sort by Latest</option>
@@ -80,69 +100,8 @@
                         <option value="dislikes">Sort by Dislikes</option>
                     </select>
                 </div>
-                
-                <!-- Testimonials Grid -->
                 <div id="testimonials-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Testimonial 1 -->
-                    <div class="testimonial-card bg-white rounded-lg shadow-md overflow-hidden p-6">
-                        <div class="flex items-center space-x-4 mb-4">
-                            <div class="flex-shrink-0">
-                                <img src="../favicon.ico" alt="Testimonial 1"
-                                    class="h-12 w-12 rounded-full object-cover">
-                            </div>
-                            <div>
-                                <p class="text-lg md:text-xl lg:text-2xl font-semibold">John Doe</p>
-                                <p class="text-gray-600">"I love how easy it is to find courses on this platform. The variety of topics is amazing!"</p>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <span class="like-dislike-btn text-blue-500" onclick="likeTestimonial(this)">👍 Like</span>
-                                <span class="like-dislike-btn text-red-500 ml-4" onclick="dislikeTestimonial(this)">👎 Dislike</span>
-                            </div>
-                            <span class="text-gray-500">Likes: <span class="likes-count">0</span> | Dislikes: <span class="dislikes-count">0</span></span>
-                        </div>
-                    </div>
-                    <!-- Testimonial 2 -->
-                    <div class="testimonial-card bg-white rounded-lg shadow-md overflow-hidden p-6">
-                        <div class="flex items-center space-x-4 mb-4">
-                            <div class="flex-shrink-0">
-                                <img src="../favicon.ico" alt="Testimonial 2"
-                                    class="h-12 w-12 rounded-full object-cover">
-                            </div>
-                            <div>
-                                <p class="text-lg md:text-xl lg:text-2xl font-semibold">Jane Smith</p>
-                                <p class="text-gray-600">"The instructors are very knowledgeable and the courses are well-structured. Highly recommended!"</p>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <span class="like-dislike-btn text-blue-500" onclick="likeTestimonial(this)">👍 Like</span>
-                                <span class="like-dislike-btn text-red-500 ml-4" onclick="dislikeTestimonial(this)">👎 Dislike</span>
-                            </div>
-                            <span class="text-gray-500">Likes: <span class="likes-count">0</span> | Dislikes: <span class="dislikes-count">0</span></span>
-                        </div>
-                    </div>
-                    <!-- Testimonial 3 -->
-                    <div class="testimonial-card bg-white rounded-lg shadow-md overflow-hidden p-6">
-                        <div class="flex items-center space-x-4 mb-4">
-                            <div class="flex-shrink-0">
-                                <img src="../favicon.ico" alt="Testimonial 3"
-                                    class="h-12 w-12 rounded-full object-cover">
-                            </div>
-                            <div>
-                                <p class="text-lg md:text-xl lg:text-2xl font-semibold">Michael Johnson</p>
-                                <p class="text-gray-600">"This platform has helped me advance my career with its practical and insightful courses."</p>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <span class="like-dislike-btn text-blue-500" onclick="likeTestimonial(this)">👍 Like</span>
-                                <span class="like-dislike-btn text-red-500 ml-4" onclick="dislikeTestimonial(this)">👎 Dislike</span>
-                            </div>
-                            <span class="text-gray-500">Likes: <span class="likes-count">0</span> | Dislikes: <span class="dislikes-count">0</span></span>
-                        </div>
-                    </div>
+                    <!-- Testimonials will be dynamically inserted here -->
                 </div>
             </div>
         </section>
@@ -152,12 +111,10 @@
     <footer class="bg-gray-800 text-white py-12">
         <div class="container mx-auto px-4 md:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Footer Column 1 -->
                 <div class="mb-8 md:mb-0">
                     <a href="../index.html" class="text-xl md:text-2xl font-bold">ZenVedaSync</a>
                     <p class="mt-4">Your ultimate destination for learning and personal growth. Discover a world of knowledge with our diverse range of courses and resources.</p>
                 </div>
-                <!-- Footer Column 2 -->
                 <div class="mb-8 md:mb-0">
                     <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
                     <ul class="space-y-2">
@@ -168,102 +125,102 @@
                         <li><a href="../Pages/contact-us.html" class="hover:text-gray-400">Contact</a></li>
                     </ul>
                 </div>
-                <!-- Footer Column 3 -->
                 <div class="mb-8 md:mb-0">
-                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
-                    <ul class="space-y-2">
-                        <li><a href="mailto:zenvedasync.info@gmail.com" class="hover:text-gray-400">zenvedasync.info@gmail.com</a></li>
-                        <li><a href="tel:+1234567890" class="hover:text-gray-400">+1 (234) 567-890</a></li>
-                        <li><a href="../Pages/contact-us.html" class="hover:text-gray-400">Contact Form</a></li>
-                    </ul>
-                </div>
-                <!-- Footer Column 4 -->
-                <div>
                     <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
-                    <ul class="flex space-x-4">
-                        <li><a href="#" class="hover:text-gray-400 flex items-center space-x-2"><span>Facebook</span>
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 2a10 10 0 0 0-10 10c0 4.79 3.49 8.74 8 9.7V14.6h-2.4V12h2.4v-1.4c0-2.4 1.45-3.7 3.55-3.7 1.01 0 1.88.08 2.14.12v2.48h-1.46c-1.21 0-1.44.57-1.44 1.42V12h2.88l-.38 2.6H13.4v6.1c4.51-.96 8-4.91 8-9.7a10 10 0 0 0-10-10z"></path>
-                                </svg></a></li>
-                        <li><a href="#" class="hover:text-gray-400 flex items-center space-x-2"><span>Twitter</span>
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M22.46 6c-.77.35-1.6.58-2.48.68.89-.54 1.57-1.4 1.9-2.43-.83.49-1.76.85-2.73 1.05-.78-.83-1.88-1.35-3.11-1.35-2.36 0-4.28 1.92-4.28 4.28 0 .34.04.67.11.99-3.56-.18-6.72-1.89-8.84-4.48-.37.64-.58 1.39-.58 2.19 0 1.51.77 2.85 1.93 3.64-.71-.02-1.38-.22-1.96-.55v.06c0 2.1 1.49 3.85 3.46 4.24-.36.1-.74.15-1.13.15-.28 0-.56-.03-.83-.08.56 1.76 2.19 3.05 4.13 3.08-1.51 1.19-3.42 1.91-5.49 1.91-.36 0-.71-.02-1.06-.06 1.96 1.26 4.28 2 6.77 2 8.12 0 12.56-6.72 12.56-12.56 0-.19-.01-.37-.02-.56.86-.62 1.61-1.39 2.21-2.28z"></path>
-                                </svg></a></li>
-                        <li><a href="#" class="hover:text-gray-400 flex items-center space-x-2"><span>LinkedIn</span>
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M16.5 3H7.5C5.01 3 3 5.01 3 7.5v9c0 2.49 2.01 4.5 4.5 4.5h9c2.49 0 4.5-2.01 4.5-4.5v-9c0-2.49-2.01-4.5-4.5-4.5zm-6 12H7v-5h3.5v5zm-1.75-5.55c-.75 0-1.36-.61-1.36-1.36s.61-1.36 1.36-1.36 1.36.61 1.36 1.36-.61 1.36-1.36 1.36zm5.75 5.55h-3.5v-5c0-.61.49-1.11 1.1-1.11h.01c.61 0 1.1.5 1.1 1.11v5zm-1.55-7.91c-.58 0-1.06-.48-1.06-1.06s.48-1.06 1.06-1.06 1.06.48 1.06 1.06-.48 1.06-1.06 1.06zm3.05 5.26h-3.5v-5c0-.61.49-1.11 1.1-1.11h.01c.61 0 1.1.5 1.1 1.11v5z"></path>
-                                </svg></a></li>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-gray-400">Facebook</a></li>
+                        <li><a href="#" class="hover:text-gray-400">Twitter</a></li>
+                        <li><a href="#" class="hover:text-gray-400">Instagram</a></li>
+                        <li><a href="#" class="hover:text-gray-400">LinkedIn</a></li>
                     </ul>
                 </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+                    <p>If you have any questions or need support, feel free to reach out to us:</p>
+                    <p class="mt-2">Email: <a href="mailto:support@zenvedasync.com" class="hover:text-gray-400">support@zenvedasync.com</a></p>
+                    <p>Phone: +1 (234) 567-8900</p>
+                </div>
+            </div>
+            <div class="mt-12 text-center">
+                <p>&copy; 2024 ZenVedaSync. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <a href="#" id="back-to-top" class="fixed bottom-4 right-4 bg-blue-500 text-white rounded-full p-3 shadow-lg hover:bg-blue-600 focus:outline-none opacity-0">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-        </svg>
-    </a>
-
     <!-- JavaScript -->
-    <script src="../Scripts/script.js" type="text/javascript"></script>
     <script>
-        // Back to Top Button functionality
-        const backToTopButton = document.getElementById('back-to-top');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopButton.classList.remove('opacity-0');
-                backToTopButton.classList.add('opacity-100');
-            } else {
-                backToTopButton.classList.remove('opacity-100');
-                backToTopButton.classList.add('opacity-0');
-            }
-        });
-
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        // Like/Dislike functionality
-        function likeTestimonial(btn) {
-            const countElem = btn.nextElementSibling.nextElementSibling.querySelector('.likes-count');
-            countElem.textContent = parseInt(countElem.textContent) + 1;
-        }
-
-        function dislikeTestimonial(btn) {
-            const countElem = btn.parentElement.nextElementSibling.querySelector('.dislikes-count');
-            countElem.textContent = parseInt(countElem.textContent) + 1;
-        }
-
-        // Sorting functionality (dummy implementation)
-        document.getElementById('sort-select').addEventListener('change', (event) => {
-            const sortValue = event.target.value;
-            // You can add sorting logic here based on the selected value
-            console.log('Sort by:', sortValue);
-        });
-
-        // GSAP Animation
-        gsap.from('.testimonial-card', { opacity: 0, y: 50, stagger: 0.1, duration: 0.5 });
-
         document.getElementById('courses-button').addEventListener('click', function() {
-    const dropdown = document.getElementById('courses-dropdown');
-    dropdown.classList.toggle('hidden');
-});
+            document.getElementById('courses-dropdown').classList.toggle('hidden');
+        });
 
-// Close dropdown if clicked outside
-document.addEventListener('click', function(event) {
-    const button = document.getElementById('courses-button');
-    const dropdown = document.getElementById('courses-dropdown');
-    if (!button.contains(event.target) && !dropdown.contains(event.target)) {
-        dropdown.classList.add('hidden');
-    }
-});
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
 
+        function likeTestimonial(element) {
+            const testimonialCard = element.closest('.testimonial-card');
+            const likesCount = testimonialCard.querySelector('.likes-count');
+            likesCount.textContent = parseInt(likesCount.textContent) + 1;
+        }
+
+        function dislikeTestimonial(element) {
+            const testimonialCard = element.closest('.testimonial-card');
+            const dislikesCount = testimonialCard.querySelector('.dislikes-count');
+            dislikesCount.textContent = parseInt(dislikesCount.textContent) + 1;
+        }
+
+        document.getElementById('sort-select').addEventListener('change', function() {
+            const sortValue = this.value;
+            const testimonialsContainer = document.getElementById('testimonials-container');
+            const testimonials = Array.from(testimonialsContainer.children);
+
+            testimonials.sort((a, b) => {
+                if (sortValue === 'likes') {
+                    return parseInt(b.querySelector('.likes-count').textContent) - parseInt(a.querySelector('.likes-count').textContent);
+                } else if (sortValue === 'dislikes') {
+                    return parseInt(b.querySelector('.dislikes-count').textContent) - parseInt(a.querySelector('.dislikes-count').textContent);
+                } else if (sortValue === 'oldest') {
+                    return a.dataset.timestamp - b.dataset.timestamp;
+                } else {
+                    return b.dataset.timestamp - a.dataset.timestamp;
+                }
+            });
+
+            testimonials.forEach(testimonial => testimonialsContainer.appendChild(testimonial));
+        });
+
+        document.getElementById('review-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const review = document.getElementById('review').value;
+
+            const testimonialCard = document.createElement('div');
+            testimonialCard.className = 'testimonial-card bg-white rounded-lg shadow-md overflow-hidden p-6';
+
+            testimonialCard.innerHTML = `
+                <div class="flex items-center space-x-4 mb-4">
+                    <div class="flex-shrink-0">
+                        <img src="../favicon.ico" alt="${name}" class="h-12 w-12 rounded-full object-cover">
+                    </div>
+                    <div>
+                        <p class="text-lg md:text-xl lg:text-2xl font-semibold">${name}</p>
+                        <p class="text-gray-600">"${review}"</p>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <span class="like-dislike-btn text-blue-500" onclick="likeTestimonial(this)">👍 Like</span>
+                        <span class="like-dislike-btn text-red-500 ml-4" onclick="dislikeTestimonial(this)">👎 Dislike</span>
+                    </div>
+                    <span class="text-gray-500">Likes: <span class="likes-count">0</span> | Dislikes: <span class="dislikes-count">0</span></span>
+                </div>
+            `;
+
+            document.getElementById('testimonials-container').appendChild(testimonialCard);
+            document.getElementById('review-form').reset();
+        });
     </script>
 </body>
+
 </html>

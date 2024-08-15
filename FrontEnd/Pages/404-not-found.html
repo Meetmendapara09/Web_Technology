@@ -10,6 +10,8 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <style>
         body {
             background-image: url('/FrontEnd/images/close-up-idea-concept.webp');
@@ -164,6 +166,71 @@
                 display: none;
             }
         }
+        footer {
+            background: #1a202c;
+            color: #f7fafc;
+            padding: 4rem 1rem;
+        }
+        footer a {
+            color: #facc15;
+        }
+        footer a:hover {
+            color: #eab308;
+        }
+        footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        footer .footer-column {
+            margin-bottom: 2rem;
+        }
+        footer .footer-column h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        footer .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 3rem;
+            height: 2px;
+            background: #facc15;
+        }
+        footer .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+        footer .footer-column ul li {
+            margin-bottom: 0.5rem;
+        }
+        footer .footer-column ul li a {
+            font-size: 0.875rem;
+        }
+        footer .footer-column ul li a:hover {
+            color: #eab308;
+        }
+        footer .footer-bottom {
+            border-top: 1px solid #4a5568;
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.875rem;
+        }
+        footer .social-icons {
+            margin-top: 1rem;
+        }
+        footer .social-icons li {
+            margin-right: 1rem;
+        }
+        @media (max-width: 768px) {
+            footer .grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -220,6 +287,47 @@
             </div>
         </div>
     </div>
+
+    <footer>
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="footer-column">
+                    <a href="/FrontEnd/index.html" class="text-xl md:text-2xl font-bold">ZenVedaSync</a>
+                    <p class="mt-4 text-gray-400">Empowering learners worldwide.</p>
+                    <a class="mt-4 text-yellow-400 hover:text-yellow-300" href="pages/know-us.html">Know Us</a>
+                </div>
+                <div class="footer-column">
+                    <h3 class="text-lg md:text-xl font-semibold mb-4">Quick Links</h3>
+                    <ul>
+                        <li><a href="/FrontEnd/index.html" class="hover:text-gray-300">Home</a></li>
+                        <li><a href="/FrontEnd/Pages/free-courses.html" class="hover:text-gray-300">Courses</a></li>
+                        <li><a href="/FrontEnd/Pages/about-us.html" class="hover:text-gray-300">About</a></li>
+                        <li><a href="/FrontEnd/Pages/contact-us.html" class="hover:text-gray-300">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 class="text-lg md:text-xl font-semibold mb-4">Support</h3>
+                    <ul>
+                        <li><a href="/FrontEnd/Pages/help.html" class="hover:text-gray-300">Help Center</a></li>
+                        <li><a href="/FrontEnd/Pages/terms.html" class="hover:text-gray-300">Terms of Service</a></li>
+                        <li><a href="/FrontEnd/Pages/Privacy-Policy.html" class="hover:text-gray-300">Privacy Policy</a></li>
+                        <li><a href="/FrontEnd/Pages/careers.html" class="hover:text-gray-300">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 class="text-lg md:text-xl font-semibold mb-4">Connect With Us</h3>
+                    <ul class="social-icons flex flex-wrap">
+                        <li><a href="https://www.facebook.com/" class="hover:text-gray-300 flex items-center space-x-2"><i class="fa-brands fa-facebook"></i><span class="sr-only">Facebook</span></a></li>
+                        <li><a href="https://x.com/" class="hover:text-gray-300 flex items-center space-x-2"><i class="fa-brands fa-twitter"></i><span class="sr-only">Twitter</span></a></li>
+                        <li><a href="https://www.linkedin.com/" class="hover:text-gray-300 flex items-center space-x-2"><i class="fa-brands fa-linkedin"></i><span class="sr-only">LinkedIn</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom mt-8 text-center">
+            <p>&copy; 2024 Your Powerful Learning Platform. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script>
         document.getElementById('mobile-menu-button').addEventListener('click', function() {

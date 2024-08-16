@@ -2,7 +2,7 @@
     $servername ="localhost";
     $username = "root";
     $password = "root";
-    $db_name = "user_db";
+    $db_name = "zenvedasync";
     
 
     $conn = new mysqli($servername, $username, $password, $db_name, 3307);  

@@ -1,11 +1,11 @@
 <?php
-@include 'config.php';
+@include '../config.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'phpmailer/src/Exception.php';
-require 'phpmailer/src/PHPMailer.php';
-require 'phpmailer/src/SMTP.php';
+require '../phpmailer/src/Exception.php';
+require '../phpmailer/src/PHPMailer.php';
+require '../phpmailer/src/SMTP.php';
 
 if (isset($_POST['submit'])) {
 
@@ -29,12 +29,13 @@ if (isset($_POST['submit'])) {
                 $mail = new PHPMailer(true);
                 try {
                     $mail->isSMTP();
-                    $mail->Host = '';
+                    $mail->Host = getenv('SMTP_HOST');
                     $mail->SMTPAuth = true;
-                    $mail->Username = '' // SMTP username
-                    $mail->Password = '';
-                    $mail->SMTPSecure = ;
-                    $mail->Port = ;
+                    $mail->Username = getenv('SMTP_USERNAME');
+                    $mail->Password = getenv('SMTP_PASSWORD');
+                    $mail->SMTPSecure = getenv('SMTP_SECURE');
+                    $mail->Port = getenv('SMTP_PORT'); 
+                    
 
                     $mail->setFrom('noreply@zenvedasync.com', 'ZenVedasync');
                     $mail->addAddress($email, $name);
@@ -108,9 +109,8 @@ if (isset($_POST['submit'])) {
 </body>
 </html>
 ';
-
                     $mail->send();
-                    header('Location: login.html');
+                    header('Location: ../../Web_Technology/FrontEnd/Pages/Auth/Login.html');
                     exit();
                 } catch (Exception $e) {
                     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";

@@ -1,6 +1,6 @@
 <?php
 
-@include 'config.php';
+@include '../config.php';
 
 session_start();
 // Redirect if already logged in
@@ -22,7 +22,7 @@ if(isset($_POST['submit'])){
 
       $row = mysqli_fetch_array($result);
       $_SESSION['admin_name'] = $row['name'];
-      header('location:admin_page.php');
+      header('location: admin_page.php');
       exit();
 
    }else{

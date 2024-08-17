@@ -42,7 +42,7 @@ function initPathValidation() {
         '/FrontEnd/Pages/Dashboard.html',
         '/FrontEnd/Pages/FAQ.html',
         '/FrontEnd/Pages/Forgot-Password.html',
-        '/FrontEnd/Pages/Free-Courses.html',
+        '/FrontEnd/Pages/Courses/Free-courses.html',
         '/FrontEnd/Pages/Help-Center.html',
         '/FrontEnd/Pages/Job-Details.html',
         '/FrontEnd/Pages/Know-Us.html',

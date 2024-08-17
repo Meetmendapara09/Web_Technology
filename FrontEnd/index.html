@@ -20,7 +20,7 @@
                     <div class="relative">
                         <button id="courses-button" class="text-gray-600 hover:text-gray-900 focus:outline-none">Courses</button>
                         <div id="courses-dropdown" class="absolute hidden mt-2 py-2 w-48 bg-white shadow-lg rounded-lg z-10">
-                            <a href="/FrontEnd/Pages/Free-Courses.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Free Courses</a>
+                            <a href="/FrontEnd/Pages/Courses/Free-courses.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Free Courses</a>
                             <a href="/FrontEnd/Pages/Paid-Course.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Premium Courses</a>
                         </div>
                     </div>
@@ -42,11 +42,11 @@
     <div class="md:hidden bg-white shadow-lg" style="display: none;">
         <nav class="px-2 py-4">
             <a href="/FrontEnd/index.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">Home</a>
-            <a href="/FrontEnd/Pages/Free-Courses.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">Courses</a>
+            <a href="/FrontEnd/Pages/Courses/Free-courses.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">Courses</a>
             <a href="/FrontEnd/Pages/About-Us.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">About</a>
             <a href="/FrontEnd/Pages/Contact-Us.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">Contact</a>
-            <a href="/FrontEnd/Pages/Login.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">Login</a>
-            <a href="/FrontEnd/Pages/Register.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">Sign Up</a>
+            <a href="/FrontEnd/Pages/Auth/Login.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">Login</a>
+            <a href="/FrontEnd/Pages/Auth/SignUp.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">Sign Up</a>
         </nav>
     </div>
     <section class="bg-blue-900 text-white py-16 md:py-20">
@@ -54,8 +54,8 @@
             <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4">Empower Your Learning Journey</h1>
             <p class="text-lg md:text-xl lg:text-2xl mb-8">Explore thousands of expert-led courses.</p>
             <div class="flex flex-col md:flex-row justify-center">
-                <a href="/FrontEnd/Pages/Free-Courses.html" class="bg-white text-blue-900 hover:bg-pink-400 hover:text-white py-2 px-6 md:py-3 md:px-8 rounded-full mb-4 md:mb-0 md:mr-4 font-semibold">Explore Free Courses</a>
-                <a href="/FrontEnd/Pages/Register.html" class="bg-white text-blue-900 hover:bg-blue-800 hover:text-white py-2 px-6 md:py-3 md:px-8 rounded-full font-semibold">Sign Up for Premium</a>
+                <a href="/FrontEnd/Pages/Courses/Free-courses.html" class="bg-white text-blue-900 hover:bg-pink-400 hover:text-white py-2 px-6 md:py-3 md:px-8 rounded-full mb-4 md:mb-0 md:mr-4 font-semibold">Explore Free Courses</a>
+                <a href="/FrontEnd/Pages/Auth/SignUp.html" class="bg-white text-blue-900 hover:bg-blue-800 hover:text-white py-2 px-6 md:py-3 md:px-8 rounded-full font-semibold">Sign Up for Premium</a>
             </div>
         </div>
     </section>
@@ -71,7 +71,7 @@
                                 <div class="p-4">
                                     <h3 class="text-lg md:text-xl lg:text-2xl font-semibold mb-2">Course Title</h3>
                                     <p class="text-sm md:text-base text-gray-700 mb-2">Instructor Name</p>
-                                    <a href="/FrontEnd/Pages/Free-Courses.html" class="block text-blue-500 font-semibold hover:underline">View Course</a>
+                                    <a href="/FrontEnd/Pages/Courses/Free-courses.html" class="block text-blue-500 font-semibold hover:underline">View Course</a>
                                 </div>
                             </div>
                         </div>
@@ -84,7 +84,7 @@
                                 <div class="p-4">
                                     <h3 class="text-lg md:text-xl lg:text-2xl font-semibold mb-2">Course Title</h3>
                                     <p class="text-sm md:text-base text-gray-700 mb-2">Instructor Name</p>
-                                    <a href="/FrontEnd/Pages/Free-Courses.html" class="block text-blue-500 font-semibold hover:underline">View Course</a>
+                                    <a href="/FrontEnd/Pages/Courses/Free-courses.html" class="block text-blue-500 font-semibold hover:underline">View Course</a>
                                 </div>
                             </div>
                         </div>
@@ -187,7 +187,7 @@
         <div class="container mx-auto text-center px-4 md:px-8">
             <h2 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4">Ready to Start Learning?</h2>
             <p class="text-lg md:text-xl lg:text-2xl mb-8">Join thousands of learners today.</p>
-            <a href="/FrnotEnd/Pages/Register.html" class="bg-white text-blue-900 hover:bg-blue-800 py-3 px-8 md:py-4 md:px-10 rounded-full font-semibold">Get Started</a>
+            <a href="/FrontEnd/Pages/Auth/SignUp.html" class="bg-white text-blue-900 hover:bg-blue-800 py-3 px-8 md:py-4 md:px-10 rounded-full font-semibold">Get Started</a>
         </div>
     </section>
     <section class="py-16 md:py-20 bg-gray-100">
@@ -251,8 +251,8 @@
                 <div>
                     <h3 class="text-lg md:text-xl font-semibold mb-4">Quick Links</h3>
                     <ul>
-                        <li><a href="index.html" class="hover:text-gray-300">Home</a></li>
-                        <li><a href="/FrontEnd/Pages/free-courses.html" class="hover:text-gray-300">Courses</a></li>
+                        <li><a href="/FrontEnd/index.html" class="hover:text-gray-300">Home</a></li>
+                        <li><a href="/FrontEnd/Pages/Courses/Free-courses.html" class="hover:text-gray-300">Courses</a></li>
                         <li><a href="/FrontEnd/Pages/about-us.html" class="hover:text-gray-300">About</a></li>
                         <li><a href="/FrontEnd/Pages/contact-us.html" class="hover:text-gray-300">Contact</a></li>
                     </ul>
@@ -260,8 +260,8 @@
                 <div>
                     <h3 class="text-lg md:text-xl font-semibold mb-4">Support</h3>
                     <ul>
-                        <li><a href="/FrontEnd/Pages/help.html" class="hover:text-gray-300">Help Center</a></li>
-                        <li><a href="/FrontEnd/Pages/terms.html" class="hover:text-gray-300">Terms of Service</a></li>
+                        <li><a href="/FrontEnd/Pages/Help-Center.html" class="hover:text-gray-300">Help Center</a></li>
+                        <li><a href="/FrontEnd/Pages/Terms-And-Conditions.html" class="hover:text-gray-300">Terms of Service</a></li>
                         <li><a href="/FrontEnd/Pages/Privacy-Policy.html" class="hover:text-gray-300">Privacy Policy</a></li>
                         <li><a href="/FrontEnd/Pages/careers.html" class="hover:text-gray-300">Careers</a></li>
                     </ul>

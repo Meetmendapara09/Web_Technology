@@ -5,291 +5,334 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Powerful Learning Platform</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./Styles/Styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 </head>
-<body class="bg-gray-100">
-    <header class="bg-white shadow-lg">
-        <div class="container mx-auto py-4 px-4 md:px-8">
-            <div class="flex items-center justify-between">
-                <div>
-                    <a href="/FrontEnd/index.html" class="text-xl md:text-2xl font-bold text-gray-800">ZenVedaSync</a>
+<body>
+    <!-- Header -->
+    <header class="conatiner">
+        <div>
+            <div>
+                <div class="logo">
+                    <a href="index.html">ZenVedaSync</a>
                 </div>
-                <nav class="hidden md:flex space-x-4">
-                    <a href="/FrontEnd/index.html" class="text-gray-600 hover:text-gray-900">Home</a>
-                    <div class="relative">
-                        <button id="courses-button" class="text-gray-600 hover:text-gray-900 focus:outline-none">Courses</button>
-                        <div id="courses-dropdown" class="absolute hidden mt-2 py-2 w-48 bg-white shadow-lg rounded-lg z-10">
-                            <a href="/FrontEnd/Pages/Courses/Free-courses.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Free Courses</a>
-                            <a href="/FrontEnd/Pages/Paid-Course.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Premium Courses</a>
+
+                <!-- Desktop navbar-->
+                <nav class="desktop-nav">
+                    <a href="index.html">Home</a>
+                    <div class="course-nav">
+                        <button id="courses-button" onclick="toggleDropdown()">Courses</button>
+                        <div id="courses-dropdown" class="dropdown">
+                            <a href="Pages/Courses/Free-Courses.html">Free Courses</a>
+                            <a href="Pages/Courses/paid-course.html">Premium Courses</a>
                         </div>
                     </div>
-                <a href="./Pages/About-Us.html" class="text-gray-600 hover:text-gray-900">About</a>
-                <a href="./Pages/contact-us.html" class="text-gray-600 hover:text-gray-900">Contact</a>
-                <a href="./Pages/Auth/Login.html" class="text-gray-600 hover:text-gray-900">Login</a>
-                <a href="./Pages/Auth/SignUp.html" class="text-gray-600 hover:text-gray-900">Sign Up</a>
+                    
+                    <a href="./Pages/About-Us.html">About</a>
+                    <a href="./Pages/contact-us.html">Contact</a>
+                    <a href="./Pages/Auth/Login.html">Login</a>
+                    <a href="./Pages/Auth/SignUp.html">Sign Up</a>
                 </nav>
-                <div class="md:hidden">
-                    <button class="text-gray-600 hover:text-gray-900 focus:outline-none">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+
+                <!-- Mobile menu button -->
+                <div id="mobile-nav-button">
+                    <button onclick="toggleMenu()">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7"></path>
                         </svg>
                     </button>
                 </div>
             </div>
         </div>
     </header>
-    <div class="md:hidden bg-white shadow-lg" style="display: none;">
-        <nav class="px-2 py-4">
-            <a href="/FrontEnd/index.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">Home</a>
-            <a href="/FrontEnd/Pages/Courses/Free-courses.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">Courses</a>
-            <a href="/FrontEnd/Pages/About-Us.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">About</a>
-            <a href="/FrontEnd/Pages/Contact-Us.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">Contact</a>
-            <a href="/FrontEnd/Pages/Auth/Login.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">Login</a>
-            <a href="/FrontEnd/Pages/Auth/SignUp.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">Sign Up</a>
+
+    <!-- Mobile-nav -->
+    <div id="mobile-menu">
+        <nav class="mobile-nav">
+            <a href="index.html">Home</a>
+                    <div class="course-nav">
+                        <button id="courses-button" onclick="toggleDropdown()">Courses</button>
+                        <div id="courses-dropdown" class="dropdown">
+                            <a href="Pages/Courses/Free-Courses.html">Free Courses</a>
+                            <a href="Pages/Courses/paid-course.html">Premium Courses</a>
+                        </div>
+                    </div>
+                    
+                    <a href="./Pages/About-Us.html">About</a>
+                    <a href="./Pages/contact-us.html">Contact</a>
+                    <a href="./Pages/Auth/Login.html">Login</a>
+                    <a href="./Pages/Auth/SignUp.html">Sign Up</a>
         </nav>
     </div>
-    <section class="bg-blue-900 text-white py-16 md:py-20">
-        <div class="container mx-auto text-center px-4 md:px-8">
-            <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4">Empower Your Learning Journey</h1>
-            <p class="text-lg md:text-xl lg:text-2xl mb-8">Explore thousands of expert-led courses.</p>
-            <div class="flex flex-col md:flex-row justify-center">
-                <a href="/FrontEnd/Pages/Courses/Free-courses.html" class="bg-white text-blue-900 hover:bg-pink-400 hover:text-white py-2 px-6 md:py-3 md:px-8 rounded-full mb-4 md:mb-0 md:mr-4 font-semibold">Explore Free Courses</a>
-                <a href="/FrontEnd/Pages/Auth/SignUp.html" class="bg-white text-blue-900 hover:bg-blue-800 hover:text-white py-2 px-6 md:py-3 md:px-8 rounded-full font-semibold">Sign Up for Premium</a>
+
+    <!--  hero -->
+    <section class="section-1">
+        <div class="text">
+            <h1>Empower Your Learning Journey</h1>
+            <p>Explore thousands of expert-led courses.</p>
+            <div class="button">
+                <a href="Pages/Courses/Free-Courses.html">Explore Free Courses</a>
+                <a href="Pages/Auth/SignUp.html">Sign Up for Premium</a>
             </div>
         </div>
     </section>
-    <section class="py-16 md:py-20">
-        <div class="container mx-auto px-4 md:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="space-y-8">
-                    <div>
-                        <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">Latest Courses</h2>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                                <img src="favicon.ico" alt="Course 1" class="w-full h-48 sm:h-64 object-cover">
-                                <div class="p-4">
-                                    <h3 class="text-lg md:text-xl lg:text-2xl font-semibold mb-2">Course Title</h3>
-                                    <p class="text-sm md:text-base text-gray-700 mb-2">Instructor Name</p>
-                                    <a href="/FrontEnd/Pages/Courses/Free-courses.html" class="block text-blue-500 font-semibold hover:underline">View Course</a>
+
+    <!-- Courses -->
+    <section class="courses conatiner">
+        <div class="courses-container">
+            <div class="course-type">
+                <div class="courses_section">
+                    <div class="latest_courses">
+                        <h2>Latest Courses</h2>
+                        <div class="course_cards">
+                            <div class="course_card">
+                                <img src="favicon.ico" alt="Course 1">
+                                <div class="course_details">
+                                    <h3>Course Title</h3>
+                                    <p class="course_instructor">Instructor Name</p>
+                                    <a href="/FrontEnd/Pages/Free-Courses.html">View Course</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">Popular Courses</h2>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                                <img src="favicon.ico" alt="Course 2" class="w-full h-48 sm:h-64 object-cover">
-                                <div class="p-4">
-                                    <h3 class="text-lg md:text-xl lg:text-2xl font-semibold mb-2">Course Title</h3>
-                                    <p class="text-sm md:text-base text-gray-700 mb-2">Instructor Name</p>
-                                    <a href="/FrontEnd/Pages/Courses/Free-courses.html" class="block text-blue-500 font-semibold hover:underline">View Course</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="bg-white rounded-lg shadow-md p-8">
-                        <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">Testimonials</h2>
-                        <div class="space-y-4">
-                            <div class="flex items-center">
-                                <div class="flex-shrink-0">
-                                    <img src="favicon.ico" alt="Testimonial 1" class="h-12 w-12 md:h-16 md:w-16 rounded-full object-cover">
-                                </div>
-                                <div class="ml-4">
-                                    <p class="text-lg md:text-xl lg:text-2xl font-semibold">John Doe</p>
-                                    <p class="text-gray-600">"I love how easy it is to find courses on this platform. The variety of topics is amazing!"</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="flex-shrink-0">
-                                    <img src="favicon.ico" alt="Testimonial 2" class="h-12 w-12 md:h-16 md:w-16 rounded-full object-cover">
-                                </div>
-                                <div class="ml-4">
-                                    <p class="text-lg md:text-xl lg:text-2xl font-semibold">Jane Smith</p>
-                                    <p class="text-gray-600">"The instructors are very knowledgeable and the courses are well-structured. Highly recommended!"</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="flex-shrink-0">
-                                    <img src="favicon.ico" alt="Testimonial 3" class="h-12 w-12 md:h-16 md:w-16 rounded-full object-cover">
-                                </div>
-                                <div class="ml-4">
-                                    <p class="text-lg md:text-xl lg:text-2xl font-semibold">Michael Johnson</p>
-                                    <p class="text-gray-600">"This platform has helped me advance my career with its practical and insightful courses."</p>
+                    <div class="popular_courses">
+                        <h2>Popular Courses</h2>
+                        <div class="course_cards">
+                            <div class="course_card">
+                                <img src="favicon.ico" alt="Course 2">
+                                <div class="course_details">
+                                    <h3>Course Title</h3>
+                                    <p class="course_instructor">Instructor Name</p>
+                                    <a href="/FrontEnd/Pages/Free-Courses.html">View Course</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                    <div class="testimonials">
+                        <h2>Testimonials</h2>
+                        <div class="testimonial_container">
+                            <div class="testimonial_list">
+                                <div class="testimonial_img">
+                                    <img src="favicon.ico" alt="Testimonial 1">
+                                </div>
+                                <div class="testimonial_detail">
+                                    <p class="testimonial_name">John Doe</p>
+                                    <p class="testimonial_comment">"I love how easy it is to find courses on this platform.
+                                        The variety of topics is amazing!"</p>
+                                </div>
+                            </div>
+                            <div class="testimonial_list">
+                                <div class="testimonial_img">
+                                    <img src="favicon.ico" alt="Testimonial 2">
+                                </div>
+                                <div class="testimonial_detail">
+                                    <p class="testimonial_name">Jane Smith</p>
+                                    <p class="testimonial_comment">"The instructors are very knowledgeable and the courses are
+                                        well-structured. Highly recommended!"</p>
+                                </div>
+                            </div>
+                            <div class="testimonial_list">
+                                <div class="testimonial_img">
+                                    <img src="favicon.ico" alt="Testimonial 3">
+                                </div>
+                                <div class="testimonial_detail">
+                                    <p class="testimonial_name">Michael Johnson</p>
+                                    <p class="testimonial_comment">"This platform has helped me advance my career with its
+                                        practical and insightful courses."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
     </section>
-    <section class="bg-gray-100 py-16 md:py-20">
-        <div class="container mx-auto px-4 md:px-8">
-            <h2 class="text-3xl md:text-5xl font-bold text-center mb-8">From Our Blog</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <img src="favicon.ico" alt="Blog Post 1" class="w-full h-48 sm:h-64 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-xl md:text-2xl lg:text-3xl font-semibold mb-2">Blog Post Title</h3>
-                        <p class="text-sm md:text-base text-gray-700 mb-4">Author Name | July 20, 2024</p>
-                        <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <a href="/FrontEnd/Pages/Blogs/Blog.html" class="block mt-4 text-blue-500 font-semibold hover:underline">Read More</a>
+
+<!-- Blogs -->
+    <section class="Blog_Section conatiner">
+        <div class="blogs">
+            <h2>From Our Blog</h2>
+            <div class="blog_container">
+                <div class="blog_details">
+                    <img src="favicon.ico" alt="Blog Post 1">
+                    <div class="blog_card">
+                        <h3>Blog Post Title</h3>
+                        <p class="blog_author">Author Name | July 20, 2024</p>
+                        <p class="blog_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <a href="/FrontEnd/Pages/Blogs/Blog.html" class="blog_readmore">Read More</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="py-16 md:py-20 bg-white">
-        <div class="container mx-auto px-4 md:px-8">
-            <h2 class="text-3xl md:text-5xl font-bold text-center mb-8">Why Choose Us?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="flex flex-col items-center space-y-4">
-                    <svg class="w-12 h-12 text-blue-900 bg-blue-200 rounded-full p-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" />
-                        <circle cx="12" cy="12" r="9" />
-                        <path d="M12 8v4l2 2" />
-                        <line x1="14" y1="16" x2="14.01" y2="16" />
+
+
+    <!-- Features -->
+    <section class="features conatiner">
+        <div class="features_container">
+            <h2>Why Choose Us?</h2>
+            <div class="feature_list">
+                <div class="feature">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z"></path>
+                        <circle cx="12" cy="12" r="9"></circle>
+                        <path d="M12 8v4l2 2"></path>
+                        <line x1="14" y1="16" x2="14.01" y2="16"></line>
                     </svg>
-                    <h3 class="text-xl md:text-2xl lg:text-3xl font-semibold text-center">Expert Instructors</h3>
-                    <p class="text-center text-gray-700">Learn from industry experts with years of experience.</p>
+                    <h3>Expert Instructors</h3>
+                    <p>Learn from industry experts with years of experience.</p>
                 </div>
-                <div class="flex flex-col items-center space-y-4">
-                    <svg class="w-12 h-12 text-blue-900 bg-blue-200 rounded-full p-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" />
-                        <path d="M4 17h6l4 4h5l-3 -4h6" />
-                        <path d="M11 7l2 3l2 -3" />
-                        <path d="M15 17v-13h-6" />
-                        <path d="M18 17v-10l-3 5h-4l-3 -5v10" />
+                <div class="feature">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z"></path>
+                        <path d="M4 17h6l4 4h5l-3 -4h6"></path>
+                        <path d="M11 7l2 3l2 -3"></path>
+                        <path d="M15 17v-13h-6"></path>
+                        <path d="M18 17v-10l-3 5h-4l-3 -5v10"></path>
                     </svg>
-                    <h3 class="text-xl md:text-2xl lg:text-3xl font-semibold text-center">Flexible Learning</h3>
-                    <p class="text-center text-gray-700">Study at your own pace, anytime and anywhere.</p>
+                    <h3>Flexible Learning</h3>
+                    <p>Study at your own pace, anytime and anywhere.</p>
                 </div>
-                <div class="flex flex-col items-center space-y-4">
-                    <svg class="w-12 h-12 text-blue-900 bg-blue-200 rounded-full p-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" />
-                        <circle cx="12" cy="12" r="9" />
-                        <line x1="3.6" y1="9" x2="20.4" y2="9" />
-                        <line x1="3.6" y1="15" x2="20.4" y2="15" />
-                        <line x1="8.6" y1="4" x2="8.6" y2="20" />
-                        <line x1="15.6" y1="4" x2="15.6" y2="20" />
+                <div class="feature">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z"></path>
+                        <circle cx="12" cy="12" r="9"></circle>
+                        <line x1="3.6" y1="9" x2="20.4" y2="9"></line>
+                        <line x1="3.6" y1="15" x2="20.4" y2="15"></line>
+                        <line x1="8.6" y1="4" x2="8.6" y2="20"></line>
+                        <line x1="15.6" y1="4" x2="15.6" y2="20"></line>
                     </svg>
-                    <h3 class="text-xl md:text-2xl lg:text-3xl font-semibold text-center">Wide Range of Courses</h3>
-                    <p class="text-center text-gray-700">Choose from thousands of courses in various disciplines.</p>
+                    <h3>Wide Range of Courses</h3>
+                    <p>Choose from thousands of courses in various disciplines.</p>
                 </div>
             </div>
         </div>
     </section>
-    <section class="bg-blue-900 text-white py-16 md:py-20">
-        <div class="container mx-auto text-center px-4 md:px-8">
-            <h2 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4">Ready to Start Learning?</h2>
-            <p class="text-lg md:text-xl lg:text-2xl mb-8">Join thousands of learners today.</p>
-            <a href="/FrontEnd/Pages/Auth/SignUp.html" class="bg-white text-blue-900 hover:bg-blue-800 py-3 px-8 md:py-4 md:px-10 rounded-full font-semibold">Get Started</a>
+
+
+    <section class="section-4 conatiner">
+        <div class="hero_section">
+            <h2>Ready to Start Learning?</h2>
+            <p>Join thousands of learners today.</p>
+            <a href="Pages/Auth/SignUp.html">Get Started</a>
         </div>
     </section>
-    <section class="py-16 md:py-20 bg-gray-100">
-        <div class="container mx-auto px-4 md:px-8">
-            <h2 class="text-3xl md:text-5xl font-bold text-center mb-8">What Our Students Say</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white rounded-lg shadow-md overflow-hidden p-6">
-                    <div class="flex items-center space-x-4 mb-4">
-                        <div class="flex-shrink-0">
-                            <img src="favicon.ico" alt="Testimonial 1" class="h-12 w-12 rounded-full object-cover">
+
+    <!-- Testimonial -->
+    <section class="testimonial_section conatiner">
+        <div class="testimonials">
+            <h2>What Our Students Say</h2>
+            <div class="conatiner__55">
+                <div class="conatiner__56">
+                    <div class="testimonial_list">
+                        <div class="testimonial_img">
+                            <img src="favicon.ico" alt="Testimonial 1">
                         </div>
-                        <div>
-                            <p class="text-lg md:text-xl lg:text-2xl font-semibold">John Doe</p>
-                            <p class="text-gray-600">"I love how easy it is to find courses on this platform. The variety of topics is amazing!"</p>
+                        <div class="testimonial_detail">
+                            <p class="testimonial_name">John Doe</p>
+                            <p class="testimonial_comment">I love how easy it is to find courses on this platform. The
+                                variety of topics is amazing!"</p>
+                                <div class="readmore">
+                                    <a href="/FrontEnd/Pages/Testimonial.html" class="conatiner__64">Read Full Testimonial</a>
+                                </div>
                         </div>
-                    </div>
-                    <div class="text-blue-500 font-semibold hover:underline">
-                        <a href="/FrontEnd/Pages/Testimonial.html">Read Full Testimonial</a>
                     </div>
                 </div>
-                <div class="bg-white rounded-lg shadow-md overflow-hidden p-6">
-                    <div class="flex items-center space-x-4 mb-4">
-                        <div class="flex-shrink-0">
-                            <img src="favicon.ico" alt="Testimonial 2" class="h-12 w-12 rounded-full object-cover">
+                <div class="conatiner__56">
+                    <div class="testimonial_list">
+                        <div class="testimonial_img">
+                            <img src="favicon.ico" alt="Testimonial 1">
                         </div>
-                        <div>
-                            <p class="text-lg md:text-xl lg:text-2xl font-semibold">Jane Smith</p>
-                            <p class="text-gray-600">"The instructors are very knowledgeable and the courses are well-structured. Highly recommended!"</p>
+                        <div class="testimonial_detail">
+                            <p class="testimonial_name">John Doe</p>
+                            <p class="testimonial_comment">I love how easy it is to find courses on this platform. The
+                                variety of topics is amazing!"</p>
+                                <div class="readmore">
+                                    <a href="/FrontEnd/Pages/Testimonial.html" class="conatiner__64">Read Full Testimonial</a>
+                                </div>
                         </div>
-                    </div>
-                    <div class="text-blue-500 font-semibold hover:underline">
-                        <a href="/FrontEnd/Pages/Testimonial.html">Read Full Testimonial</a>
                     </div>
                 </div>
-                <div class="bg-white rounded-lg shadow-md overflow-hidden p-6">
-                    <div class="flex items-center space-x-4 mb-4">
-                        <div class="flex-shrink-0">
-                            <img src="favicon.ico" alt="Testimonial 3"
-                                class="h-12 w-12 rounded-full object-cover">
+                <div class="conatiner__56">
+                    <div class="testimonial_list">
+                        <div class="testimonial_img">
+                            <img src="favicon.ico" alt="Testimonial 1">
                         </div>
-                        <div>
-                            <p class="text-lg md:text-xl lg:text-2xl font-semibold">Michael Johnson</p>
-                            <p class="text-gray-600">"This platform has helped me advance my career with its practical and insightful courses."</p>
+                        <div class="testimonial_detail">
+                            <p class="testimonial_name">John Doe</p>
+                            <p class="testimonial_comment">I love how easy it is to find courses on this platform. The
+                                variety of topics is amazing!"</p>
+                                <div class="readmore">
+                                    <a href="/FrontEnd/Pages/Testimonial.html" class="conatiner__64">Read Full Testimonial</a>
+                                </div>
                         </div>
-                    </div>
-                    <div class="text-blue-500 font-semibold hover:underline">
-                        <a href="/FrontEnd/Pages/Testimonial.html">Read Full Testimonial</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <footer class="bg-gray-800 text-white py-12">
-        <div class="container mx-auto px-4 md:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="mb-8 md:mb-0">
-                    <a href="/FrontEnd/index.html" class="text-xl md:text-2xl font-bold">ZenVedaSync</a>
-                    <p class="mt-4 text-gray-400">Empowering learners worldwide.</p>
-                    <a class="mt-4 text-white-450" href="/FrontEnd/Pages/Know-Us.html">Know Us</a>
+
+    <!-- Footer -->
+    <footer class="conatiner">
+        <div class="footer_container">
+            <div>
+                <div class="col-1">
+                    <a href="index.html">ZenVedaSync</a>
+                    <p>Empowering learners worldwide.</p>
+                    <a href="Pages/Know-Us.html" class="know-us">Know Us</a>
                 </div>
-                <div>
-                    <h3 class="text-lg md:text-xl font-semibold mb-4">Quick Links</h3>
+                <div class="col-2">
+                    <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="/FrontEnd/index.html" class="hover:text-gray-300">Home</a></li>
-                        <li><a href="/FrontEnd/Pages/Courses/Free-courses.html" class="hover:text-gray-300">Courses</a></li>
-                        <li><a href="/FrontEnd/Pages/about-us.html" class="hover:text-gray-300">About</a></li>
-                        <li><a href="/FrontEnd/Pages/contact-us.html" class="hover:text-gray-300">Contact</a></li>
+                        <li><a href="index.html" class="link">Home</a></li>
+                        <li><a href="Pages/Courses/free-courses.html" class="link">Courses</a></li>
+                        <li><a href="Pages/about-us.html" class="link">About</a></li>
+                        <li><a href="Pages/contact-us.html" class="link">Contact</a></li>
                     </ul>
                 </div>
-                <div>
-                    <h3 class="text-lg md:text-xl font-semibold mb-4">Support</h3>
+                <div class="col-3">
+                    <h3>Support</h3>
                     <ul>
-                        <li><a href="/FrontEnd/Pages/Help-Center.html" class="hover:text-gray-300">Help Center</a></li>
-                        <li><a href="/FrontEnd/Pages/Terms-And-Conditions.html" class="hover:text-gray-300">Terms of Service</a></li>
-                        <li><a href="/FrontEnd/Pages/Privacy-Policy.html" class="hover:text-gray-300">Privacy Policy</a></li>
-                        <li><a href="/FrontEnd/Pages/careers.html" class="hover:text-gray-300">Careers</a></li>
+                        <li><a href="Pages/help-center.html" class="link">Help Center</a></li>
+                        <li><a href="Pages/terms-and-conditions.html" class="link">Terms of Service</a></li>
+                        <li><a href="Pages/Privacy-Policy.html" class="link">Privacy Policy</a></li>
+                        <li><a href="Pages/careers.html" class="link">Careers</a></li>
                     </ul>
                 </div>
-                <div>
-                    <h3 class="text-lg md:text-xl font-semibold mb-4">Connect With Us</h3>
+                <div class="col-4">
+                    <h3>Connect With Us</h3>
                     <ul>
-                        <li><a href="https://www.facebook.com/" class="hover:text-gray-300 flex items-center space-x-2"><span>Facebook</span>
-                            <i class="fa-brands fa-facebook"></i>
+                        <li><a href="https://www.facebook.com/" class="link"><span>Facebook</span>
+                                <i class="conatiner__90"></i>
                             </a></li>
-                        <li><a href="https://x.com/" class="hover:text-gray-300 flex items-center space-x-2"><span>Twitter</span>
-                            <i class="fa-brands fa-twitter"></i>                            </a></li>
-                        <li><a href="https://www.linkedin.com/" class="hover:text-gray-300 flex items-center space-x-2"><span>LinkedIn</span>
-                            <i class="fa-brands fa-linkedin"></i>                          </a></li>
+                        <li><a href="https://x.com/" class="link"><span>Twitter</span>
+                                <i class="conatiner__91"></i> </a></li>
+                        <li><a href="https://www.linkedin.com/" class="link"><span>LinkedIn</span>
+                                <i class="conatiner__93"></i> </a></li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="mt-8 border-t border-gray-600 pt-8 text-center">
-            <p>&copy; 2024 Your Powerful Learning Platform. All rights reserved.</p>
+        <div class="copyright">
+            <p>© 2024 Your Powerful Learning Platform. All rights reserved.</p>
         </div>
     </footer>
-    <div class="fixed bottom-4 right-4 bg-blue-900 text-white p-3 rounded-full cursor-pointer hover:bg-blue-800">
-        <svg class="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+
+    <!-- Scroll Up-->
+    <div class="scroll-up" id="scroll-to-top" onclick="initScrollToTop()">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
         </svg>
     </div>
-    <script src="/FrontEnd/Scripts/script.js" type="script/javascript"></script>
-    <script src="https://kit.fontawesome.com/bc14c7aea3.js" crossorigin="anonymous">        </script>
+    
+    <script src="./Scripts/script.js"></script>
+    <script src="https://kit.fontawesome.com/bc14c7aea3.js" crossorigin="anonymous" class="conatiner">        </script>
+
 </body>
+
 </html>

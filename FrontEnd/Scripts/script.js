@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    initDropdownToggle();
-    initClickOutsideToCloseDropdown();
     initPathValidation();
     initSmoothScroll();
     initMobileMenuToggle();
@@ -12,24 +10,25 @@ document.addEventListener('DOMContentLoaded', () => {
     initImageCarousel();
 });
 
-function initDropdownToggle() {
-    const button = document.getElementById('courses-button');
-    const dropdown = document.getElementById('courses-dropdown');
-    if (button && dropdown) {
-        button.addEventListener('click', () => {
-            dropdown.classList.toggle('hidden');
-        });
+
+
+function toggleDropdown() {
+    var dropdown = document.getElementById('courses-dropdown');
+    if (dropdown.classList.contains('open')) {
+        dropdown.classList.remove('open');
+    } else {
+        dropdown.classList.add('open');
     }
 }
 
-function initClickOutsideToCloseDropdown() {
-    document.addEventListener('click', (event) => {
-        const button = document.getElementById('courses-button');
-        const dropdown = document.getElementById('courses-dropdown');
-        if (button && dropdown && !button.contains(event.target) && !dropdown.contains(event.target)) {
-            dropdown.classList.add('hidden');
+// Toogle menu
+function toggleMenu() {
+    var mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenu.classList.contains('open')) {
+            mobileMenu.classList.remove('open');
+        } else {
+            mobileMenu.classList.add('open');
         }
-    });
 }
 
 function initPathValidation() {
@@ -42,7 +41,7 @@ function initPathValidation() {
         '/FrontEnd/Pages/Dashboard.html',
         '/FrontEnd/Pages/FAQ.html',
         '/FrontEnd/Pages/Forgot-Password.html',
-        '/FrontEnd/Pages/Courses/Free-courses.html',
+        '/FrontEnd/Pages/Free-Courses.html',
         '/FrontEnd/Pages/Help-Center.html',
         '/FrontEnd/Pages/Job-Details.html',
         '/FrontEnd/Pages/Know-Us.html',
@@ -91,16 +90,8 @@ function initSmoothScroll() {
     });
 }
 
-function initMobileMenuToggle() {
-    const mobileMenuButton = document.querySelector('.mobile-menu-button');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    if (mobileMenuButton && mobileMenu) {
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('visible');
-            mobileMenu.style.opacity = mobileMenu.classList.contains('visible') ? '1' : '0';
-        });
-    }
-}
+
+
 
 function initFormHandling() {
     document.querySelectorAll('form').forEach(form => {

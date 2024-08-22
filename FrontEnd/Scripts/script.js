@@ -33,46 +33,49 @@ function toggleMenu() {
 
 function initPathValidation() {
     const validPaths = [
-        '/FrontEnd/index.html',
-        '/FrontEnd/Pages/About-Us.html',
-        '/FrontEnd/Pages/Apply.html',
-        '/FrontEnd/Pages/Careers.html',
-        '/FrontEnd/Pages/Contact-Us.html',
-        '/FrontEnd/Pages/Dashboard.html',
-        '/FrontEnd/Pages/FAQ.html',
-        '/FrontEnd/Pages/Forgot-Password.html',
-        '/FrontEnd/Pages/Free-Courses.html',
-        '/FrontEnd/Pages/Help-Center.html',
-        '/FrontEnd/Pages/Job-Details.html',
-        '/FrontEnd/Pages/Know-Us.html',
-        '/FrontEnd/Pages/login.html',
-        '/FrontEnd/Pages/Paid-Course.html',
-        '/FrontEnd/Pages/Press.html',
-        '/FrontEnd/Pages/Privacy-Policy.html',
-        '/FrontEnd/Pages/Register.html',
-        '/FrontEnd/Pages/Submit-A-Ticket.html',
-        '/FrontEnd/Pages/Support.html',
-        '/FrontEnd/Pages/Terms-And-Conditions.html',
-        '/FrontEnd/Pages/Testimonial.html',
-        '/FrontEnd/Pages/Tutorials.html',
-        '/FrontEnd/Pages/Admin-Panel',
-        '/FrontEnd/Pages/Auth/Login.html',
-        '/FrontEnd/Pages/Blogs/Blog-Post1.html',
-        '/FrontEnd/Pages/Blogs/Blog-Post2.html',
-        '/FrontEnd/Pages/Blogs/Blog-Post3.html',
-        '/FrontEnd/Pages/Courses',
-        '/FrontEnd/Pages/Payment',
-        '/FrontEnd/Pages/Progress-Tracking',
-        '/FrontEnd/Pages/Support-FAQ/',
-        '/FrontEnd/Pages/USer-Dashboard',
-        '/FrontEnd/Pages/Video-Player/Video-Player.html',
+        '/Web_Technology/FrontEnd/',
+        '/Web_Technology/FrontEnd/index.html',
+        '/Web_Technology/FrontEnd/Pages/about-us.html',
+        '/Web_Technology/FrontEnd/Pages/apply.html',
+        '/Web_Technology/FrontEnd/Pages/careers.html',
+        '/Web_Technology/FrontEnd/Pages/contact-Us.html',
+        '/Web_Technology/FrontEnd/Pages/dashboard.html',
+        '/Web_Technology/FrontEnd/Pages/Support-FAQ/FAQ.html',
+        '/Web_Technology/FrontEnd/Pages/Support-FAQ/Support.html',
+        '/Web_Technology/FrontEnd/Pages/Forgot-Password.html',
+        '/Web_Technology/FrontEnd/Pages/Free-Courses.html',
+        '/Web_Technology/FrontEnd/Pages/Help-Center.html',
+        '/Web_Technology/FrontEnd/Pages/Job-Details.html',
+        '/Web_Technology/FrontEnd/Pages/Know-Us.html',
+        '/Web_Technology/FrontEnd/Pages/login.html',
+        '/Web_Technology/FrontEnd/Pages/Paid-Course.html',
+        '/Web_Technology/FrontEnd/Pages/Press.html',
+        '/Web_Technology/FrontEnd/Pages/Privacy-Policy.html',
+        '/Web_Technology/FrontEnd/Pages/Register.html',
+        '/Web_Technology/FrontEnd/Pages/Submit-A-Ticket.html',
+        '/Web_Technology/FrontEnd/Pages/Support.html',
+        '/Web_Technology/FrontEnd/Pages/Terms-And-Conditions.html',
+        '/Web_Technology/FrontEnd/Pages/Testimonial.html',
+        '/Web_Technology/FrontEnd/Pages/Tutorials.html',
+        '/Web_Technology/FrontEnd/Pages/Admin-Panel',
+        '/Web_Technology/FrontEnd/Pages/Auth/Login.html',
+        '/Web_Technology/FrontEnd/Pages/Blogs/Blog-Post1.html',
+        '/Web_Technology/FrontEnd/Pages/Blogs/Blog-Post2.html',
+        '/Web_Technology/FrontEnd/Pages/Blogs/Blog-Post3.html',
+        '/Web_Technology/FrontEnd/Pages/Courses',
+        '/Web_Technology/FrontEnd/Pages/Payment',
+        '/Web_Technology/FrontEnd/Pages/Progress-Tracking',
+        '/Web_Technology/FrontEnd/Pages/Support-FAQ/',
+        '/Web_Technology/FrontEnd/Pages/dashboard',
+        '/Web_Technology/FrontEnd/Pages/Video-Player/Video-Player.html',
     ];
     const currentPath = window.location.pathname;
     const fullPath = currentPath.startsWith('/') ? currentPath : '/' + currentPath;
-    if (!validPaths.includes(fullPath) && fullPath !== '/FrontEnd/404.html') {
-        window.location.href = '/FrontEnd/404.html';
+    if (!validPaths.includes(fullPath) && fullPath !== '/Web_Technology/FrontEnd/404.html') {
+        window.location.href = '/Web_Technology/FrontEnd/404.html';
     }
 }
+
 
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(link => {

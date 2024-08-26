@@ -10,55 +10,14 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <!-- GSAP Animation Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="../Scripts/script.js"></script>
+    <link rel="stylesheet" href="../Styles/header-footer.css">
 </head>
 
 <body class="bg-gray-100">
 
     <!-- Header -->
-    <header class="bg-white shadow-lg">
-        <div class="container mx-auto py-4 px-4 md:px-8">
-            <div class="flex items-center justify-between">
-                <div>
-                    <a href="#" class="text-xl md:text-2xl font-bold text-gray-800">ZenVedaSync</a>
-                </div>
-                <nav class="hidden md:flex space-x-4">
-                    <a href="#" class="text-gray-600 hover:text-gray-900">Home</a>
-                    <div class="relative">
-                        <button class="text-gray-600 hover:text-gray-900 focus:outline-none">Courses</button>
-                        <div class="absolute hidden mt-2 py-2 w-48 bg-white shadow-lg rounded-lg z-10">
-                            <a href="/FrontEnd/Pages/Courses/Free-courses.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Free Courses</a>
-                            <a href="/FrontEnd/Pages/Courses/Paid-course.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Premium Courses</a>
-                        </div>
-                    </div>
-                    <a href="/FrontEnd/Pages/About-Us.html" class="text-gray-600 hover:text-gray-900">About</a>
-                    <a href="/FrontEnd/Pages/Contact-Us.html" class="text-gray-600 hover:text-gray-900">Contact</a>
-                    <a href="/FrontEnd/Pages/Auth/Login.html" class="text-gray-600 hover:text-gray-900">Login / Sign Up</a>
-                </nav>
-                <!-- Mobile Menu Button (hidden on larger screens) -->
-                <div class="md:hidden">
-                    <button class="text-gray-600 hover:text-gray-900 focus:outline-none">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16m-7 6h7"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Responsive Mobile Menu (hidden by default) -->
-    <div class="md:hidden bg-white shadow-lg" style="display: none;">
-        <nav class="px-2 py-4">
-            <a href="#" class="block py-2 text-center text-gray-600 hover:text-gray-900">Home</a>
-            <a href="/FrontEnd/Pages/Courses/Free-courses.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">Free Courses</a>
-            <a href="/FrontEnd/Pages/Courses/Paid-course.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">Premium Courses</a>
-            <a href="/FrontEnd/Pages/About-Us.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">About</a>
-            <a href="/FrontEnd/Pages/Contact-Us.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">Contact</a>
-            <a href="/FrontEnd/Pages/Auth/Login.html" class="block py-2 text-center text-gray-600 hover:text-gray-900">Login / Sign Up</a>
-        </nav>
-    </div>
+    <header id="pages-header"></header>
 
     <!-- Hero Section -->
     <section class="bg-gray-800 text-white py-16 md:py-20">
@@ -108,58 +67,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12">
-        <div class="container mx-auto px-4 md:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div>
-                    <h5 class="text-lg font-semibold mb-4">Company</h5>
-                    <ul class="space-y-2">
-                        <li><a href="/FrontEnd/Pages/About-Us.html" class="hover:text-gray-400">About Us</a></li>
-                        <li><a href="#" class="hover:text-gray-400">Careers</a></li>
-                        <li><a href="#" class="hover:text-gray-400">Press</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="text-lg font-semibold mb-4">Support</h5>
-                    <ul class="space-y-2">
-                        <li><a href="/FrontEnd/Pages/Contact-Us.html" class="hover:text-gray-400">Contact Us</a></li>
-                        <li><a href="#" class="hover:text-gray-400">Help Center</a></li>
-                        <li><a href="#" class="hover:text-gray-400">FAQ</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="text-lg font-semibold mb-4">Legal</h5>
-                    <ul class="space-y-2">
-                        <li><a href="terms-and-conditions.html" class="hover:text-gray-400">Terms of Service</a></li>
-                        <li><a href="privacy-policy.html" class="hover:text-gray-400">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="text-lg font-semibold mb-4">Follow Us</h5>
-                    <ul class="flex space-x-4">
-                        <li><a href="#" class="hover:text-gray-400"><span>Facebook</span>
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M14 2H8a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6v-4H9v-2h3v-2.5A3.5 3.5 0 0 1 16.5 8H17v-2h-1.5A5.5 5.5 0 0 0 10 6V4h4v2h-2a1 1 0 0 0-1 1v2h4v2h-4v4z"></path>
-                                </svg></a></li>
-                        <li><a href="#" class="hover:text-gray-400"><span>Twitter</span>
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M23 3a1 1 0 0 1-1 1v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1zm-6 5v2h-2v6h-2v-6H9V8h4V5h2v3h2z"></path>
-                                </svg></a></li>
-                        <li><a href="#" class="hover:text-gray-400"><span>LinkedIn</span>
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M21 3a1 1 0 0 1-1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1zm-6 7v2h-2v4h-2v-4H8v-2h5V8h2v2h2z"></path>
-                                </svg></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="mt-8 text-center text-gray-400">
-                <p>&copy; 2024 Your Powerful Learning Platform. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <div id="pages-footer"></div>
 
     <script>
         // GSAP Animation for Mobile Menu

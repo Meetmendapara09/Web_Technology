@@ -10,7 +10,14 @@ document.addEventListener('DOMContentLoaded', () => {
     initImageCarousel();
 });
 
-
+function toggleMobileDropdown() {
+    var dropdown = document.getElementById('mobile-courses-dropdown');
+    if (dropdown.classList.contains('open')) {
+        dropdown.classList.remove('open');
+    } else {
+        dropdown.classList.add('open');
+    }
+}
 
 function toggleDropdown() {
     var dropdown = document.getElementById('courses-dropdown');
@@ -31,14 +38,69 @@ function toggleMenu() {
         }
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading header:', error));
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading footer:', error));
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('../header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('pages-header').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading header:', error));
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('../footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('pages-footer').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading footer:', error));
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('../../header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header2').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading header:', error));
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('../../footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer2').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading footer:', error));
+});
+
 function initPathValidation() {
     const validPaths = [
-        '/Web_Technology/FrontEnd/',
         '/Web_Technology/FrontEnd/index.html',
+        '/FrontEnd/index.html',
+        '/Web_Technology/FrontEnd/',
         '/Web_Technology/FrontEnd/Pages/about-us.html',
         '/Web_Technology/FrontEnd/Pages/apply.html',
         '/Web_Technology/FrontEnd/Pages/careers.html',
-        '/Web_Technology/FrontEnd/Pages/contact-Us.html',
+        '/Web_Technology/FrontEnd/Pages/contact-us.html',
         '/Web_Technology/FrontEnd/Pages/dashboard.html',
         '/Web_Technology/FrontEnd/Pages/Support-FAQ/FAQ.html',
         '/Web_Technology/FrontEnd/Pages/Support-FAQ/Support.html',
@@ -51,10 +113,10 @@ function initPathValidation() {
         '/Web_Technology/FrontEnd/Pages/Paid-Course.html',
         '/Web_Technology/FrontEnd/Pages/Press.html',
         '/Web_Technology/FrontEnd/Pages/Privacy-Policy.html',
-        '/Web_Technology/FrontEnd/Pages/Register.html',
+        '/Web_Technology/FrontEnd/Pages/Auth/SignUp.html',
         '/Web_Technology/FrontEnd/Pages/Submit-A-Ticket.html',
         '/Web_Technology/FrontEnd/Pages/Support.html',
-        '/Web_Technology/FrontEnd/Pages/Terms-And-Conditions.html',
+        '/Web_Technology/FrontEnd/Pages/terms-and-conditions.html',
         '/Web_Technology/FrontEnd/Pages/Testimonial.html',
         '/Web_Technology/FrontEnd/Pages/Tutorials.html',
         '/Web_Technology/FrontEnd/Pages/Admin-Panel',
@@ -75,7 +137,6 @@ function initPathValidation() {
         window.location.href = '/Web_Technology/FrontEnd/404.html';
     }
 }
-
 
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(link => {

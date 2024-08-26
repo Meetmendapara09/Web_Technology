@@ -6,65 +6,12 @@
     <title>Your Powerful Learning Platform</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./Styles/Styles.css">
+    <link rel="stylesheet" href="./Styles/header-footer.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 </head>
 <body>
     <!-- Header -->
-    <header class="conatiner">
-        <div>
-            <div>
-                <div class="logo">
-                    <a href="index.html">ZenVedaSync</a>
-                </div>
-
-                <!-- Desktop navbar-->
-                <nav class="desktop-nav">
-                    <a href="/Web_Technology/FrontEnd/index.html">Home</a>
-                    <div class="course-nav">
-                        <button id="courses-button" onclick="toggleDropdown()">Courses</button>
-                        <div id="courses-dropdown" class="dropdown">
-                            <a href="Pages/Courses/Free-Courses.html">Free Courses</a>
-                            <a href="Pages/Courses/paid-course.html">Premium Courses</a>
-                        </div>
-                    </div>
-                    
-                    <a href="./Pages/About-Us.html">About</a>
-                    <a href="./Pages/contact-us.html">Contact</a>
-                    <a href="./Pages/Auth/Login.html">Login</a>
-                    <a href="./Pages/Auth/SignUp.html">Sign Up</a>
-                </nav>
-
-                <!-- Mobile menu button -->
-                <div id="mobile-nav-button">
-                    <button onclick="toggleMenu()">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16m-7 6h7"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Mobile-nav -->
-    <div id="mobile-menu">
-        <nav class="mobile-nav">
-            <a href="index.html">Home</a>
-                    <div class="course-nav">
-                        <button id="courses-button" onclick="toggleDropdown()">Courses</button>
-                        <div id="courses-dropdown" class="dropdown">
-                            <a href="Pages/Courses/Free-Courses.html">Free Courses</a>
-                            <a href="Pages/Courses/paid-course.html">Premium Courses</a>
-                        </div>
-                    </div>
-                    
-                    <a href="./Pages/About-Us.html">About</a>
-                    <a href="./Pages/contact-us.html">Contact</a>
-                    <a href="./Pages/Auth/Login.html">Login</a>
-                    <a href="./Pages/Auth/SignUp.html">Sign Up</a>
-        </nav>
-    </div>
+    <header id="header"></header>
 
     <!--  hero -->
     <section class="section-1">
@@ -278,50 +225,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="conatiner">
-        <div class="footer_container">
-            <div>
-                <div class="col-1">
-                    <a href="index.html">ZenVedaSync</a>
-                    <p>Empowering learners worldwide.</p>
-                    <a href="Pages/Know-Us.html" class="know-us">Know Us</a>
-                </div>
-                <div class="col-2">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="index.html" class="link">Home</a></li>
-                        <li><a href="Pages/Courses/free-courses.html" class="link">Courses</a></li>
-                        <li><a href="Pages/about-us.html" class="link">About</a></li>
-                        <li><a href="Pages/contact-us.html" class="link">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="col-3">
-                    <h3>Support</h3>
-                    <ul>
-                        <li><a href="Pages/help-center.html" class="link">Help Center</a></li>
-                        <li><a href="Pages/terms-and-conditions.html" class="link">Terms of Service</a></li>
-                        <li><a href="Pages/Privacy-Policy.html" class="link">Privacy Policy</a></li>
-                        <li><a href="Pages/careers.html" class="link">Careers</a></li>
-                    </ul>
-                </div>
-                <div class="col-4">
-                    <h3>Connect With Us</h3>
-                    <ul>
-                        <li><a href="https://www.facebook.com/" class="link"><span>Facebook</span>
-                                <i class="conatiner__90"></i>
-                            </a></li>
-                        <li><a href="https://x.com/" class="link"><span>Twitter</span>
-                                <i class="conatiner__91"></i> </a></li>
-                        <li><a href="https://www.linkedin.com/" class="link"><span>LinkedIn</span>
-                                <i class="conatiner__93"></i> </a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>© 2024 Your Powerful Learning Platform. All rights reserved.</p>
-        </div>
-    </footer>
+    <div id="footer"></div>
 
     <!-- Scroll Up-->
     <div class="scroll-up" id="scroll-to-top" onclick="initScrollToTop()">

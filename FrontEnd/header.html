@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./Styles/header-footer.css">
+    <script src="./Scripts/script.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <header class="conatiner">
+        <div>
+            <div>
+                <div class="logo">
+                    <a href="/Web_Technology/FrontEnd/index.html">ZenVedaSync</a>
+                </div>
+                <!-- Desktop navbar-->
+                <nav class="desktop-nav">
+                    <a href="/Web_Technology/FrontEnd/index.html">Home</a>
+                    <div class="course-nav">
+                        <a id="courses-button" onclick="toggleDropdown()">Courses</a>
+                        <div id="courses-dropdown" class="dropdown">
+                            <a href="/Web_Technology/FrontEnd/Pages/Courses/Free-Courses.html">Free Courses</a>
+                            <a href="/Web_Technology/FrontEnd/Pages/Courses/paid-course.html">Premium Courses</a>
+                        </div>
+                    </div>
+                    
+                    <a href="/Web_Technology/FrontEnd/Pages/about-us.html">About</a>
+                    <a href="/Web_Technology/FrontEnd/Pages/contact-us.html">Contact</a>
+                    <a href="/Web_Technology/FrontEnd/Pages/Auth/Login.html">Login</a>
+                    <a href="/Web_Technology/FrontEnd/Pages/Auth/SignUp.html">Sign Up</a>
+                </nav>
+
+                <!-- Mobile menu button -->
+                <div id="mobile-nav-button">
+                    <button onclick="toggleMenu()">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="mobile-menu">
+        <nav class="mobile-nav">
+            <a href="/Web_Technology/FrontEnd/index.html">Home</a>
+            <div class="course-nav">
+                <a id="courses-button" onclick="toggleMobileDropdown()">Courses</a>
+                <div id="mobile-courses-dropdown" class="dropdown">
+                    <a href="/Web_Technology/FrontEnd/Pages/Courses/Free-Courses.html">Free Courses</a>
+                    <a href="/Web_Technology/FrontEnd/Pages/Courses/paid-course.html">Premium Courses</a>
+                </div>
+            </div>
+            
+                    <a href="/Web_Technology/FrontEnd/Pages/About-Us.html">About</a>
+                    <a href="/Web_Technology/FrontEnd/Pages/contact-us.html">Contact</a>
+                    <a href="/Web_Technology/FrontEnd/Pages/Auth/Login.html">Login</a>
+                    <a href="/Web_Technology/FrontEnd/Pages/Auth/SignUp.html">Sign Up</a>
+        </nav>
+    </div>
+</body>
+</html>

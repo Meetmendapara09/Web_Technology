@@ -10,6 +10,15 @@ document.addEventListener('DOMContentLoaded', () => {
     initImageCarousel();
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    const isLoggedIn = true;
+    if (isLoggedIn) {
+        document.getElementById('login-link').style.display = 'none';
+        document.getElementById('signup-link').style.display = 'none';
+        document.getElementById('profile-icon').style.display = 'block';
+    }
+});
+
 function toggleMobileDropdown() {
     var dropdown = document.getElementById('mobile-courses-dropdown');
     if (dropdown.classList.contains('open')) {
@@ -55,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => console.error('Error loading footer:', error));
 });
+
 
 document.addEventListener('DOMContentLoaded', () => {
     fetch('../header.html')
@@ -102,6 +112,8 @@ function initPathValidation() {
         '/Web_Technology/FrontEnd/Pages/careers.html',
         '/Web_Technology/FrontEnd/Pages/contact-us.html',
         '/Web_Technology/FrontEnd/Pages/dashboard.html',
+        '/Web_Technology/BackEnd/dashboard.php',
+        '/FrontEnd/Pages/dashboard.html',
         '/Web_Technology/FrontEnd/Pages/Support-FAQ/FAQ.html',
         '/Web_Technology/FrontEnd/Pages/Support-FAQ/Support.html',
         '/Web_Technology/FrontEnd/Pages/Forgot-Password.html',

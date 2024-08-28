@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.1/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3.7.3/dist/plyr.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="Video-Player.js" defer></script>
+    <script src="../../Scripts/script.js"></script>
+    <link rel="stylesheet" href="../../Styles/header-footer.css">
+    <link rel="stylesheet" href="Video-Player.css" class="css">
+</head>
+<body>
+    <header id="header2">
+    </header>
+
+    <main class="flex-1 flex flex-col items-center p-4">
+        <div class="video-wrapper">
+            <video id="player" class="w-full h-auto" controls crossorigin>
+                <source src="vid-1.mp4" type="video/mp4">
+                <track kind="subtitles" label="English" srclang="en" src="captions-en.vtt" default>
+                <div>Your browser does not support the video tag.</div>
+            </video>
+            <div class="video-info">
+                <h1>Video Title</h1>
+                <p>Author Name</p>
+                <p>Description of the video goes here. This can be a brief summary or additional details about the content.</p>
+                <button id="like-video" class="flex items-center">
+                    <i class="fas fa-thumbs-up text-xl"></i>
+                    <span id="video-likes" class="ml-2">0 Likes</span>
+                </button>
+            </div>
+        </div>
+
+        <section id="comment-form">
+            <h2>Add a Comment</h2>
+            <textarea id="new-comment" placeholder="Write your comment..."></textarea>
+            <button id="add-comment">Submit Comment</button>
+        </section>
+
+        <section id="comments">
+            <!-- Comments will be added here dynamically -->
+        </section>
+    </main>
+
+    <footer id="footer2">
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/plyr@3.7.3/dist/plyr.js"></script>
+</body>
+</html>
+
+
+

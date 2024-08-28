@@ -142,6 +142,7 @@ function initPathValidation() {
         '/Web_Technology/FrontEnd/Pages/Support-FAQ/',
         '/Web_Technology/FrontEnd/Pages/dashboard',
         '/Web_Technology/FrontEnd/Pages/Video-Player/Video-Player.html',
+        '/FrontEnd/Pages/Video-Player/Video-Player.html'
     ];
     const currentPath = window.location.pathname;
     const fullPath = currentPath.startsWith('/') ? currentPath : '/' + currentPath;

@@ -13,8 +13,9 @@ if (isset($_POST['submit'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $pass = md5($_POST['password']);
     $cpass = md5($_POST['confirm_password']);
+    $role = mysqli_real_escape_string($conn, $_POST['role']);
 
-    $select = "SELECT * FROM register WHERE email = '$email'";
+    $select = "SELECT * FROM user_form WHERE email = '$email'";
     $result = mysqli_query($conn, $select);
 
     if (mysqli_num_rows($result) > 0) {
@@ -22,8 +23,9 @@ if (isset($_POST['submit'])) {
     } else {
         if ($pass != $cpass) {
             $error[] = 'Passwords do not match!';
-        } else {
-            $insert = "INSERT INTO register(name, email, password) VALUES('$name','$email','$pass')";
+        } 
+        else {
+            $insert = "INSERT INTO user_form(name, email, password, role) VALUES('$name','$email','$pass', '$role')";
             if (mysqli_query($conn, $insert)) {
                 
                 $mail = new PHPMailer(true);
@@ -118,5 +120,6 @@ if (isset($_POST['submit'])) {
             }
         }
     }
+    exit();
 }
 ?>

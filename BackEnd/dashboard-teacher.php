@@ -8,7 +8,6 @@ if (!isset($_SESSION['user_id'])) {
    exit();
 }
 
-
 $user_id = $_SESSION['user_id'];
 $user_role = $_SESSION['role'];
 $user_name = $_SESSION['user_name'];
@@ -21,21 +20,21 @@ if (isset($_POST['submit_form1'])) {
     $lastName = $_POST['lastname'];
     $phone = $_POST['phone'];
     $dob = $_POST['dob'];
-    $institute = $_POST['institute'];
+     
 
-    $select = "SELECT * FROM user_profile WHERE user_id = $user_id";
+    $select = "SELECT * FROM teacher_profile WHERE user_id = $user_id";
     $result = $conn->query($select);
 
     if ($result->num_rows > 0) {
 
-        $conn->query("UPDATE user_profile SET user_id='$user_id', first_name='$firstName', last_name='$lastName', phone_number='$phone', dob='$dob', institute='$institute' WHERE user_id='$user_id'");
+        $conn->query("UPDATE teacher_profile SET user_id='$user_id', first_name='$firstName', last_name='$lastName', phone_number='$phone', dob='$dob' WHERE user_id='$user_id'");
 
     } else {
         // Insert new profile
-        $conn->query("INSERT INTO user_profile (user_id, first_name, last_name, phone_number, dob, institute) 
-                VALUES ($user_id, '$firstName', '$lastName', '$phone', '$dob', '$institute')");
+        $conn->query("INSERT INTO teacher_profile (user_id, first_name, last_name, email, phone_number, dob) 
+                VALUES ($user_id, '$firstName', '$lastName', '$user_email', '$phone', '$dob')");
     }
-    header('location: dashboard.php');
+    header('location: dashboard-teacher.php');
     exit();
 }
 
@@ -43,9 +42,8 @@ $firstName = '';
 $lastName = '';
 $phone = '';
 $dob = '';
-$institute = '';
 
-$fetch = "SELECT first_name, last_name, phone_number, dob,institute FROM user_profile WHERE user_id = $user_id";
+$fetch = "SELECT first_name, last_name, phone_number, dob FROM teacher_profile WHERE user_id = $user_id";
 $profileResult = $conn->query($fetch);
 
 if ($profileResult->num_rows > 0) {
@@ -54,11 +52,48 @@ if ($profileResult->num_rows > 0) {
     $lastName = $profileData['last_name'];
     $phone = $profileData['phone_number'];
     $dob = $profileData['dob'];
-    $institute = $profileData['institute'];
 }
 
+
 if (isset($_POST['submit_form2'])) {
-    // Get the form data
+    
+    $course_title = mysqli_real_escape_string($conn, $_POST['course_title']);
+    $course_description = mysqli_real_escape_string($conn, $_POST['course_description']);
+    $course_category = mysqli_real_escape_string($conn, $_POST['course_category']);
+    $course_price = floatval($_POST['course_price']);
+    $teacher_id = $_SESSION['user_id'];
+
+    $sql = "INSERT INTO courses (teacher_id, title, description, price) 
+            VALUES ('$teacher_id', '$course_title', '$course_description', '$course_price')";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "<script>alert('Course created successfully.');</script>";
+        header('location: dashboard-teacher.php');
+        exit();
+    } else {
+        echo "<script>alert('Error creating course: " . $conn->error . "');</script>";
+        exit();
+    }
+}
+
+
+$sql = "SELECT * FROM courses WHERE teacher_id = '$user_id'";
+$result = $conn->query($sql);
+
+if (isset($_GET['delete'])) {
+    $course_id = $_GET['delete'];
+    $deleteQuery = "DELETE FROM courses WHERE id = '$course_id'";
+    
+    if ($conn->query($deleteQuery) === TRUE) {
+        echo "<script>alert('Course deleted successfully.'); window.location.href='dashboard-teacher.php';</script>";
+        exit();
+    } else {
+        echo "<script>alert('Error deleting course: " . $conn->error . "');</script>";
+    }
+}
+
+if (isset($_POST['submit_form3'])) {
+
     $currentPassword = md5($_POST['current_password']);
     $newPassword = md5($_POST['new_password']);
     $confirmPassword = md5($_POST['confirm_password']);
@@ -78,7 +113,7 @@ if (isset($_POST['submit_form2'])) {
                 // Update the password in the database
                 $update = "UPDATE user_form SET password='$newPassword' WHERE user_id='$user_id'";
                 if ($conn->query($update) === TRUE) {
-                    echo '<script>alert("Password changed successfully.")</script>';
+                    echo "<script>alert('Password changed successfully.');</script>";
                 } else {
                     echo '<script>alert("Error updating password.")</script>';
                 }
@@ -91,14 +126,13 @@ if (isset($_POST['submit_form2'])) {
     } else {
         echo '<script>alert("User not found.")</script>';
     }
-    header('location: dashboard.php');
+    header('location: dashboard-teacher.php');
     exit();
 }
 
 if (isset($_POST['close-account'])) {
 
-    $deleteProfile = "DELETE FROM user_profile WHERE user_id = $user_id";
-
+    $deleteProfile = "DELETE FROM teacher_profile WHERE user_id = $user_id";
     $conn->query($deleteProfile);
 
     $deleteUser = "DELETE FROM user_form WHERE user_id = $user_id";
@@ -116,7 +150,7 @@ if (isset($_POST['close-account'])) {
     }
 }
 
-include '../FrontEnd/Pages/dashboard.html';
+include '../FrontEnd/Pages/dashboard-teacher.html';
 ?>
 
 

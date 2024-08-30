@@ -4,8 +4,8 @@
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
-   header('location: ../FrontEnd/Pages/Auth/Login.html');
-   exit();
+    header('location: ../FrontEnd/Pages/Auth/Login.html');
+    exit();
 }
 
 $user_id = $_SESSION['user_id'];
@@ -14,25 +14,83 @@ $user_name = $_SESSION['user_name'];
 $user_email = $_SESSION['user_email'];
 
 //profile
-if (isset($_POST['submit_form1'])) {
+if (isset($_POST['upload_photo'])) {
 
-    $firstName = $_POST['firstname'];
-    $lastName = $_POST['lastname'];
-    $phone = $_POST['phone'];
-    $dob = $_POST['dob'];
-     
+    $profile_Image = $_FILES['profile_photo']['name'];
+    $tempname = $_FILES['profile_photo']['tmp_name'];
+    $folder = '../uploads/profile_photo/' . $profile_Image;
 
     $select = "SELECT * FROM teacher_profile WHERE user_id = $user_id";
     $result = $conn->query($select);
 
     if ($result->num_rows > 0) {
 
-        $conn->query("UPDATE teacher_profile SET user_id='$user_id', first_name='$firstName', last_name='$lastName', phone_number='$phone', dob='$dob' WHERE user_id='$user_id'");
+        $conn->query("UPDATE teacher_profile SET profile_image='$profile_Image' WHERE user_id='$user_id'");
 
+        if (move_uploaded_file($tempname, $folder)) {
+            echo "<script>alert('File Uploaded');</script>";
+        } else {
+            echo "<script>alert('File not Uploaded');</script>";
+        }
     } else {
-        // Insert new profile
-        $conn->query("INSERT INTO teacher_profile (user_id, first_name, last_name, email, phone_number, dob) 
-                VALUES ($user_id, '$firstName', '$lastName', '$user_email', '$phone', '$dob')");
+
+        $conn->query("INSERT INTO teacher_profile (profile_photo) 
+                VALUES ('$profile_Image')");
+
+        if (move_uploaded_file($tempname, $folder)) {
+            echo "<script>alert('File Uploaded');</script>";
+        } else {
+            echo "<script>alert('File not Uploaded');</script>";
+        }
+    }
+    header('location: dashboard-teacher.php');
+    exit();
+}
+
+$fetch_photo = "SELECT profile_image FROM teacher_profile WHERE user_id = $user_id";
+$photoResult = $conn->query($fetch_photo);
+
+if ($photoResult->num_rows > 0) {
+    $profileData = $photoResult->fetch_assoc();
+    $photo = $profileData['profile_image'];
+} else {
+    $photo = 'default_profile.jpg';
+}
+
+
+if (isset($_POST['submit_form1'])) {
+
+    $firstName = $_POST['firstname'];
+    $lastName = $_POST['lastname'];
+    $phone = $_POST['phone'];
+    $dob = $_POST['dob'];
+
+    $profile_Image = $_FILES['profile_photo']['name'];
+    $tempname = $_FILES['profile_photo']['tmp_name'];
+    $folder = '../Uploads/' . $profile_Image;
+
+    $select = "SELECT * FROM teacher_profile WHERE user_id = $user_id";
+    $result = $conn->query($select);
+
+    if ($result->num_rows > 0) {
+
+        $conn->query("UPDATE teacher_profile SET user_id='$user_id', first_name='$firstName', last_name='$lastName', phone_number='$phone', dob='$dob', profile_photo='$profile_Image' WHERE user_id='$user_id'");
+
+        if (move_uploaded_file($tempname, $folder)) {
+            echo "<script>alert('File Uploaded');</script>";
+        } else {
+            echo "<script>alert('File not Uploaded');</script>";
+        }
+    } else {
+
+        $conn->query("INSERT INTO teacher_profile (user_id, first_name, last_name, email, phone_number, dob, profile_photo) 
+                VALUES ($user_id, '$firstName', '$lastName', '$user_email', '$phone', '$dob', '$profile_Image')");
+
+        if (move_uploaded_file($tempname, $folder)) {
+            echo "<script>alert('File Uploaded');</script>";
+        } else {
+            echo "<script>alert('File not Uploaded');</script>";
+        }
     }
     header('location: dashboard-teacher.php');
     exit();
@@ -56,19 +114,38 @@ if ($profileResult->num_rows > 0) {
 
 
 if (isset($_POST['submit_form2'])) {
-    
-    $course_title = mysqli_real_escape_string($conn, $_POST['course_title']);
-    $course_description = mysqli_real_escape_string($conn, $_POST['course_description']);
-    $course_category = mysqli_real_escape_string($conn, $_POST['course_category']);
+
+    $course_title = $_POST['course_title'];
+    $course_description = $_POST['course_description'];
+    $course_category = $_POST['course_category'];
     $course_price = floatval($_POST['course_price']);
     $teacher_id = $_SESSION['user_id'];
 
-    $sql = "INSERT INTO courses (teacher_id, title, description, price) 
-            VALUES ('$teacher_id', '$course_title', '$course_description', '$course_price')";
 
-    if ($conn->query($sql) === TRUE) {
-        echo "<script>alert('Course created successfully.');</script>";
-        header('location: dashboard-teacher.php');
+    $course_videos = $_FILES['course_video']['name'];
+    $tempnames = $_FILES['course_video']['tmp_name'];
+    $folder = '../uploads/videos/' . $course_videos;
+
+
+    $select = "SELECT * FROM teacher_profile WHERE user_id = $user_id";
+    $result = $conn->query($select);
+    
+
+    if ($result->num_rows > 0) {
+
+        $teacher_row = $result->fetch_assoc();
+        $teacher_name = $teacher_row['first_name'] . ' ' . $teacher_row['last_name'];
+
+        $conn->query("INSERT INTO courses (teacher_id, teacher_name, title, description, price, content_file) 
+            VALUES ('$teacher_id', '$teacher_name' ,'$course_title', '$course_description', '$course_price', '$course_videos')");
+
+        if (move_uploaded_file($tempnames, $folder)) {
+            echo "<script>alert('File Uploaded');</script>";
+        } else {
+            echo "<script>alert('File not Uploaded. Please upload ');</script>";
+        }
+        echo "<script>alert('Course created successfully.');  window.location.href='dashboard-teacher.php';</script>";
+
         exit();
     } else {
         echo "<script>alert('Error creating course: " . $conn->error . "');</script>";
@@ -83,7 +160,7 @@ $result = $conn->query($sql);
 if (isset($_GET['delete'])) {
     $course_id = $_GET['delete'];
     $deleteQuery = "DELETE FROM courses WHERE id = '$course_id'";
-    
+
     if ($conn->query($deleteQuery) === TRUE) {
         echo "<script>alert('Course deleted successfully.'); window.location.href='dashboard-teacher.php';</script>";
         exit();
@@ -136,12 +213,12 @@ if (isset($_POST['close-account'])) {
     $conn->query($deleteProfile);
 
     $deleteUser = "DELETE FROM user_form WHERE user_id = $user_id";
-    
+
     if ($conn->query($deleteUser) === TRUE) {
-        
+
         session_unset();
         session_destroy();
-        
+
         echo '<script>alert("Your account has been closed successfully.");</script>';
         header('location: ../FrontEnd/Pages/Auth/Login.html');
         exit();
@@ -152,7 +229,6 @@ if (isset($_POST['close-account'])) {
 
 include '../FrontEnd/Pages/dashboard-teacher.html';
 ?>
-
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {

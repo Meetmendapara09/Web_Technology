@@ -158,6 +158,12 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
+        table .edit{
+            background-color: rgba(30,58,138, 1);
+        }
+        .edit:hover{
+            background-color: rgb(41, 82, 192);
+        }
 
         table button:hover {
             background-color: #c0392b;
@@ -211,11 +217,21 @@
         <div class="dashboard-container">
             <div class="dashboard-shadow">
                 <div class="sidebar">
-                    <div class="photo"><img src="profile.jpg" alt="Profile Picture"></div>
+                    
+                    <form id="photo-upload-form" action="" method="post" enctype="multipart/form-data">
+                        <div class="photo">
+                            <label for="profile-photo-input">
+                                <img id="profile-photo" src="/Web_Technology/uploads/profile_photo/<?php echo htmlspecialchars($photo); ?>" alt="Profile Picture" onclick="document.getElementById('profile-photo-input').click();">
+                            </label>
+                            
+                            <input type="file" accept="image/png, image/jpg, image/jpeg"  id="profile-photo-input" name="profile_photo" style="display: none;" onchange="document.getElementById('photo-upload-form').submit();">
+                        </div>
+                        
+                        <input type="hidden" name="upload_photo" value="1">
+                    </form>
+
                     <div class="name">
-                        <h2>
-                            <?php echo htmlspecialchars($user_name); ?>
-                        </h2>
+                        <h2><?php echo htmlspecialchars($user_name); ?></h2>
                     </div>
                     <ul class="setting-option">
                         <li class="option active" id="link1"><a>Profile</a></li>
@@ -225,9 +241,10 @@
                         <li class="option" id="link5"><a>Enrolled Students</a></li>
                         <li class="option" id="link6"><a>Reviews & Feedback</a></li>
                         <li class="option" id="link7"><a>Account Settings</a></li>
-                        <li class="option" id="link8"><a> Close account</a></li>
+                        <li class="option" id="link8"><a>Close Account</a></li>
                     </ul>
                 </div>
+                
                 <div class="main">
                     <!-- Profile Section -->
                     <div id="content1" class="content profile">
@@ -275,7 +292,7 @@
                             <h1>Create a New Course</h1>
                         </div>
                         <div class="details">
-                            <form action="" method="post">
+                            <form action="" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <div class="input">
                                         <input type="text" name="course_title" placeholder="Course Title" required>
@@ -291,7 +308,7 @@
                                         <input type="number" name="course_price" placeholder="Price" required>
                                     </div>
                                     <div class="input">
-                                        <input type="file" name="course_content">
+                                        <input type="file" accept="video/mp4, video/*" name="course_video" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -310,7 +327,7 @@
                             <h1>Manage Courses</h1>
                             <p>Edit or delete existing courses.</p>
                         </div>
-                        <!-- List of courses with edit/delete options -->
+                        
                         <div class="details">
                             <div class="form-group">
                                 <table>
@@ -334,7 +351,7 @@
                                         </td>
                                         <td>
                                             <a
-                                                href="edit-course.php?id=<?php echo $row['id']; ?>"><button>Edit</button></a>
+                                                href="edit-course.php?id=<?php echo $row['id']; ?>"><button class="edit">Edit</button></a>
                                             <a href="?delete=<?php echo $row['id']; ?>"
                                                 onclick="return confirm('Are you sure you want to delete this course?');"><button>Delete</button></a>
                                         </td>

@@ -15,6 +15,51 @@ $user_name = $_SESSION['user_name'];
 $user_email = $_SESSION['user_email'];
 
 //profile
+if (isset($_POST['upload_photo'])) {
+    
+    $profile_Image = $_FILES['profile_photo']['name'];
+    $tempname = $_FILES['profile_photo']['tmp_name'];
+    $folder = '../uploads/profile_photo/'. $profile_Image;
+
+    $select = "SELECT * FROM user_profile WHERE user_id = $user_id";
+    $result = $conn->query($select);
+
+    if ($result->num_rows > 0) {
+
+        $conn->query("UPDATE user_profile SET profile_image='$profile_Image' WHERE user_id='$user_id'");
+
+        if (move_uploaded_file($tempname, $folder)) {
+            echo "<script>alert('File Uploaded');</script>";
+        } else {
+            echo "<script>alert('File not Uploaded');</script>";
+        }
+    } else {
+
+        $conn->query("INSERT INTO user_profile (profile_photo) 
+                VALUES ('$profile_Image')");
+
+        if (move_uploaded_file($tempname, $folder)) {
+            echo "<script>alert('File Uploaded'); </script>";
+        } else {
+            echo "<script>alert('File not Uploaded');</script>";
+        }
+    }
+    header('location: dashboard.php');
+    exit();
+
+}
+
+$fetch_photo = "SELECT profile_image FROM user_profile WHERE user_id = $user_id";
+$photoResult = $conn->query($fetch_photo);
+
+if ($photoResult->num_rows > 0) {
+    $profileData = $photoResult->fetch_assoc();
+    $photo = $profileData['profile_image'];
+} else {
+    $photo = 'default_profile.jpg'; 
+}
+
+
 if (isset($_POST['submit_form1'])) {
 
     $firstName = $_POST['firstname'];

@@ -161,10 +161,17 @@
         <div class="dashboard-container">
             <div class="dashboard-shadow">
             <div class="sidebar">
-                <div class="photo"><img src="" alt="logo"></div>
-                <div class="name">
-                    <h2><?php echo htmlspecialchars($user_name); ?></h2>
-                </div>
+                <form id="photo-upload-form" action="" method="post" enctype="multipart/form-data">
+                    <div class="photo">
+                        <label for="profile-photo-input">
+                            <img id="profile-photo" src="/Web_Technology/uploads/profile_photo/<?php echo htmlspecialchars($photo); ?>" alt="Profile Picture" onclick="document.getElementById('profile-photo-input').click();">
+                        </label>
+                        
+                        <input type="file" accept="image/png, image/jpg, image/jpeg"  id="profile-photo-input" name="profile_photo" style="display: none;" onchange="document.getElementById('photo-upload-form').submit();">
+                    </div>
+                    
+                    <input type="hidden" name="upload_photo" value="1">
+                </form>
                 <ul class="setting-option">                    
                     <li class="option active" id="link1">
                         <a>

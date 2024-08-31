@@ -7,7 +7,9 @@
     <title>Teacher Dashboard</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../FrontEnd/Styles/header-footer.css">
+    <script src="../FrontEnd/Scripts/script.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
     <style>
         .dashboard-container {
             margin-left: auto;
@@ -211,7 +213,7 @@
 
 <body>
     <!-- Header -->
-    <header id="pages-header"></header>
+    <header id="dashboard-header"></header>
 
     <div class="dashboard">
         <div class="dashboard-container">
@@ -242,6 +244,10 @@
                         <li class="option" id="link6"><a>Reviews & Feedback</a></li>
                         <li class="option" id="link7"><a>Account Settings</a></li>
                         <li class="option" id="link8"><a>Close Account</a></li>
+                        <li class="option" id="link9"><form action="./Auth/logout.php" method="post">
+                            <button type="submit" class="logout-button">Logout</button>
+                        </form></li>
+    
                     </ul>
                 </div>
                 
@@ -522,23 +528,18 @@
 
         lis.forEach(li => {
             li.addEventListener('click', () => {
-                // Hide all content divs
                 contents.forEach(div => div.style.display = 'none');
 
-                // Show the clicked content div
                 document.getElementById('content' + li.id.slice(-1)).style.display = 'block';
 
-                // Remove active class from all li elements
                 lis.forEach(item => item.classList.remove('active'));
-
-                // Add active class to the clicked li element
+                
                 li.classList.add('active');
             });
         });
     </script>
 
-
-    <div id="pages-footer"></div>
+    <div id="dashboard-footer"></div>
 </body>
 
 </html>

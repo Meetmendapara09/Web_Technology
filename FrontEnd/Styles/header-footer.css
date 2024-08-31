@@ -131,7 +131,6 @@ header.conatiner>div>div {
     padding: 0;
 }
 
-
 .course-nav #courses-dropdown>a:hover,
 #mobile-courses-dropdown>a:hover {
     background-color: rgb(243 244 246 / 1);
@@ -147,6 +146,13 @@ header.conatiner>div>div {
     max-height: 200px;
 }
 
+.profile-photo {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: black;
+}
 
 #mobile-nav-button button {
     color: rgb(75 85 99 / 1);

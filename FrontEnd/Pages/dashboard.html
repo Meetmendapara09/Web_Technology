@@ -6,7 +6,9 @@
     <title>Student Dashboard</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../FrontEnd/Styles/header-footer.css">
-     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="../FrontEnd/Scripts/script.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
     <style>
         .dashboard-container {
             margin-left: auto;
@@ -15,7 +17,8 @@
             padding: 2.4rem 2.4rem 4.8rem;
             width: 100%;
         }
-        .dashboard-shadow{
+
+        .dashboard-shadow {
             display: flex;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
         }
@@ -58,11 +61,12 @@
             cursor: pointer;
         }
 
-        .option:hover, li.active {
+        .option:hover,
+        li.active {
             background: #6a6f73;
             color: #fff;
         }
-        
+
         .heading {
             border-bottom: 1px solid #d1d7dc;
             padding: 2rem;
@@ -93,7 +97,8 @@
             margin: 0 auto;
             padding: 0 2.4rem;
         }
-        .input{
+
+        .input {
             margin-bottom: 1rem;
         }
 
@@ -121,7 +126,37 @@
             display: block;
         }
 
-        
+        .payment-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .payment-table th,
+        .payment-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .payment-table th {
+            background-color: #f8f8f8;
+            font-weight: bold;
+        }
+
+        .payment-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .payment-table tr:hover {
+            cursor: pointer;
+            background-color: #f1f1f1;
+        }
+
+        .payment-table td {
+            color: #333;
+        }
+
         @media (max-width: 768px) {
             input {
                 font-size: .875rem;
@@ -156,281 +191,332 @@
 
 <body>
     <!-- Header -->
-    <header id="pages-header"></header>
+    <header id="dashboard-header"></header>
+    
     <div class="dashboard">
         <div class="dashboard-container">
             <div class="dashboard-shadow">
-            <div class="sidebar">
-                <form id="photo-upload-form" action="" method="post" enctype="multipart/form-data">
-                    <div class="photo">
-                        <label for="profile-photo-input">
-                            <img id="profile-photo" src="/Web_Technology/uploads/profile_photo/<?php echo htmlspecialchars($photo); ?>" alt="Profile Picture" onclick="document.getElementById('profile-photo-input').click();">
-                        </label>
-                        
-                        <input type="file" accept="image/png, image/jpg, image/jpeg"  id="profile-photo-input" name="profile_photo" style="display: none;" onchange="document.getElementById('photo-upload-form').submit();">
-                    </div>
-                    
-                    <input type="hidden" name="upload_photo" value="1">
-                </form>
-                <ul class="setting-option">                    
-                    <li class="option active" id="link1">
-                        <a>
-                            Profile
-                        </a>
-                    </li>
-                    <li class="option" id="link2">
-                        <a>
-                            Account Security
-                        </a>
-                    </li>
-                    <li class="option" id="link3">
-                        <a>
-                            Payments
-                        </a>
-                    </li>
-                    <li class="option" id="link4">
-                        <a>
-                            Privacy
-                        </a>
-                    </li>
-                    <li class="option" id="link5">
-                        <a>
-                            Notifications
-                        </a>
-                    </li>
-                    <li class="option" id="link6">
-                        <a>
-                            Close account
-                        </a>
-                    </li>
-                </ul>
-            </div>
+                <div class="sidebar">
+                    <form id="photo-upload-form" action="" method="post" enctype="multipart/form-data">
+                        <div class="photo">
+                            <label for="profile-photo-input">
+                                <img id="profile-photo"
+                                    src="/Web_Technology/uploads/profile_photo/<?php echo htmlspecialchars($photo); ?>"
+                                    alt="Profile Picture"
+                                    onclick="document.getElementById('profile-photo-input').click();">
+                            </label>
 
-            <div class="main">
-
-                <div id="content1" class="content profile">
-                    <div class="heading">
-                        <h1>Profile</h1>
-                        <p>Add information about yourself</p>
-                    </div>
-                    <div class="details">
-                        <div class="section">
-                            <form action="" method="post">
-                                <div class="form-group">
-                                    <h3 class="block text-sm font-medium text-gray-700">Basic</h3>
-                                    <div class="input">
-                                        <input type="text" id="firstname" name="firstname" value="<?php echo htmlspecialchars($firstName); ?>" required="" placeholder="First Name">
-                                    </div>
-                                    <div class="input">
-                                        <input type="text" id="lastname" name="lastname" value="<?php echo htmlspecialchars($lastName); ?>" required="" placeholder="Last Name">
-                                    </div>
-                                    <div class="input">
-                                        <input type="number" id="phone" name="phone" value="<?php echo htmlspecialchars($phone); ?>" required="" placeholder="Phone Number">
-                                    </div>
-                                    <div class="input">
-                                        <input type="date" id="dob" name="dob" required="" value="<?php echo htmlspecialchars($dob); ?>">
-                                    </div>
-                                    <div class="input">
-                                        <input type="text" id="institute" name="institute" required="" placeholder="Institute" value="<?php echo htmlspecialchars($institute); ?>">
-                                    </div>
-                                    
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" name="submit_form1"
-                                        class="bg-blue-900 text-white py-2 px-4 rounded-md hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                                        Save
-                                    </button>
-                                </div>
-                            </form>
+                            <input type="file" accept="image/png, image/jpg, image/jpeg" id="profile-photo-input"
+                                name="profile_photo" style="display: none;"
+                                onchange="document.getElementById('photo-upload-form').submit();">
                         </div>
-                    </div>
 
+                        <input type="hidden" name="upload_photo" value="1">
+                    </form>
+                    <div class="name">
+                        <h2>
+                            <?php echo htmlspecialchars($user_name); ?>
+                        </h2>
+                    </div>
+                    <ul class="setting-option">
+                        <li class="option active" id="link1"><a>Profile</a></li>
+                        <li class="option" id="link2"><a>Account Security</a></li>
+                        <li class="option" id="link3"><a>Payments</a></li>
+                        <li class="option" id="link4"><a>Privacy</a></li>
+                        <li class="option" id="link5"><a>Notifications</a></li>
+                        <li class="option" id="link6"><a>Close account</a></li>
+                        <li class="option"><form action="./Auth/logout.php" method="post">
+                            <button type="submit" class="logout-button">Logout</button>
+                        </form></li>
+                    </ul>
                 </div>
 
-                <div id="content2" class="content account-setting">
-                    <div class="heading">
-                        <h1>Account Security</h1>
-                        <p>Chnage Password and secure your account.</p>
+                <div class="main">
+
+                    <div id="content1" class="content profile">
+                        <div class="heading">
+                            <h1>Profile</h1>
+                            <p>Add information about yourself</p>
+                        </div>
+                        <div class="details">
+                            <div class="section">
+                                <form action="" method="post">
+                                    <div class="form-group">
+                                        <h3 class="block text-sm font-medium text-gray-700">Basic</h3>
+                                        <div class="input">
+                                            <input type="text" id="firstname" name="firstname"
+                                                value="<?php echo htmlspecialchars($firstName); ?>" required=""
+                                                placeholder="First Name">
+                                        </div>
+                                        <div class="input">
+                                            <input type="text" id="lastname" name="lastname"
+                                                value="<?php echo htmlspecialchars($lastName); ?>" required=""
+                                                placeholder="Last Name">
+                                        </div>
+                                        <div class="input">
+                                            <input type="number" id="phone" name="phone"
+                                                value="<?php echo htmlspecialchars($phone); ?>" required=""
+                                                placeholder="Phone Number">
+                                        </div>
+                                        <div class="input">
+                                            <input type="date" id="dob" name="dob" required=""
+                                                value="<?php echo htmlspecialchars($dob); ?>">
+                                        </div>
+                                        <div class="input">
+                                            <input type="text" id="institute" name="institute" required=""
+                                                placeholder="Institute"
+                                                value="<?php echo htmlspecialchars($institute); ?>">
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" name="submit_form1"
+                                            class="bg-blue-900 text-white py-2 px-4 rounded-md hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                                            Save
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="details">
-                        <div class="section">
-                            <div class="form-group">
-                                <div class="input">
-                                    <label for="email" class="block text-sm font-medium text-gray-700">Email
-                                        Address:</label>
-                                    <input type="email" id="email" name="email" required="" value="<?php echo htmlspecialchars($user_email); ?>" disabled>
+
+                    <div id="content2" class="content account-setting">
+                        <div class="heading">
+                            <h1>Account Security</h1>
+                            <p>Chnage Password and secure your account.</p>
+                        </div>
+                        <div class="details">
+                            <div class="section">
+                                <div class="form-group">
+                                    <div class="input">
+                                        <label for="email" class="block text-sm font-medium text-gray-700">Email
+                                            Address:</label>
+                                        <input type="email" id="email" name="email" required=""
+                                            value="<?php echo htmlspecialchars($user_email); ?>" disabled>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="details">
-                        <div class="section">
-                            <form action="" method="post">
-                                <div class="form-group">
-                                    <div class="input">
-                                        <label for="password"
-                                            class="block text-sm font-medium text-gray-700">Password:</label>
-                                        <input type="password" id="password" name="current_password"
-                                            placeholder="Current Password" required="">
+                        <div class="details">
+                            <div class="section">
+                                <form action="" method="post">
+                                    <div class="form-group">
+                                        <div class="input">
+                                            <label for="password"
+                                                class="block text-sm font-medium text-gray-700">Password:</label>
+                                            <input type="password" id="password" name="current_password"
+                                                placeholder="Current Password" required="">
+                                        </div>
+                                        <div class="input">
+                                            <input type="password" id="password" name="new_password"
+                                                placeholder="New Password" required="">
+                                        </div>
+                                        <div class="input">
+                                            <input type="password" id="password" name="confirm_password"
+                                                placeholder="Re-type Password" required="">
+                                        </div>
                                     </div>
-                                    <div class="input">
-                                        <input type="password" id="password" name="new_password" placeholder="New Password"
-                                            required="">
+                                    <div class="form-group">
+                                        <button type="submit" name="submit_form2"
+                                            class="bg-blue-900 text-white py-2 px-4 rounded-md hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                                            Change Password
+                                        </button>
                                     </div>
-                                    <div class="input">
-                                        <input type="password" id="password" name="confirm_password"
-                                            placeholder="Re-type Password" required="">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" name="submit_form2"
-                                        class="bg-blue-900 text-white py-2 px-4 rounded-md hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                                        Change Password
-                                    </button>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="details">
-                        <div class="section">
-                            <div>
+                        <div class="details">
+                            <div class="section">
                                 <div>
-                                    <h2>Multi-factor Authentication
-                                    </h2>
-                                    <span>Increase your account security by requiring
-                                        that a code
-                                        emailed to you be entered when you log in. For more information on how
-                                        multi-factor
-                                        authentication works, refer to our <a href="help-center.html" style="
+                                    <div>
+                                        <h2>Multi-factor Authentication
+                                        </h2>
+                                        <span>Increase your account security by requiring
+                                            that a code
+                                            emailed to you be entered when you log in. For more information on how
+                                            multi-factor
+                                            authentication works, refer to our <a href="help-center.html" style="
                                             text-decoration: underline;
                                             text-underline-offset: .4rem;
                                             text-decoration-color: #5022c3;
                                             color: #5022c3;">Help
-                                            Center
-                                            article</a>.</span>
+                                                Center
+                                                article</a>.</span>
+                                    </div>
+                                    <div><button type="button"><span>Disable</span></button></div>
                                 </div>
-                                <div><button type="button"><span>Disable</span></button></div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div id="content3" class="content payments">
-                    <div class="heading">
-                        <h1>Payments</h1>
-                        <p></p>
-                    </div>
-                    <div class="details">
-                        <div class="section">
-                            <form action="" method="post">
-                                
-                            </form>
+                    <div id="content3" class="content payments">
+                        <div class="heading">
+                            <h1>Payments</h1>
+                            <p></p>
+                        </div>
+                        <div class="details">
+                            <div class="section">
+                                <table class="payment-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Course Title</th>
+                                            <th>Enrollment Date</th>
+                                            <th>Payment Status</th>
+                                            <th>Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php if ($payment->num_rows > 0): ?>
+                                        <?php while ($row = $payment->fetch_assoc()): ?>
+                                        <tr>
+                                            <td>
+                                                <?php echo htmlspecialchars($row['course_title']); ?>
+                                            </td>
+                                            <td>
+                                                <?php echo htmlspecialchars($row['enrollment_date']); ?>
+                                            </td>
+                                            <td>
+                                                <?php echo htmlspecialchars($row['payment_status']); ?>
+                                            </td>
+                                            <td>₹
+                                                <?php echo htmlspecialchars($row['amount']); ?>
+                                            </td>
+                                        </tr>
+                                        <?php endwhile; ?>
+                                        <?php else: ?>
+                                        <tr>
+                                            <td colspan="5">No enrollments found.</td>
+                                        </tr>
+                                        <?php endif; ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div id="content4" class="content privacy">
-                    <div class="heading">
-                        <h1>Privacy</h1>
-                        <p>Modify your privacy settings here.</p>
-                    </div>
-                    <div class="details">
-                        <div class="section">
-                            <form action="" method="post">
-                                <div class="form-group">
-                                    <div style="display: flex; gap: 5px; margin-bottom: 5px;"><input type="checkbox" checked=""><p>Show your profile to logged-in users</p></div>
-                                    <div style="display: flex; gap: 5px; margin-bottom: 10px;"><input type="checkbox" checked="">Show courses you're taking on your profile page</div>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" name="submit"
-                                        class="bg-blue-900 text-white py-2 px-4 rounded-md hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                                        Save
-                                    </button>
-                                </div>
-                            </form>
+                    <div id="content4" class="content privacy">
+                        <div class="heading">
+                            <h1>Privacy</h1>
+                            <p>Modify your privacy settings here.</p>
+                        </div>
+                        <div class="details">
+                            <div class="section">
+                                <form action="" method="post">
+                                    <div class="form-group">
+                                        <div style="display: flex; gap: 5px; margin-bottom: 5px;"><input type="checkbox"
+                                                checked="">
+                                            <p>Show your profile to logged-in users</p>
+                                        </div>
+                                        <div style="display: flex; gap: 5px; margin-bottom: 10px;"><input
+                                                type="checkbox" checked="">Show courses you're taking on your profile
+                                            page</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" name="submit"
+                                            class="bg-blue-900 text-white py-2 px-4 rounded-md hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                                            Save
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div id="content5" class="content notificaion">
-                    <div class="heading">
-                        <h1>Notification</h1>
-                        <p>Manage the types of communications you receive.</p>
-                    </div>
-                    <div class="details">
-                        <div class="section">
-                            <form action="" method="post">
-                                <div class="form-group">
-                                    <div style="display: flex; gap: 5px; margin-bottom: 5px;"><input type="checkbox"><p><b>Promotions, course recommendations, and helpful resources from Udemy.</b></p></div>
-                                    <div style="display: flex; gap: 5px; margin-bottom: 5px;"><input type="checkbox"><p><b>Don't send me any promotional emails.</b><br>If this box is checked, please note that you will continue to receive important transactional emails like purchase receipts.</p></div>
-                                    <div style="display: flex; gap: 5px; margin-bottom: 10px;"><input type="checkbox"><p><b>Announcements from instructors whose course(s) I’m enrolled in.</b><br>
-                                    To adjust this preference by course, leave this box checked and go to the  course dashboard and click on "Options" to opt in or out of specific announcements.</p></div>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" name="submit"
-                                        class="bg-blue-900 text-white py-2 px-4 rounded-md hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                                        Save
-                                    </button>
-                                </div>
-                            </form>
+                    <div id="content5" class="content notificaion">
+                        <div class="heading">
+                            <h1>Notification</h1>
+                            <p>Manage the types of communications you receive.</p>
+                        </div>
+                        <div class="details">
+                            <div class="section">
+                                <form action="" method="post">
+                                    <div class="form-group">
+                                        <div style="display: flex; gap: 5px; margin-bottom: 5px;"><input
+                                                type="checkbox">
+                                            <p><b>Promotions, course recommendations, and helpful resources from
+                                                    Udemy.</b></p>
+                                        </div>
+                                        <div style="display: flex; gap: 5px; margin-bottom: 5px;"><input
+                                                type="checkbox">
+                                            <p><b>Don't send me any promotional emails.</b><br>If this box is checked,
+                                                please note that you will continue to receive important transactional
+                                                emails like purchase receipts.</p>
+                                        </div>
+                                        <div style="display: flex; gap: 5px; margin-bottom: 10px;"><input
+                                                type="checkbox">
+                                            <p><b>Announcements from instructors whose course(s) I’m enrolled
+                                                    in.</b><br>
+                                                To adjust this preference by course, leave this box checked and go to
+                                                the course dashboard and click on "Options" to opt in or out of specific
+                                                announcements.</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" name="submit"
+                                            class="bg-blue-900 text-white py-2 px-4 rounded-md hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                                            Save
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div id="content6" class="content close-account">
-                    <div class="heading">
-                        <h1>Close Account</h1>
-                        <p>Close your account permanently.</p>
-                    </div>
-                    <div class="details">
-                        <div class="section">
-                            <form action="" method="post">
-                                <div class="form-group">
-                                    <p style="margin-bottom: 15px;"><a style="color: red;">Warning: </a>If you close your account, you will be unsubscribed from all of your courses and will lose access to your account and data associated with your account forever, even if you choose to create a new account using the same email address in the future.
+                    <div id="content6" class="content close-account">
+                        <div class="heading">
+                            <h1>Close Account</h1>
+                            <p>Close your account permanently.</p>
+                        </div>
+                        <div class="details">
+                            <div class="section">
+                                <form action="" method="post">
+                                    <div class="form-group">
+                                        <p style="margin-bottom: 15px;"><a style="color: red;">Warning: </a>If you close
+                                            your account, you will be unsubscribed from all of your courses and will
+                                            lose access to your account and data associated with your account forever,
+                                            even if you choose to create a new account using the same email address in
+                                            the future.
 
-                                        Please note, if you want to reinstate your account after submitting a deletion request, you will have 14 days after the initial submission date to reach out to zenvedasync.info@gmail.com to cancel this request.</p>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" name="close-account"
-                                        class="bg-blue-900 text-white py-2 px-4 rounded-md hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                                        Close Account
-                                    </button>
-                                </div>
-                            </form>
+                                            Please note, if you want to reinstate your account after submitting a
+                                            deletion request, you will have 14 days after the initial submission date to
+                                            reach out to zenvedasync.info@gmail.com to cancel this request.</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" name="close-account"
+                                            class="bg-blue-900 text-white py-2 px-4 rounded-md hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                                            Close Account
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
     </div>
 
     <script>
-
         const lis = document.querySelectorAll('li');
-const contents = document.querySelectorAll('.content');
-const defaultContent = document.getElementById('defaultContent');
+        const contents = document.querySelectorAll('.content');
+        const defaultContent = document.getElementById('defaultContent');
 
-lis.forEach(li => {
-    li.addEventListener('click', () => {
-        // Hide all content divs
-        contents.forEach(div => div.style.display = 'none');
-        
-        // Show the clicked content div
-        document.getElementById('content' + li.id.slice(-1)).style.display = 'block';
-        
-        // Remove active class from all li elements
-        lis.forEach(item => item.classList.remove('active'));
-        
-        // Add active class to the clicked li element
-        li.classList.add('active');
-    });
-});
+        lis.forEach(li => {
+            li.addEventListener('click', () => {
+                contents.forEach(div => div.style.display = 'none');
 
+                document.getElementById('content' + li.id.slice(-1)).style.display = 'block';
+
+                lis.forEach(item => item.classList.remove('active'));
+
+                li.classList.add('active');
+            });
+        });
     </script>
 
-    <div id="pages-footer"></div>
+    <div id="dashboard-footer"></div>
 </body>
 
 </html>

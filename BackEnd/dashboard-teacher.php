@@ -13,6 +13,11 @@ $user_role = $_SESSION['role'];
 $user_name = $_SESSION['user_name'];
 $user_email = $_SESSION['user_email'];
 
+if ($user_role == "student") {
+    echo "<script>window.location.href='dashboard.php';</script>";
+    exit();
+}
+
 //profile
 if (isset($_POST['upload_photo'])) {
 
@@ -65,32 +70,17 @@ if (isset($_POST['submit_form1'])) {
     $phone = $_POST['phone'];
     $dob = $_POST['dob'];
 
-    $profile_Image = $_FILES['profile_photo']['name'];
-    $tempname = $_FILES['profile_photo']['tmp_name'];
-    $folder = '../Uploads/' . $profile_Image;
-
     $select = "SELECT * FROM teacher_profile WHERE user_id = $user_id";
     $result = $conn->query($select);
 
     if ($result->num_rows > 0) {
 
-        $conn->query("UPDATE teacher_profile SET user_id='$user_id', first_name='$firstName', last_name='$lastName', phone_number='$phone', dob='$dob', profile_photo='$profile_Image' WHERE user_id='$user_id'");
-
-        if (move_uploaded_file($tempname, $folder)) {
-            echo "<script>alert('File Uploaded');</script>";
-        } else {
-            echo "<script>alert('File not Uploaded');</script>";
-        }
+        $conn->query("UPDATE teacher_profile SET user_id='$user_id', first_name='$firstName', last_name='$lastName', phone_number='$phone', dob='$dob' WHERE user_id='$user_id'");
     } else {
 
-        $conn->query("INSERT INTO teacher_profile (user_id, first_name, last_name, email, phone_number, dob, profile_photo) 
-                VALUES ($user_id, '$firstName', '$lastName', '$user_email', '$phone', '$dob', '$profile_Image')");
+        $conn->query("INSERT INTO teacher_profile (user_id, first_name, last_name, email, phone_number, dob) 
+                VALUES ($user_id, '$firstName', '$lastName', '$user_email', '$phone', '$dob')");
 
-        if (move_uploaded_file($tempname, $folder)) {
-            echo "<script>alert('File Uploaded');</script>";
-        } else {
-            echo "<script>alert('File not Uploaded');</script>";
-        }
     }
     header('location: dashboard-teacher.php');
     exit();
@@ -235,7 +225,8 @@ include '../FrontEnd/Pages/dashboard-teacher.html';
         fetch('../FrontEnd/header.html')
             .then(response => response.text())
             .then(data => {
-                document.getElementById('pages-header').innerHTML = data;
+                document.getElementById('dashboard-header').innerHTML = data;
+                header_change();
             })
             .catch(error => console.error('Error loading header:', error));
     });
@@ -244,7 +235,7 @@ include '../FrontEnd/Pages/dashboard-teacher.html';
         fetch('../FrontEnd/footer.html')
             .then(response => response.text())
             .then(data => {
-                document.getElementById('pages-footer').innerHTML = data;
+                document.getElementById('dashboard-footer').innerHTML = data;
             })
             .catch(error => console.error('Error loading footer:', error));
     });

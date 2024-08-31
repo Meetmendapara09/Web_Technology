@@ -8,11 +8,15 @@ if (!isset($_SESSION['user_id'])) {
    exit();
 }
 
-
 $user_id = $_SESSION['user_id'];
 $user_role = $_SESSION['role'];
 $user_name = $_SESSION['user_name'];
 $user_email = $_SESSION['user_email'];
+
+if ($user_role == "teacher") {
+    echo "<script>window.location.href='dashboard-teacher.php';</script>";
+    exit();
+}
 
 //profile
 if (isset($_POST['upload_photo'])) {
@@ -35,7 +39,7 @@ if (isset($_POST['upload_photo'])) {
         }
     } else {
 
-        $conn->query("INSERT INTO user_profile (profile_photo) 
+        $conn->query("INSERT INTO user_profile (profile_image) 
                 VALUES ('$profile_Image')");
 
         if (move_uploaded_file($tempname, $folder)) {
@@ -140,6 +144,10 @@ if (isset($_POST['submit_form2'])) {
     exit();
 }
 
+$payment_fetch = "SELECT * FROM enrollments WHERE student_id = $user_id";
+$payment = $conn->query($payment_fetch);
+
+
 if (isset($_POST['close-account'])) {
 
     $deleteProfile = "DELETE FROM user_profile WHERE user_id = $user_id";
@@ -170,7 +178,8 @@ include '../FrontEnd/Pages/dashboard.html';
         fetch('../FrontEnd/header.html')
             .then(response => response.text())
             .then(data => {
-                document.getElementById('pages-header').innerHTML = data;
+                document.getElementById('dashboard-header').innerHTML = data;
+                header_change();
             })
             .catch(error => console.error('Error loading header:', error));
     });
@@ -179,7 +188,7 @@ include '../FrontEnd/Pages/dashboard.html';
         fetch('../FrontEnd/footer.html')
             .then(response => response.text())
             .then(data => {
-                document.getElementById('pages-footer').innerHTML = data;
+                document.getElementById('dashboard-footer').innerHTML = data;
             })
             .catch(error => console.error('Error loading footer:', error));
     });

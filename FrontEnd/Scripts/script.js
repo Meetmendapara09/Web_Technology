@@ -10,14 +10,23 @@ document.addEventListener('DOMContentLoaded', () => {
     initImageCarousel();
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    const isLoggedIn = true;
-    if (isLoggedIn) {
+function header_change() {
+    const profileImg = document.getElementById('profile');
+    const profileImage = localStorage.getItem('profileImage');
+
+    if (localStorage.getItem('isLoggedIn') === 'true') {
+        
         document.getElementById('login-link').style.display = 'none';
         document.getElementById('signup-link').style.display = 'none';
-        document.getElementById('profile-icon').style.display = 'block';
+        if (profileImage) {
+            profileImg.src = profileImage;
+        }
+    } else {
+        document.getElementById('login-link').style.display = 'block';
+        document.getElementById('signup-link').style.display = 'block';
+        document.getElementById('profile-icon').style.display = 'none';
     }
-});
+}
 
 function toggleMobileDropdown() {
     var dropdown = document.getElementById('mobile-courses-dropdown');
@@ -52,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.text())
         .then(data => {
             document.getElementById('header').innerHTML = data;
+            header_change();
         })
         .catch(error => console.error('Error loading header:', error));
 });
@@ -71,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.text())
         .then(data => {
             document.getElementById('pages-header').innerHTML = data;
+            header_change();
         })
         .catch(error => console.error('Error loading header:', error));
 });
@@ -89,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.text())
         .then(data => {
             document.getElementById('header2').innerHTML = data;
+            header_change();
         })
         .catch(error => console.error('Error loading header:', error));
 });
@@ -112,7 +124,10 @@ function initPathValidation() {
         '/Web_Technology/FrontEnd/Pages/careers.html',
         '/Web_Technology/FrontEnd/Pages/contact-us.html',
         '/Web_Technology/FrontEnd/Pages/dashboard.html',
+        '/Web_Technology/FrontEnd/Pages/dashboard-teacher.html',
         '/Web_Technology/BackEnd/dashboard.php',
+        '/Web_Technology/BackEnd/dashboard-teacher.php',
+        
         '/FrontEnd/Pages/dashboard.html',
         '/Web_Technology/FrontEnd/Pages/Support-FAQ/FAQ.html',
         '/Web_Technology/FrontEnd/Pages/Support-FAQ/Support.html',

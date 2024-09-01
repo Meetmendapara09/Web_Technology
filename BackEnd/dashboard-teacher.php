@@ -1,6 +1,18 @@
 <?php
 @include './config.php';
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require __DIR__ . '/../vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
+
+require 'phpmailer/src/Exception.php';
+require 'phpmailer/src/PHPMailer.php';
+require 'phpmailer/src/SMTP.php';
+
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
@@ -80,7 +92,6 @@ if (isset($_POST['submit_form1'])) {
 
         $conn->query("INSERT INTO teacher_profile (user_id, first_name, last_name, email, phone_number, dob) 
                 VALUES ($user_id, '$firstName', '$lastName', '$user_email', '$phone', '$dob')");
-
     }
     header('location: dashboard-teacher.php');
     exit();
@@ -119,7 +130,7 @@ if (isset($_POST['submit_form2'])) {
 
     $select = "SELECT * FROM teacher_profile WHERE user_id = $user_id";
     $result = $conn->query($select);
-    
+
 
     if ($result->num_rows > 0) {
 
@@ -209,8 +220,92 @@ if (isset($_POST['close-account'])) {
         session_unset();
         session_destroy();
 
-        echo '<script>alert("Your account has been closed successfully.");</script>';
-        header('location: ../FrontEnd/Pages/Auth/Login.html');
+        $mail = new PHPMailer(true);
+        try {
+            $mail->isSMTP();
+            $mail->Host = $_ENV['SMTP_HOST'];
+            $mail->SMTPAuth = true;
+            $mail->Username = $_ENV['SMTP_USERNAME'];
+            $mail->Password = $_ENV['SMTP_PASSWORD'];
+            $mail->SMTPSecure = $_ENV['SMTP_SECURE'];
+            $mail->Port = $_ENV['SMTP_PORT'];
+
+            $mail->setFrom($_ENV['SMTP_USERNAME'], 'Zenvedasync');
+
+            $mail->addAddress($email);
+            $mail->isHTML(true);
+
+            $mail->Subject = 'Closed Account successfully.';
+            $mail->Body = '
+<html>
+<head>
+    <title>Closed Account successfully.</title>
+    <style>
+        .footer {
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .social-icons {
+            margin: 10px 0;
+        }
+        .social-icons a {
+            display: inline-block;
+            margin: 0 5px;
+        }
+        .social-icons img {
+            width: 24px;
+            height: 24px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <p>Dear ' . htmlspecialchars($user_name) . ',</p>
+    <p>Your Account Successfully</p>
+<p>We regret to inform you that your account with ZenVedasync has been successfully closed as per your request.</p>
+    <p>If you did not request this action or believe this was done in error, please contact our support team immediately.</p>
+    <p>We hope to serve you again in the future. Thank you for being a valued member of our community.</p>
+    <p>Best Regards,<br>ZenVedasync Team</p>
+    <div class="footer">
+        <div class="social-icons">
+            <a href="https://www.facebook.com/yourprofile" target="_blank" title="Facebook">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Facebook_logo_36x36.svg/1200px-Facebook_logo_36x36.svg.png" alt="Facebook">
+            </a>
+            <a href="https://www.twitter.com/yourprofile" target="_blank" title="Twitter">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/X_logo_2023.svg/100px-X_logo_2023.svg.png" alt="Twitter">
+            </a>
+            <a href="https://www.linkedin.com/in/yourprofile" target="_blank" title="LinkedIn">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn">
+            </a>
+            <a href="https://www.instagram.com/yourprofile" target="_blank" title="Instagram">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+            </a>
+        </div>
+        <p>ZenVedasync<br>
+        123 Business St,<br>
+        Business City, Ahmedabad 380001<br>
+        <a href="mailto:zenvedasync.info@gmail.com">zenvedasync.info@gmail.com</a> | <a href="https://zenvedasync.com">www.zenvedasync.com</a></p>
+        <p>&copy; ' . date("Y") . ' ZenVedasync. All rights reserved.</p>
+    </div>
+</body>
+</html>';
+            $mail->send();
+            echo '<script>window.alert("Password reset link send on your email address."); window.location.href = "../../FrontEnd/Pages/Auth/Login.html";</script>';
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
+
+        echo '<script>alert("Your account has been closed successfully."); window.location.href=" ../FrontEnd/Pages/Auth/Login.html";</script>';
         exit();
     } else {
         echo '<script>alert("Error closing your account. Please try again.");</script>';

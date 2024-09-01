@@ -1,5 +1,12 @@
 <?php
 @include '../config.php';
+
+require __DIR__ . '/../../vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../../');
+$dotenv->load();
+
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -9,37 +16,37 @@ require '../phpmailer/src/SMTP.php';
 
 if (isset($_POST['submit'])) {
 
-    $name = mysqli_real_escape_string($conn, $_POST['name']);
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $name = $_POST['name'];
+    $email = $_POST['email'];
     $pass = md5($_POST['password']);
     $cpass = md5($_POST['confirm_password']);
-    $role = mysqli_real_escape_string($conn, $_POST['role']);
+    $role = $_POST['role'];
 
     $select = "SELECT * FROM user_form WHERE email = '$email'";
-    $result = mysqli_query($conn, $select);
+    $result = $conn->query($select);
 
-    if (mysqli_num_rows($result) > 0) {
+    if ($result->num_rows > 0) {
         $error[] = 'User already exists!';
     } else {
         if ($pass != $cpass) {
             $error[] = 'Passwords do not match!';
-        } 
-        else {
+        } else {
+
             $insert = "INSERT INTO user_form(name, email, password, role) VALUES('$name','$email','$pass', '$role')";
-            if (mysqli_query($conn, $insert)) {
-                
+
+            if ($result->num_rows > 0) {
+
                 $mail = new PHPMailer(true);
                 try {
                     $mail->isSMTP();
-                    $mail->Host = getenv('SMTP_HOST');
+                    $mail->Host = $_ENV['SMTP_HOST'];
                     $mail->SMTPAuth = true;
-                    $mail->Username = getenv('SMTP_USERNAME');
-                    $mail->Password = getenv('SMTP_PASSWORD');
-                    $mail->SMTPSecure = getenv('SMTP_SECURE');
-                    $mail->Port = getenv('SMTP_PORT'); 
-                    
+                    $mail->Username = $_ENV['SMTP_USERNAME'];
+                    $mail->Password = $_ENV['SMTP_PASSWORD'];
+                    $mail->SMTPSecure = $_ENV['SMTP_SECURE'];
+                    $mail->Port = $_ENV['SMTP_PORT'];
 
-                    $mail->setFrom('noreply@zenvedasync.com', 'ZenVedasync');
+                    $mail->setFrom($_ENV['SMTP_USERNAME'], 'Zenvedasync');
                     $mail->addAddress($email, $name);
 
                     $mail->isHTML(true);
@@ -104,8 +111,8 @@ if (isset($_POST['submit'])) {
         </div>
         <p>ZenVedasync<br>
         123 Business St,<br>
-        Business City, BC 12345<br>
-        <a href="mailto:support@example.com">support@example.com</a> | <a href="http://your-domain.com">www.your-domain.com</a></p>
+        Business City, Ahmedabad 380001<br>
+        <a href="mailto:zenvedasync.info@gmail.com">zenvedasync.info@gmail.com</a> | <a href="https://zenvedasync.com">www.zenvedasync.com</a></p>
         <p>&copy; ' . date("Y") . ' ZenVedasync. All rights reserved.</p>
     </div>
 </body>
@@ -122,4 +129,3 @@ if (isset($_POST['submit'])) {
     }
     exit();
 }
-?>

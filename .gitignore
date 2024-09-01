@@ -1,2 +1,7 @@
 # Ignore .env file
 .env
+
+#ingnore vendor folder
+vendor/
+composer.json
+composer.lock

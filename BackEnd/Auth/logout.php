@@ -13,6 +13,4 @@ window.location.href='../../FrontEnd/Pages/Auth/Login.html';
 
 </script>";
 
-
-
 exit();

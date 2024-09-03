@@ -19,7 +19,7 @@ function header_change() {
         document.getElementById('login-link').style.display = 'none';
         document.getElementById('signup-link').style.display = 'none';
         if (profileImage) {
-            profileImg.src = profileImage;
+            profileImg.src = '../uploads/profile_photo/' + profileImage;
         }
     } else {
         document.getElementById('login-link').style.display = 'block';
@@ -131,7 +131,7 @@ function initPathValidation() {
         '/FrontEnd/Pages/dashboard.html',
         '/Web_Technology/FrontEnd/Pages/Support-FAQ/FAQ.html',
         '/Web_Technology/FrontEnd/Pages/Support-FAQ/Support.html',
-        '/Web_Technology/FrontEnd/Pages/Forgot-Password.html',
+        '/Web_Technology/FrontEnd/Pages/Auth/Forgot-Password.html',
         '/Web_Technology/FrontEnd/Pages/Free-Courses.html',
         '/Web_Technology/FrontEnd/Pages/Help-Center.html',
         '/Web_Technology/FrontEnd/Pages/Job-Details.html',

@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
 
       $row = $result->fetch_assoc();
       $_SESSION['user_id'] = $row['user_id'];
-      $_SESSION['user_name'] = $row['name'];
+      $_SESSION['user_name'] = $row['username'];
       $_SESSION['user_email'] = $row['email'];
       $_SESSION['role'] = $row['role'];
 
@@ -71,7 +71,8 @@ if (isset($_POST['submit'])) {
       exit();
    } else {
       $error[] = 'Incorrect email or password!';
-      header('location: ../../FrontEnd/Pages/Auth/Login.html');
+      echo '<script>localStorage.setItem("error", 
+      "Incorrect email or password!"); window.location.href = "../../FrontEnd/Pages/Auth/Login.html";</script>';
       exit();
    }
 }

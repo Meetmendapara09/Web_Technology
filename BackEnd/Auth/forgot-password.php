@@ -13,12 +13,12 @@ require '../phpmailer/src/Exception.php';
 require '../phpmailer/src/PHPMailer.php';
 require '../phpmailer/src/SMTP.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $token = bin2hex(random_bytes(50));
 
     $select = "SELECT * FROM user_form WHERE email = '$email'";
-    $result = mysqli_query($conn, $select);
+    $result = $conn->query($select);
 
     if ($result->num_rows > 0) {
 
@@ -110,6 +110,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
     } else {
-        echo "No user found with that email address.";
+        $error[] = 'No user found with that email address.';
+            echo '<script>localStorage.setItem("error", 
+      "No user found with that email address."); window.location.href = "../../FrontEnd/Pages/Auth/SignUp.html";</script>';
     }
 }

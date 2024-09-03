@@ -16,8 +16,9 @@ require '../phpmailer/src/SMTP.php';
 
 if (isset($_POST['submit'])) {
 
-    $name = $_POST['name'];
+    $username = $_POST['username'];
     $email = $_POST['email'];
+    $phone = $_POST['phone'];
     $pass = md5($_POST['password']);
     $cpass = md5($_POST['confirm_password']);
     $role = $_POST['role'];
@@ -27,36 +28,35 @@ if (isset($_POST['submit'])) {
 
     if ($result->num_rows > 0) {
         $error[] = 'User already exists!';
+        echo '<script>localStorage.setItem("error", "User already exists!"); window.location.href = "../../FrontEnd/Pages/Auth/SignUp.html";</script>';
     } else {
         if ($pass != $cpass) {
             $error[] = 'Passwords do not match!';
+            echo '<script>localStorage.setItem("error", "Passwords do not match!"); window.location.href = "../../FrontEnd/Pages/Auth/SignUp.html";</script>';
         } else {
+            $conn->query("INSERT INTO user_form (username, email, phone, password, role) VALUES('$username' ,'$email' ,'$phone' ,'$pass', '$role')");
 
-            $insert = "INSERT INTO user_form(name, email, password, role) VALUES('$name','$email','$pass', '$role')";
+            $mail = new PHPMailer(true);
+            try {
+                $mail->isSMTP();
+                $mail->Host = $_ENV['SMTP_HOST'];
+                $mail->SMTPAuth = true;
+                $mail->Username = $_ENV['SMTP_USERNAME'];
+                $mail->Password = $_ENV['SMTP_PASSWORD'];
+                $mail->SMTPSecure = $_ENV['SMTP_SECURE'];
+                $mail->Port = $_ENV['SMTP_PORT'];
 
-            if ($result->num_rows > 0) {
+                $mail->setFrom($_ENV['SMTP_USERNAME'], 'Zenvedasync');
 
-                $mail = new PHPMailer(true);
-                try {
-                    $mail->isSMTP();
-                    $mail->Host = $_ENV['SMTP_HOST'];
-                    $mail->SMTPAuth = true;
-                    $mail->Username = $_ENV['SMTP_USERNAME'];
-                    $mail->Password = $_ENV['SMTP_PASSWORD'];
-                    $mail->SMTPSecure = $_ENV['SMTP_SECURE'];
-                    $mail->Port = $_ENV['SMTP_PORT'];
-
-                    $mail->setFrom($_ENV['SMTP_USERNAME'], 'Zenvedasync');
-                    $mail->addAddress($email, $name);
-
-                    $mail->isHTML(true);
-                    $mail->Subject = 'Welcome to ZenVedasync!';
-                    $mail->Body = '
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <style>
+                $mail->addAddress($email);
+                $mail->isHTML(true);
+                $mail->Subject = 'Welcome to ZenVedasync!';
+                $mail->Body = '
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <meta charset="UTF-8">
+                    <style>
         .footer {
             font-family: Arial, sans-serif;
             font-size: 12px;
@@ -83,10 +83,10 @@ if (isset($_POST['submit'])) {
             height: 24px;
             vertical-align: middle;
         }
-    </style>
-</head>
+                    </style>
+                </head>
 <body>
-    <p>Hi ' . htmlspecialchars($name) . ',</p>
+    <p>Hi ' . htmlspecialchars($username) . ',</p>
     <p>Thank you for signing up with ZenVedasync!</p>
     <p>To get started, please verify your email by clicking the link below:</p>
     <p><a href="http://your-domain.com/verify.php?email=' . urlencode($email) . '">Verify Email</a></p>
@@ -118,12 +118,11 @@ if (isset($_POST['submit'])) {
 </body>
 </html>
 ';
-                    $mail->send();
-                    header('Location: ../../Web_Technology/FrontEnd/Pages/Auth/Login.html');
-                    exit();
-                } catch (Exception $e) {
-                    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-                }
+                $mail->send();
+                echo '<script>alert("Register Susscefully"); window.location.href="../../FrontEnd/Pages/Auth/Login.html";</script>';
+                exit();
+            } catch (Exception $e) {
+                echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
             }
         }
     }

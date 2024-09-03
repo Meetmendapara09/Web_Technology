@@ -146,7 +146,7 @@ header.conatiner>div>div {
     max-height: 200px;
 }
 
-.profile-photo {
+.profile-photo img {
     width: 30px;
     height: 30px;
     border-radius: 50%;

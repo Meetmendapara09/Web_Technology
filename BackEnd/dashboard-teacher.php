@@ -128,7 +128,7 @@ if (isset($_POST['submit_form2'])) {
 
     $course_image = $_FILES['course_image']['name'];
     $tempname_image = $_FILES['course_image']['tmp_name'];
-    $folder_image = '../uploads/vidoes/' . $course_image;
+    $folder_image = '../uploads/courses_image/' . $course_image;
 
     $select = "SELECT * FROM teacher_profile WHERE user_id = $teacher_id";
     $result = $conn->query($select);

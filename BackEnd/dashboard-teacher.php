@@ -113,47 +113,47 @@ if ($profileResult->num_rows > 0) {
     $dob = $profileData['dob'];
 }
 
-
 if (isset($_POST['submit_form2'])) {
 
     $course_title = $_POST['course_title'];
     $course_description = $_POST['course_description'];
     $course_category = $_POST['course_category'];
     $course_price = floatval($_POST['course_price']);
+    $type = $_POST['type'];
     $teacher_id = $_SESSION['user_id'];
 
-
     $course_videos = $_FILES['course_video']['name'];
-    $tempnames = $_FILES['course_video']['tmp_name'];
-    $folder = '../uploads/videos/' . $course_videos;
+    $tempname_video = $_FILES['course_video']['tmp_name'];
+    $folder_video = '../uploads/videos/' . $course_videos;
 
+    $course_image = $_FILES['course_image']['name'];
+    $tempname_image = $_FILES['course_image']['tmp_name'];
+    $folder_image = '../uploads/vidoes/' . $course_image;
 
-    $select = "SELECT * FROM teacher_profile WHERE user_id = $user_id";
+    $select = "SELECT * FROM teacher_profile WHERE user_id = $teacher_id";
     $result = $conn->query($select);
 
-
     if ($result->num_rows > 0) {
-
         $teacher_row = $result->fetch_assoc();
         $teacher_name = $teacher_row['first_name'] . ' ' . $teacher_row['last_name'];
 
-        $conn->query("INSERT INTO courses (teacher_id, teacher_name, title, description, price, content_file) 
-            VALUES ('$teacher_id', '$teacher_name' ,'$course_title', '$course_description', '$course_price', '$course_videos')");
+        $video_uploaded = move_uploaded_file($tempname_video, $folder_video);
+        $image_uploaded = move_uploaded_file($tempname_image, $folder_image);
 
-        if (move_uploaded_file($tempnames, $folder)) {
-            echo "<script>alert('File Uploaded');</script>";
+        if ($video_uploaded && $image_uploaded) {
+            echo "<script>alert('Course created successfully. Files uploaded.'); window.location.href='dashboard-teacher.php';</script>";
         } else {
-            echo "<script>alert('File not Uploaded. Please upload ');</script>";
+            echo "<script>alert('Error uploading files. Please try again.');</script>";
         }
-        echo "<script>alert('Course created successfully.');  window.location.href='dashboard-teacher.php';</script>";
 
-        exit();
+        $conn->query("INSERT INTO courses (teacher_id, teacher_name, title, description, type, image_path, price, content_file) 
+            VALUES ('$teacher_id', '$teacher_name', '$course_title', '$course_description', '$type', '$course_image', '$course_price', '$course_videos')");
+
     } else {
         echo "<script>alert('Error creating course: " . $conn->error . "');</script>";
-        exit();
     }
+    exit();
 }
-
 
 $sql = "SELECT * FROM courses WHERE teacher_id = '$user_id'";
 $result = $conn->query($sql);

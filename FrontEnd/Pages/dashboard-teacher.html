@@ -311,10 +311,24 @@
                                         <input type="text" name="course_category" placeholder="Category" required>
                                     </div>
                                     <div class="input">
+                                        <label for="role" class="block text-sm font-medium text-gray-700">Course Type</label>
+                                        <select id="type" name="type" required
+                                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    
+                                    <option value="free">Free</option>
+                                    <option value="paid">Paid</option>
+                                    </select>
+                                        
+                                    </div>
+                                    <div class="input">
                                         <input type="number" name="course_price" placeholder="Price" required>
                                     </div>
                                     <div class="input">
                                         <input type="file" accept="video/mp4, video/*" name="course_video" required>
+                                    </div>
+                                    <div class="input">
+                                        <label>Course image</label>
+                                        <input type="file" accept="image/jpeg,image/*" name="course_image" required>
                                     </div>
                                 </div>
                                 <div class="form-group">

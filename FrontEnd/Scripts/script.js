@@ -19,7 +19,7 @@ function header_change() {
         document.getElementById('login-link').style.display = 'none';
         document.getElementById('signup-link').style.display = 'none';
         if (profileImage) {
-            profileImg.src = '../uploads/profile_photo/' + profileImage;
+            profileImg.src = '/Web_Technology/uploads/profile_photo/' + profileImage;
         }
     } else {
         document.getElementById('login-link').style.display = 'block';
@@ -133,11 +133,11 @@ function initPathValidation() {
         '/Web_Technology/FrontEnd/Pages/Support-FAQ/Support.html',
         '/Web_Technology/FrontEnd/Pages/Auth/Forgot-Password.html',
         '/Web_Technology/FrontEnd/Pages/Free-Courses.html',
+        '/Web_Technology/FrontEnd/Pages/Courses/paid-course.html',
         '/Web_Technology/FrontEnd/Pages/Help-Center.html',
         '/Web_Technology/FrontEnd/Pages/Job-Details.html',
         '/Web_Technology/FrontEnd/Pages/Know-Us.html',
         '/Web_Technology/FrontEnd/Pages/login.html',
-        '/Web_Technology/FrontEnd/Pages/Paid-Course.html',
         '/Web_Technology/FrontEnd/Pages/Press.html',
         '/Web_Technology/FrontEnd/Pages/Privacy-Policy.html',
         '/Web_Technology/FrontEnd/Pages/Auth/SignUp.html',
@@ -151,7 +151,8 @@ function initPathValidation() {
         '/Web_Technology/FrontEnd/Pages/Blogs/Blog-Post1.html',
         '/Web_Technology/FrontEnd/Pages/Blogs/Blog-Post2.html',
         '/Web_Technology/FrontEnd/Pages/Blogs/Blog-Post3.html',
-        '/Web_Technology/FrontEnd/Pages/Courses',
+        '/Web_Technology/FrontEnd/Pages/Courses/Free-Courses.html',
+        '/Web_Technology/FrontEnd/Pages/Courses/paid-courses.html',
         '/Web_Technology/FrontEnd/Pages/Payment',
         '/Web_Technology/FrontEnd/Pages/Progress-Tracking',
         '/Web_Technology/FrontEnd/Pages/Support-FAQ/',

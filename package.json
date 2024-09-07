@@ -1,0 +1,23 @@
+{
+  "name": "web_technology",
+  "version": "1.0.0",
+  "description": "A website for connecting the Local University Professor with wide number of students.",
+  "main": "FrontEnd/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Meetmendapara09/Web_Technology.git"
+  },
+  "keywords": [
+    "LMS",
+    "Course-Selling-Site"
+  ],
+  "author": "Meet Mendapara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Meetmendapara09/Web_Technology/issues"
+  },
+  "homepage": "https://github.com/Meetmendapara09/Web_Technology#readme"
+}

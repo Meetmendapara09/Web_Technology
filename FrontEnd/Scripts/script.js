@@ -114,58 +114,78 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => console.error('Error loading footer:', error));
 });
 
-function initPathValidation() {
-    const validPaths = [
-        '/Web_Technology/FrontEnd/index.html',
-        '/FrontEnd/index.html',
-        '/Web_Technology/FrontEnd/',
-        '/Web_Technology/FrontEnd/Pages/about-us.html',
-        '/Web_Technology/FrontEnd/Pages/apply.html',
-        '/Web_Technology/FrontEnd/Pages/careers.html',
-        '/Web_Technology/FrontEnd/Pages/contact-us.html',
-        '/Web_Technology/FrontEnd/Pages/dashboard.html',
-        '/Web_Technology/FrontEnd/Pages/dashboard-teacher.html',
-        '/Web_Technology/BackEnd/dashboard.php',
-        '/Web_Technology/BackEnd/dashboard-teacher.php',
-        
-        '/FrontEnd/Pages/dashboard.html',
-        '/Web_Technology/FrontEnd/Pages/Support-FAQ/FAQ.html',
-        '/Web_Technology/FrontEnd/Pages/Support-FAQ/Support.html',
-        '/Web_Technology/FrontEnd/Pages/Auth/Forgot-Password.html',
-        '/Web_Technology/FrontEnd/Pages/Free-Courses.html',
-        '/Web_Technology/FrontEnd/Pages/Courses/paid-course.html',
-        '/Web_Technology/FrontEnd/Pages/Help-Center.html',
-        '/Web_Technology/FrontEnd/Pages/Job-Details.html',
-        '/Web_Technology/FrontEnd/Pages/Know-Us.html',
-        '/Web_Technology/FrontEnd/Pages/login.html',
-        '/Web_Technology/FrontEnd/Pages/Press.html',
-        '/Web_Technology/FrontEnd/Pages/Privacy-Policy.html',
-        '/Web_Technology/FrontEnd/Pages/Auth/SignUp.html',
-        '/Web_Technology/FrontEnd/Pages/Submit-A-Ticket.html',
-        '/Web_Technology/FrontEnd/Pages/Support.html',
-        '/Web_Technology/FrontEnd/Pages/terms-and-conditions.html',
-        '/Web_Technology/FrontEnd/Pages/Testimonial.html',
-        '/Web_Technology/FrontEnd/Pages/Tutorials.html',
-        '/Web_Technology/FrontEnd/Pages/Admin-Panel',
-        '/Web_Technology/FrontEnd/Pages/Auth/Login.html',
-        '/Web_Technology/FrontEnd/Pages/Blogs/Blog-Post1.html',
-        '/Web_Technology/FrontEnd/Pages/Blogs/Blog-Post2.html',
-        '/Web_Technology/FrontEnd/Pages/Blogs/Blog-Post3.html',
-        '/Web_Technology/FrontEnd/Pages/Courses/Free-Courses.html',
-        '/Web_Technology/FrontEnd/Pages/Courses/paid-courses.html',
-        '/Web_Technology/FrontEnd/Pages/Payment',
-        '/Web_Technology/FrontEnd/Pages/Progress-Tracking',
-        '/Web_Technology/FrontEnd/Pages/Support-FAQ/',
-        '/Web_Technology/FrontEnd/Pages/dashboard',
-        '/Web_Technology/FrontEnd/Pages/Video-Player/Video-Player.html',
-        '/FrontEnd/Pages/Video-Player/Video-Player.html'
-    ];
-    const currentPath = window.location.pathname;
-    const fullPath = currentPath.startsWith('/') ? currentPath : '/' + currentPath;
-    if (!validPaths.includes(fullPath) && fullPath !== '/Web_Technology/FrontEnd/404.html') {
-        window.location.href = '/Web_Technology/FrontEnd/404.html';
+// function initPathValidation() {
+//     const validPaths = [
+//         '/Web_Technology/FrontEnd/index.html',
+//         '/FrontEnd/index.html',
+//         '/Web_Technology/FrontEnd/',
+//         '/Web_Technology/FrontEnd/Pages/about-us.html',
+//         '/Web_Technology/FrontEnd/Pages/apply.html',
+//         '/Web_Technology/FrontEnd/Pages/careers.html',
+//         '/Web_Technology/FrontEnd/Pages/contact-us.html',
+//         '/Web_Technology/FrontEnd/Pages/dashboard.html',
+//         '/Web_Technology/FrontEnd/Pages/dashboard-teacher.html',
+//         '/Web_Technology/BackEnd/dashboard.php',
+//         '/Web_Technology/BackEnd/dashboard-teacher.php',   
+//         '/FrontEnd/Pages/dashboard.html',
+//         '/Web_Technology/FrontEnd/Pages/Support-FAQ/FAQ.html',
+//         '/Web_Technology/FrontEnd/Pages/Support-FAQ/Support.html',
+//         '/Web_Technology/FrontEnd/Pages/Auth/Forgot-Password.html',
+//         '/Web_Technology/FrontEnd/Pages/Free-Courses.html',
+//         '/Web_Technology/FrontEnd/Pages/Courses/paid-course.html',
+//         '/Web_Technology/FrontEnd/Pages/Help-Center.html',
+//         '/Web_Technology/FrontEnd/Pages/Job-Details.html',
+//         '/Web_Technology/FrontEnd/Pages/Know-Us.html',
+//         '/Web_Technology/FrontEnd/Pages/login.html',
+//         '/Web_Technology/FrontEnd/Pages/Press.html',
+//         '/Web_Technology/FrontEnd/Pages/Privacy-Policy.html',
+//         '/Web_Technology/FrontEnd/Pages/Auth/SignUp.html',
+//         '/Web_Technology/FrontEnd/Pages/Submit-A-Ticket.html',
+//         '/Web_Technology/FrontEnd/Pages/Support.html',
+//         '/Web_Technology/FrontEnd/Pages/terms-and-conditions.html',
+//         '/Web_Technology/FrontEnd/Pages/Testimonial.html',
+//         '/Web_Technology/FrontEnd/Pages/Tutorials.html',
+//         '/Web_Technology/FrontEnd/Pages/Admin-Panel',
+//         '/Web_Technology/FrontEnd/Pages/Auth/Login.html',
+//         '/Web_Technology/FrontEnd/Pages/Blogs/Blog-Post1.html',
+//         '/Web_Technology/FrontEnd/Pages/Blogs/Blog-Post2.html',
+//         '/Web_Technology/FrontEnd/Pages/Blogs/Blog-Post3.html',
+//         '/Web_Technology/FrontEnd/Pages/Courses/Free-Courses.html',
+//         '/Web_Technology/FrontEnd/Pages/Courses/paid-courses.html',
+//         '/Web_Technology/FrontEnd/Pages/Payment',
+//         '/Web_Technology/FrontEnd/Pages/Progress-Tracking',
+//         '/Web_Technology/FrontEnd/Pages/Support-FAQ/',
+//         '/Web_Technology/FrontEnd/Pages/dashboard',
+//         '/Web_Technology/FrontEnd/Pages/Video-Player/Video-Player.html',
+//         '/FrontEnd/Pages/Video-Player/Video-Player.html'
+//     ];
+//     const currentPath = window.location.pathname;
+//     const fullPath = currentPath.startsWith('/') ? currentPath : '/' + currentPath;
+//     if (!validPaths.includes(fullPath) && fullPath !== '/Web_Technology/FrontEnd/404.html') {
+//         window.location.href = '/Web_Technology/FrontEnd/404.html';
+//     }
+// }
+
+async function initPathValidation() {
+    try {
+        const response = await fetch('./validPaths.json');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const validPaths = await response.json();
+        const validPathsSet = new Set(validPaths); 
+        const currentPath = window.location.pathname;
+        const fullPath = currentPath.startsWith('/') ? currentPath : '/' + currentPath;
+        if (!validPathsSet.has(fullPath) && fullPath !== '/Web_Technology/FrontEnd/404.html') {
+            window.location.href = '/Web_Technology/FrontEnd/404.html';
+        }
+    } catch (error) {
+        console.error('Failed to load valid paths:', error);
     }
 }
+
+initPathValidation();
+
 
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(link => {

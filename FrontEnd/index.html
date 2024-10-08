@@ -32,16 +32,7 @@
                 <div class="courses_section">
                     <div class="latest_courses">
                         <h2>Latest Courses</h2>
-                        <div class="course_cards">
-                            <div class="course_card">
-                                <img src="favicon.ico" alt="Course 1">
-                                <div class="course_details">
-                                    <h3>Course Title</h3>
-                                    <p class="course_instructor">Instructor Name</p>
-                                    <a href="/FrontEnd/Pages/Free-Courses.html">View Course</a>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="course_cards" id="latest_courses"></div>
                     </div>
                     <div class="popular_courses">
                         <h2>Popular Courses</h2>
@@ -57,44 +48,32 @@
                         </div>
                     </div>
                 </div>
-                    <div class="testimonials">
-                        <h2>Testimonials</h2>
-                        <div class="testimonial_container">
-                            <div class="testimonial_list">
-                                <div class="testimonial_img">
-                                    <img src="favicon.ico" alt="Testimonial 1">
-                                </div>
-                                <div class="testimonial_detail">
-                                    <p class="testimonial_name">John Doe</p>
-                                    <p class="testimonial_comment">"I love how easy it is to find courses on this platform.
-                                        The variety of topics is amazing!"</p>
-                                </div>
-                            </div>
-                            <div class="testimonial_list">
-                                <div class="testimonial_img">
-                                    <img src="favicon.ico" alt="Testimonial 2">
-                                </div>
-                                <div class="testimonial_detail">
-                                    <p class="testimonial_name">Jane Smith</p>
-                                    <p class="testimonial_comment">"The instructors are very knowledgeable and the courses are
-                                        well-structured. Highly recommended!"</p>
-                                </div>
-                            </div>
-                            <div class="testimonial_list">
-                                <div class="testimonial_img">
-                                    <img src="favicon.ico" alt="Testimonial 3">
-                                </div>
-                                <div class="testimonial_detail">
-                                    <p class="testimonial_name">Michael Johnson</p>
-                                    <p class="testimonial_comment">"This platform has helped me advance my career with its
-                                        practical and insightful courses."</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
             </div>
         </div>
     </section>
+
+    <script>
+        fetch('../BackEnd/courses.php')
+            .then(response => response.json())
+            .then(data => {
+                const courseCards = document.getElementById('latest_courses');
+                
+                data.forEach(course => {
+                    const courseCard = document.createElement('div');
+                    courseCard.classList.add('course_card');
+                    courseCard.innerHTML = `
+                        <img src="../uploads/courses_image/${course.image_path}" alt="${course.title}">
+                        <div class="course_details">
+                            <h3>${course.title}</h3>
+                            <p class="course_instructor">${course.teacher_name}</p>
+                            <a href="/FrontEnd/Pages/Free-Courses.html">View Course</a>
+                        </div>
+                    `;
+                    courseCards.appendChild(courseCard);
+                });
+            })
+            .catch(error => console.error('Error fetching courses:', error));
+    </script>
 
 <!-- Blogs -->
     <section class="Blog_Section conatiner">

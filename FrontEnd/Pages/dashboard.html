@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,7 @@
     <link rel="stylesheet" href="../FrontEnd/Styles/header-footer.css">
     <script src="../FrontEnd/Scripts/script.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    
+
     <style>
         .dashboard-container {
             margin-left: auto;
@@ -192,7 +193,7 @@
 <body>
     <!-- Header -->
     <header id="dashboard-header"></header>
-    
+
     <div class="dashboard">
         <div class="dashboard-container">
             <div class="dashboard-shadow">
@@ -220,14 +221,17 @@
                     </div>
                     <ul class="setting-option">
                         <li class="option active" id="link1"><a>Profile</a></li>
-                        <li class="option" id="link2"><a>Account Security</a></li>
-                        <li class="option" id="link3"><a>Payments</a></li>
-                        <li class="option" id="link4"><a>Privacy</a></li>
-                        <li class="option" id="link5"><a>Notifications</a></li>
-                        <li class="option" id="link6"><a>Close account</a></li>
-                        <li class="option"><form action="./Auth/logout.php" method="post">
-                            <button type="submit" class="logout-button">Logout</button>
-                        </form></li>
+                        <li class="option" id="link2"><a>My learning</a></li>
+                        <li class="option" id="link3"><a>Account Security</a></li>
+                        <li class="option" id="link4"><a>Payments</a></li>
+                        <li class="option" id="link5"><a>Privacy</a></li>
+                        <li class="option" id="link6"><a>Notifications</a></li>
+                        <li class="option" id="link7"><a>Close account</a></li>
+                        <li class="option">
+                            <form action="./Auth/logout.php" method="post">
+                                <button type="submit" class="logout-button">Logout</button>
+                            </form>
+                        </li>
                     </ul>
                 </div>
 
@@ -281,7 +285,75 @@
 
                     </div>
 
-                    <div id="content2" class="content account-setting">
+                    <div id="content2" class="content my-learning">
+                        <div class="heading">
+                            <h1>My learning</h1>
+                        </div>
+                        <div class="details">
+                            <div class="section">
+                                <div class="flex items-center justify-between mb-6">
+                                    <div class="flex space-x-4">
+                                        <div>
+                                            <label for="sort" class="block text-sm font-medium text-gray-700">Sort
+                                                by</label>
+                                            <select id="sort"
+                                                class="block w-full p-2 border-gray-300 rounded-md shadow-sm">
+                                                <option>Recently Accessed</option>
+                                                <option>Newest</option>
+                                                <option>Popular</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="relative w-1/4">
+                                        <input type="text" class="w-full p-2 pl-10 border-gray-300 rounded-md shadow-sm"
+                                            placeholder="Search my courses...">
+                                        <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
+                                            fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                            <path fill-rule="evenodd"
+                                                d="M10 2a8 8 0 100 16 8 8 0 000-16zm0 14a6 6 0 100-12 6 6 0 000 12z"
+                                                clip-rule="evenodd" />
+                                            <path
+                                                d="M16.293 16.293a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414z" />
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <!-- Courses Section -->
+                                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                                    <?php if (empty($course_enroll)): ?>
+                                    <p>No courses enrolled.</p>
+                                    <?php else: ?>
+                                    <?php foreach ($course_enroll as $course): ?>
+                                    <div class="bg-white p-4 rounded-lg shadow-md">
+                                        <img src="../uploads/courses_image/<?php echo htmlspecialchars($course['image_path']); ?>"
+                                            alt="<?php echo htmlspecialchars($course['title']); ?>"
+                                            class="w-full h-32 object-cover rounded-md mb-4">
+                                        <h3 class="text-lg font-semibold text-gray-800">
+                                            <?php echo htmlspecialchars($course['title']); ?>
+                                        </h3>
+                                        <p class="text-sm text-gray-600">
+                                            <?php echo htmlspecialchars($course['teacher_name']); ?>
+                                        </p>
+                                        <div class="mt-3 flex justify-between items-center">
+                                            <span class="text-sm text-green-500">Enrolled on:
+                                                <?php echo htmlspecialchars($course['enrollment_date']); ?>
+                                            </span>
+                                        </div>
+                                        <a href="#" class="mt-4 inline-block text-blue-600 hover:underline">Start
+                                            Course</a>
+                                    </div>
+                                    <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div id="content3" class="content account-setting">
                         <div class="heading">
                             <h1>Account Security</h1>
                             <p>Chnage Password and secure your account.</p>
@@ -351,7 +423,7 @@
                         </div>
                     </div>
 
-                    <div id="content3" class="content payments">
+                    <div id="content4" class="content payments">
                         <div class="heading">
                             <h1>Payments</h1>
                             <p></p>
@@ -396,7 +468,7 @@
                         </div>
                     </div>
 
-                    <div id="content4" class="content privacy">
+                    <div id="content5" class="content privacy">
                         <div class="heading">
                             <h1>Privacy</h1>
                             <p>Modify your privacy settings here.</p>
@@ -424,7 +496,7 @@
                         </div>
                     </div>
 
-                    <div id="content5" class="content notificaion">
+                    <div id="content6" class="content notificaion">
                         <div class="heading">
                             <h1>Notification</h1>
                             <p>Manage the types of communications you receive.</p>
@@ -464,7 +536,7 @@
                         </div>
                     </div>
 
-                    <div id="content6" class="content close-account">
+                    <div id="content7" class="content close-account">
                         <div class="heading">
                             <h1>Close Account</h1>
                             <p>Close your account permanently.</p>

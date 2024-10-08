@@ -118,6 +118,24 @@ if ($profileResult->num_rows > 0) {
     $institute = $profileData['institute'];
 }
 
+
+$sql_course = "
+    SELECT c.id, c.title, c.teacher_name, c.image_path, e.enrollment_date
+    FROM enrollments e
+    JOIN courses c ON e.course_id = c.id
+    WHERE e.student_id = $user_id AND e.payment_status = 'Paid'
+";
+
+$result_course = $conn->query($sql_course);
+$course_enroll = [];
+
+if ($result_course->num_rows > 0) {
+    while ($row = $result_course->fetch_assoc()) {
+        $course_enroll[] = $row;
+    }
+}
+
+
 if (isset($_POST['submit_form2'])) {
     // Get the form data
     $currentPassword = md5($_POST['current_password']);

@@ -28,7 +28,7 @@ if (isset($_POST['update_course'])) {
 
         $conn->query("UPDATE courses SET title='$title', description='$description', price='$price' WHERE id=$course_id");
 
-        echo "<script>alert('Course updated successfully.'); window.alert('dashboard-teacher.php');</script>";
+        echo "<script>alert('Course updated successfully.'); window.location.href='dashboard-teacher.php'</script>";
         exit();
     
 }

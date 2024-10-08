@@ -131,16 +131,15 @@ svg {
 }
 
 .latest_courses h2,
-.popular_courses h2,
-.testimonials h2 {
+.popular_courses h2{
     font-weight: 700;
     margin-bottom: 1rem;
 }
 
 .course_cards {
     display: grid;
-    grid-template-columns: repeat(1, minmax(0, 1fr));
     gap: 1.5rem;
+    grid-template-columns: auto auto auto auto;
 }
 
 .course_card {
@@ -152,6 +151,7 @@ svg {
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
         var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
     overflow: hidden;
+    width: 300px;
 }
 
 .course_card img {
@@ -188,53 +188,6 @@ svg {
 .course_details a:hover {
     -webkit-text-decoration-line: underline;
     text-decoration-line: underline;
-}
-
-/* Testimonial */
-.testimonials {
-    background-color: rgb(255 255 255 / 1);
-    border-radius: 0.5rem;
-    --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color),
-        0 2px 4px -2px var(--tw-shadow-color);
-    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
-        var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-    padding: 2rem;
-}
-
-.testimonial_container {
-    margin-top: 20px;
-}
-
-.testimonial_list {
-    display: flex;
-    align-items: center;
-}
-
-.testimonial_img {
-    flex-shrink: 0;
-}
-
-.testimonial_img img {
-    height: 3rem;
-    width: 3rem;
-    border-radius: 9999px;
-    -o-object-fit: cover;
-    object-fit: cover;
-}
-
-.testimonial_detail {
-    margin-left: 1rem;
-}
-
-.testimonial_name {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-    font-weight: 600;
-}
-
-.testimonial_comment {
-    color: rgb(75 85 99 / 1);
 }
 
 /* Blogs */
@@ -319,7 +272,7 @@ svg {
     text-decoration-line: underline;
 }
 
-.features {
+.features,.testimonial_section {
     padding: 4rem 0;
     background-color: rgb(255 255 255 / 1);
 }
@@ -481,9 +434,8 @@ section.conatiner>div>div>div.conatiner__56 {
     .courses-container {
         max-width: 640px;
     }
-
-    .course_cards {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    .course_cards{
+        grid-template-columns: auto auto;
     }
 
     .course_card img {
@@ -548,15 +500,14 @@ section.conatiner>div>div>div.conatiner__56 {
         padding: 0 2rem;
     }
 
-    .course-type {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
     .latest_courses h2,
     .popular_courses h2,
     .testimonials h2 {
         font-size: 1.875rem;
         line-height: 2.25rem;
+    }
+    .course_cards{
+        grid-template-columns: auto auto;
     }
 
     .course_details h3 {
@@ -603,7 +554,7 @@ section.conatiner>div>div>div.conatiner__56 {
         line-height: 1.5rem;
     }
 
-    .features {
+    .features,.testimonial_section {
         padding: 4rem;
     }
 
@@ -639,6 +590,9 @@ section.conatiner>div>div>div.conatiner__56 {
     .section-4 .hero_section a {
         padding: 1rem 2.5rem;
     }
+    .course_cards{
+        grid-template-columns: auto auto auto;
+    }
 
     .testimonial_section .conatiner__55 {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -664,16 +618,15 @@ section.conatiner>div>div>div.conatiner__56 {
     .courses-container {
         max-width: 1024px;
     }
+    .course_cards{
+        grid-template-columns: auto auto auto auto;
+    }
 
     .latest_courses h2,
     .popular_courses h2,
     .testimonials h2 {
         font-size: 2.25rem;
         line-height: 2.5rem;
-    }
-
-    .course_cards {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
     .course_details h3 {
@@ -753,6 +706,9 @@ section.conatiner>div>div>div.conatiner__56 {
 
     .courses-container {
         max-width: 1536px;
+    }
+    .course_cards{
+        grid-template-columns: auto auto auto auto auto;
     }
 
     .blogs {

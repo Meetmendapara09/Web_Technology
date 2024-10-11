@@ -25,7 +25,6 @@ if (isset($_POST['update_course'])) {
     $description = $_POST['course_description'];
     $price = floatval($_POST['course_price']);
 
-
         $conn->query("UPDATE courses SET title='$title', description='$description', price='$price' WHERE id=$course_id");
 
         echo "<script>alert('Course updated successfully.'); window.location.href='dashboard-teacher.php'</script>";

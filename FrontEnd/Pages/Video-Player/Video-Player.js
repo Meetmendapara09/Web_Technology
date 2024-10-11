@@ -16,14 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         debug: false
     });
 
-    const likeButton = document.getElementById('like-video');
-    const likeCountElement = document.getElementById('video-likes');
-
-    likeButton?.addEventListener('click', () => {
-        let likesCount = parseInt(likeCountElement.textContent.split(' ')[0], 10);
-        likeCountElement.textContent = `${likesCount + 1} Likes`;
-    });
-
+    
     const addCommentButton = document.getElementById('add-comment');
     const commentTextArea = document.getElementById('new-comment');
 
@@ -41,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
         commentDiv.className = 'comment bg-white p-4 rounded-lg shadow-md mb-4';
 
         commentDiv.innerHTML = `
-            <p class="font-semibold">User Name</p>
             <p class="text-gray-700 mt-1">${text}</p>
             <div class="comment-actions flex space-x-4 mt-2">
                 <button class="text-blue-500 hover:text-blue-700 focus:outline-none like-comment flex items-center">
@@ -74,19 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    function handleLike(button) {
-        const span = button.querySelector('span');
-        const currentText = span.textContent.trim();
-        let likesCount = 0;
-
-        if (currentText === 'Like') {
-            span.textContent = '1 Like';
-            button.classList.add('liked');
-        } else {
-            likesCount = parseInt(currentText.split(' ')[0], 10);
-            span.textContent = `${likesCount + 1} Likes`;
-        }
-    }
 
     function toggleReplyForm(button) {
         const replyForm = button.closest('.comment').querySelector('.reply-form');

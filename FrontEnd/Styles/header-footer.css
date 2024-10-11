@@ -90,6 +90,8 @@ header.conatiner>div>div {
 .mobile-nav a {
     color: rgb(75 85 99 / 1);
     cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 
 .desktop-nav a:hover,
@@ -99,6 +101,7 @@ header.conatiner>div>div {
 
 .desktop-nav div {
     position: relative;
+    display: flex;
 }
 
 .course-nav #courses-dropdown,
@@ -114,6 +117,8 @@ header.conatiner>div>div {
         var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
     border-radius: 0.5rem;
     z-index: 10;
+    top: 45px;
+    display: inline;
 }
 
 .course-nav #courses-dropdown a,

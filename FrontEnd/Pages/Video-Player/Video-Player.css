@@ -8,7 +8,6 @@ body {
 }
 .video-wrapper {
     width: 100%;
-    max-width: 960px;
     background: #000;
     border-radius: 12px;
     overflow: hidden;
@@ -44,7 +43,6 @@ body {
 }
 #player {
     width: 100%;
-    height: auto;
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     background-color: #000;
@@ -89,7 +87,7 @@ body {
     padding: 1.5rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 1.5rem auto;
-    max-width: 960px;
+    width: 100%;
 }
 #comment-form h2 {
     font-size: 1.5rem;
@@ -118,8 +116,8 @@ body {
     background-color: #4fa3c7;
 }
 #comments {
-    max-width: 960px;
-    margin: 1.5rem auto;
+    width: 98%;
+    margin: auto;
 }
 .comment {
     background-color: #ffffff;

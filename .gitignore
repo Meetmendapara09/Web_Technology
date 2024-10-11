@@ -9,3 +9,6 @@ composer.lock
 #uploads
 uploads/
 uploads
+
+.idea
+.vscode

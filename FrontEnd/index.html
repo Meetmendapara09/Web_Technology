@@ -36,16 +36,7 @@
                     </div>
                     <div class="popular_courses">
                         <h2>Popular Courses</h2>
-                        <div class="course_cards">
-                            <div class="course_card">
-                                <img src="favicon.ico" alt="Course 2">
-                                <div class="course_details">
-                                    <h3>Course Title</h3>
-                                    <p class="course_instructor">Instructor Name</p>
-                                    <a href="/FrontEnd/Pages/Free-Courses.html">View Course</a>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="course_cards" id="popular_courses"></div>
                     </div>
                 </div>
             </div>
@@ -54,11 +45,18 @@
 
     <script>
         fetch('../BackEnd/courses.php')
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
             .then(data => {
-                const courseCards = document.getElementById('latest_courses');
-                
-                data.forEach(course => {
+                const latestCourseCards = document.getElementById('latest_courses');
+                const popularCourseCards = document.getElementById('popular_courses');
+    
+                // Render latest courses
+                data.latest_courses.forEach(course => {
                     const courseCard = document.createElement('div');
                     courseCard.classList.add('course_card');
                     courseCard.innerHTML = `
@@ -66,14 +64,31 @@
                         <div class="course_details">
                             <h3>${course.title}</h3>
                             <p class="course_instructor">${course.teacher_name}</p>
-                            <a href="/FrontEnd/Pages/Free-Courses.html">View Course</a>
+                            <a href="/FrontEnd/Pages/course.php?id=${course.id}">View Course</a>
                         </div>
                     `;
-                    courseCards.appendChild(courseCard);
+                    latestCourseCards.appendChild(courseCard);
+                });
+    
+                // Render popular courses
+                data.popular_courses.forEach(course => {
+                    const courseCard = document.createElement('div');
+                    courseCard.classList.add('course_card');
+                    courseCard.innerHTML = `
+                        <img src="../uploads/courses_image/${course.image_path}" alt="${course.title}">
+                        <div class="course_details">
+                            <h3>${course.title}</h3>
+                            <p class="course_instructor">${course.teacher_name}</p>
+                            <p class="enrollment_count">${course.enrollment_count} Enrollments</p>
+                            <a href="/FrontEnd/Pages/course.php?id=${course.id}">View Course</a>
+                        </div>
+                    `;
+                    popularCourseCards.appendChild(courseCard);
                 });
             })
             .catch(error => console.error('Error fetching courses:', error));
     </script>
+    
 
 <!-- Blogs -->
     <section class="Blog_Section conatiner">

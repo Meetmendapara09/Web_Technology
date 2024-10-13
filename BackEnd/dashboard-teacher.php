@@ -148,7 +148,6 @@ if (isset($_POST['submit_form2'])) {
 
         $conn->query("INSERT INTO courses (teacher_id, teacher_name, title, description, type, image_path, price, content_file) 
             VALUES ('$teacher_id', '$teacher_name', '$course_title', '$course_description', '$type', '$course_image', '$course_price', '$course_videos')");
-
     } else {
         echo "<script>alert('Error creating course: " . $conn->error . "');</script>";
     }
@@ -157,6 +156,25 @@ if (isset($_POST['submit_form2'])) {
 
 $sql = "SELECT * FROM courses WHERE teacher_id = '$user_id'";
 $result = $conn->query($sql);
+
+$sql_enroll = "SELECT s.student_name, s.student_email, s.student_phone, c.title AS course_title, s.progress, s.last_watched_time, s.enrollment_date, s.payment_status, s.amount, c.teacher_id FROM enrollments s JOIN courses c ON s.course_id = c.id WHERE c.teacher_id = $user_id";
+
+$result_enroll = $conn->query($sql_enroll);
+
+$sql_sales = "SELECT c.id AS course_id, c.title AS course_title, COUNT(e.id) AS total_enrollments, SUM(c.price) AS total_sales FROM  courses c LEFT JOIN  enrollments e ON c.id = e.course_id WHERE c.teacher_id = $user_id GROUP BY c.id, c.title ORDER BY 
+total_sales DESC; ";
+
+$result_sales = $conn->query($sql_sales);
+$titles = [];
+while ($row = $result_sales->fetch_assoc()) {
+    $titles[] = $row['course_title'];
+}
+
+$salesAmounts = [];
+$result_sales -> data_seek(0);
+while ($row = $result_sales -> fetch_assoc()) {
+    $salesAmounts[] = (float)$row['total_sales'];
+}
 
 if (isset($_GET['delete'])) {
     $course_id = $_GET['delete'];

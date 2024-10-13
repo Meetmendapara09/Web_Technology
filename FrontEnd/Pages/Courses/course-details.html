@@ -45,11 +45,13 @@
 
                 <div class="mt-6">
                     <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg">
-                        Add to cart
+                        <a href="enroll.php?id=<?php echo htmlspecialchars($row['id']); ?>" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg outline-none">
+                            Add to cart
+                        </a>
                     </button>
-                    <button
+                    <button href="enroll.php?id=<?php echo htmlspecialchars($row['id']); ?>
                         class="w-full mt-4 border-2 border-white hover:bg-gray-700 text-white font-semibold py-3 rounded-lg">
-                        Buy now
+                        <a class="w-full mt-4 border-2 border-white hover:bg-gray-700 text-white font-semibold py-3 rounded-lg">Buy now</a>
                     </button>
                 </div>
             </div>

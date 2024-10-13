@@ -1,7 +1,7 @@
 <?php
 include 'config.php';
 
-$select = "SELECT title, description, image_path FROM courses WHERE type='free'";
+$select = "SELECT id, title, description, image_path FROM courses WHERE type='free'";
 $result = $conn->query($select);
 
 if ($result->num_rows > 0) {

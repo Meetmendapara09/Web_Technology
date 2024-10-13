@@ -4,7 +4,7 @@
 if (isset($_GET['id'])) {
     $course_id = intval($_GET['id']);
 
-    $sql = "SELECT c.id, c.teacher_name, c.title, c.description, c.image_path, c.price, c.updated_at, COUNT(e.student_id) AS enrollment_count FROM courses c JOIN  enrollments e ON c.id = e.course_id WHERE c.id=$course_id";
+    $sql = "SELECT c.id, c.teacher_name, c.title, c.description, c.image_path, c.price, c.updated_at, COUNT(e.student_id) AS enrollment_count FROM courses c LEFT JOIN  enrollments e ON c.id = e.course_id WHERE c.id=$course_id";
     
     $result = $conn->query($sql);
 
@@ -12,7 +12,6 @@ if (isset($_GET['id'])) {
         $row = $result->fetch_assoc();
     }
 }
-$conn->close();
 
 include '../FrontEnd/Pages/Courses/course-details.html';
 ?>

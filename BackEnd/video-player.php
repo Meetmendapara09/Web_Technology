@@ -46,6 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['id']) && $_GET['action'
     }
 }
 
+$username = $_SESSION['user_name'];
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['comment']) && isset($_GET['id'])) {
 
     $course_id = intval($_GET['id']);

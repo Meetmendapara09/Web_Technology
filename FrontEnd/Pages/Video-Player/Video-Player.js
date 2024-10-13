@@ -32,8 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const commentsSection = document.getElementById('comments');
         const commentDiv = document.createElement('div');
         commentDiv.className = 'comment bg-white p-4 rounded-lg shadow-md mb-4';
+        const username = "<?php echo isset($_SESSION['username']) ? $_SESSION['username'] : 'Anonymous'; ?>";
+
 
         commentDiv.innerHTML = `
+        <p class="text-gray-700 mt-1 font-semibold">You</p>
             <p class="text-gray-700 mt-1">${text}</p>
             <div class="comment-actions flex space-x-4 mt-2">
                 <button class="text-blue-500 hover:text-blue-700 focus:outline-none like-comment flex items-center">

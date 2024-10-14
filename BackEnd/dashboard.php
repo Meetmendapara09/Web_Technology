@@ -268,7 +268,7 @@ if (isset($_POST['close-account'])) {
 </body>
 </html>';
             $mail->send();
-            echo '<script>window.alert("Password reset link send on your email address."); window.location.href = "../../FrontEnd/Pages/Auth/Login.html";</script>';
+            echo '<script>window.alert("Password reset link send on your email address."); window.location.href = "../FrontEnd/Pages/Auth/Login.html";</script>';
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }

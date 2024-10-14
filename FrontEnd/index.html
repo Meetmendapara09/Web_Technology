@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Powerful Learning Platform</title>
+    <link rel="icon" href="images/imresizer-1728830065949.jpg" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./Styles/Styles.css">
     <link rel="stylesheet" href="./Styles/header-footer.css">
@@ -64,7 +65,7 @@
                         <div class="course_details">
                             <h3>${course.title}</h3>
                             <p class="course_instructor">${course.teacher_name}</p>
-                            <a href="/FrontEnd/Pages/course.php?id=${course.id}">View Course</a>
+                            <a href="../BackEnd/course-detail.php?id=${course.id}">View Course</a>
                         </div>
                     `;
                     latestCourseCards.appendChild(courseCard);
@@ -80,7 +81,7 @@
                             <h3>${course.title}</h3>
                             <p class="course_instructor">${course.teacher_name}</p>
                             <p class="enrollment_count">${course.enrollment_count} Enrollments</p>
-                            <a href="/FrontEnd/Pages/course.php?id=${course.id}">View Course</a>
+                            <a href="../BackEnd/course-detail.php?id=${course.id}">View Course</a>
                         </div>
                     `;
                     popularCourseCards.appendChild(courseCard);

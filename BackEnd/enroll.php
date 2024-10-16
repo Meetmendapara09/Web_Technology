@@ -1,11 +1,9 @@
-<?php  
+<?php 
 @include './config.php';  
 require __DIR__ . '/../vendor/autoload.php';
 
-// Load environment variables
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
-
 use Razorpay\Api\Api;
 
 session_start(); 
@@ -21,7 +19,6 @@ $email = $_SESSION['user_email'];
 if (isset($_GET['id'])) {     
     $course_id = intval($_GET['id']); 
 
-    // Fetch course details
     $course_sql = "SELECT * FROM courses WHERE id = $course_id";     
     $course_result = $conn->query($course_sql); 
 

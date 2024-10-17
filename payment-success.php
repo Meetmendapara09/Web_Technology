@@ -9,16 +9,19 @@ require __DIR__ . '/../../vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../../');
 $dotenv->load();
 
-require 'phpmailer/src/Exception.php';
-require 'phpmailer/src/PHPMailer.php';
-require 'phpmailer/src/SMTP.php';
+require '../phpmailer/src/Exception.php';
+require '../phpmailer/src/PHPMailer.php';
+require '../phpmailer/src/SMTP.php';
+
+session_start();
 
 if (!isset($_SESSION['user_id'])) {
     header('location: ../../FrontEnd/Pages/Auth/Login.html');
     exit();
 }
 
-session_start();
+$name = $_SESSION['user_name'];
+$email = $_SESSION['user_email'];
 
 if (isset($_GET['razorpay_payment_id'])) {
     $payment_id = $_GET['razorpay_payment_id'];
@@ -103,9 +106,9 @@ if (isset($_GET['razorpay_payment_id'])) {
     </style>
     </head>
 <body>
-    <p>Dear ' . htmlspecialchars($user_name) . ',</p>
-    <h2>Congratulations, $name!</h2>
-            <p>You have successfully enrolled in <strong>$course_title</strong>.</p>
+    <p>Dear ' . htmlspecialchars($name) . ',</p>
+    <h2>Congratulations, ' . htmlspecialchars($name) . '!</h2>
+            <p>You have successfully enrolled in <strong>' . htmlspecialchars($course_title) . ' </strong>.</p>
             <p><strong>Payment Details:</strong></p>
             <ul>
                 <li>Amount: ₹' . htmlspecialchars($amount) . '</li>

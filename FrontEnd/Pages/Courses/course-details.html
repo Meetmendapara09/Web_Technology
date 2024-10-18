@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,19 +9,16 @@
     <script src="../FrontEnd/Scripts/script.js"></script>
     <link rel="stylesheet" href="../FrontEnd/Styles/header-footer.css">
 </head>
-
 <body class="bg-blue-900 text-white">
+    <header id="dashboard-header">
+    </header>
 
-    <header id="dashboard-header"></header>
-
-    <div class="container mx-auto px-4 py-8">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div class="container mx-auto px-4 py-10">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
             <!-- Course Information -->
-            <div class="lg:col-span-2 center">
-                <h1 class="text-3xl font-bold"><?php echo htmlspecialchars($row['title']); ?></h1>
-                <p class="mt-4 text-lg text-gray-300">
-                    <?php echo htmlspecialchars($row['description']); ?>
-                </p>
+            <div class="lg:col-span-2 bg-gray-800 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105">
+                <h1 class="text-4xl font-bold"><?php echo htmlspecialchars($row['title']); ?></h1>
+                <p class="mt-4 text-lg text-gray-300"><?php echo htmlspecialchars($row['description']); ?></p>
                 <div class="flex items-center mt-4 space-x-2">
                     <span class="text-yellow-400 text-xl">&#9733; 4.5</span>
                     <a href="#" class="text-purple-500 underline">323 ratings</a>
@@ -37,29 +33,22 @@
 
             <!-- Pricing and Actions -->
             <div class="bg-gray-800 p-6 rounded-lg shadow-md">
-                <img src="../uploads/courses_image/<?php echo htmlspecialchars($row['image_path']); ?>" alt="Course Preview"
-                    class="w-full h-auto rounded-lg mb-4">
+                <img src="../uploads/courses_image/<?php echo htmlspecialchars($row['image_path']); ?>" alt="Course Preview" class="w-full h-auto rounded-lg mb-4 shadow-md">
                 <div class="text-4xl font-bold text-white">₹<?php echo htmlspecialchars($row['price']); ?></div>
                 <div class="text-gray-400 line-through">₹1,999</div>
                 <div class="text-red-500 font-semibold mt-1">78% off</div>
                 <div class="text-red-400 mt-2">⏳ Sale is Live!</div>
 
-                <div class="mt-6">
-                    <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg">
-                        <a href="enroll.php?id=<?php echo htmlspecialchars($row['id']); ?>" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg outline-none">
-                            Add to cart
-                        </a>
-                    </button>
-                    <button class="w-full mt-4 border-2 border-white hover:bg-gray-700 text-white font-semibold py-3 rounded-lg">
-                        <a href="enroll.php?id=<?php echo htmlspecialchars($row['id']); ?>" class="w-full mt-4 hover:bg-gray-700 text-white font-semibold py-3 rounded-lg">Buy now</a>
-                    </button>
+                <div class="mt-6 space-y-4">
+                    <a href="enroll.php?id=<?php echo htmlspecialchars($row['id']); ?>" class="block w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg text-center transition duration-300 transform hover:scale-105">Add to cart</a>
+                    <a href="enroll.php?id=<?php echo htmlspecialchars($row['id']); ?>" class="block w-full border-2 border-white hover:bg-gray-700 text-white font-semibold py-3 rounded-lg text-center transition duration-300 transform hover:scale-105">Buy now</a>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Footer -->
-    <div id="dashboard-footer"></div>
+    <footer id="dashboard-footer">
+    </footer>
 </body>
-
 </html>

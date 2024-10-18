@@ -158,8 +158,6 @@ svg {
 .course_card img {
     width: 100%;
     height: 12rem;
-    -o-object-fit: cover;
-    object-fit: cover;
 }
 
 .course_details {

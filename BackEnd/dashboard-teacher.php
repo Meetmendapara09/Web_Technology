@@ -50,9 +50,7 @@ if (isset($_POST['upload_photo'])) {
             echo "<script>alert('File not Uploaded');</script>";
         }
     } else {
-
-        $conn->query("INSERT INTO teacher_profile (profile_photo) 
-                VALUES ('$profile_Image')");
+        $conn->query("INSERT INTO teacher_profile (user_id, profile_image) VALUES ('$user_id','$profile_Image')");
 
         if (move_uploaded_file($tempname, $folder)) {
             echo "<script>alert('File Uploaded');</script>";

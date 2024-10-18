@@ -44,8 +44,8 @@ ZenVedaSync is an innovative e-learning platform that merges the ancient wisdom 
 - **PhpMyAdmin**: Database administration tool
 
 ## Project Structure
-```
 ### Backend Directory (PHP)
+```
 backend/ 
 ├── auth/ 
 │ ├── forgot-password.php 

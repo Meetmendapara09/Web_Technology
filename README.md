@@ -148,10 +148,6 @@ frontend/
 - `POST /api/payments/processPayment`: Process payment
 - `GET /api/payments/getPaymentHistory`: Payment history
 
-### Coins
-- `GET /api/coins/getCoinBalance`: Get coin balance
-- `PUT /api/coins/updateCoinBalance`: Update coin balance
-
 ## Contributing
 Contributions are welcome! Please fork this repository and submit a pull request.
 

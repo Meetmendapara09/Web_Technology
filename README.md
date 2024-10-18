@@ -1,7 +1,8 @@
-# ZenVedaSync - Course Website Project
+# ZenVedaSync - E-Learning Website 
 
 ## Project Overview
-ZenVedaSync is a cutting-edge course website designed to blend the ancient wisdom of Indian Vedas with modern technology, catering to the Gen Z audience. This platform offers a range of free and premium courses, featuring coin-based rewards, secure payment options, user authentication, and detailed progress tracking.
+ZenVedaSync is an innovative e-learning platform that merges the ancient wisdom of Indian Vedas with modern technology, specifically designed for the Gen Z audience. The site offers a diverse selection of free and premium courses, featuring secure payment options, user authentication, and comprehensive progress tracking to enhance the learning experience.
+
 
 **CSE-D** 
 
@@ -43,50 +44,92 @@ ZenVedaSync is a cutting-edge course website designed to blend the ancient wisdo
 - **PhpMyAdmin**: Database administration tool
 
 ## Project Structure
-### Backend Directory (PHP)
 ```
-backend/
-├── api/
-│   ├── courses/
-│   ├── auth/
-│   ├── users/
-│   ├── payments/
-│   ├── coins/
-│   ├── config/
-│   └── index.php
+### Backend Directory (PHP)
+backend/ 
+├── auth/ 
+│ ├── forgot-password.php 
+│ ├── login.php 
+│ ├── logout.php 
+│ ├── register.php 
+│ └── reset_process.php 
+├── payment/ 
+│ ├── payment-success.php 
+│ └── payment.php 
+├── phpmailer/ 
+├── config.php 
+├── contact.php 
+├── course-detail.php 
+├── courses.php 
+├── dashboard-teacher.php 
+├── dashboard.php 
+├── edit-course.php 
+├── enroll.php 
+├── free-courses.php 
+├── paid-courses.php 
+└── video-player.php
 ```
 
-### Frontend Directory
+## Frontend Directory
+
 ```
-frontend/
-├── css/
-│   ├── tailwind.css
-│   ├── main.css
-├── js/
-│   ├── script.js
-├── images/
-├── index.html
-├── home.html
-├── login.html
-├── register.html
-├── courses.html
-├── course-detail.html
-├── dashboard.html
-├── payment.html
-├── support.html
-├── faq.html
-├── contact.html
-├── terms.html
-├── privacy.html
-├── about.html
-├── blog.html
-├── press.html
-├── apply.html
-├── job-details.html
-├── submit-ticket.html
-├── tutorials.html
-├── career.html
-└── know-us.html
+frontend/ 
+├── Pages/ 
+│ ├── Auth/ 
+│ │ ├── Forgot-Password.html 
+│ │ ├── Login.html 
+│ │ └── SignUp.html 
+│ ├── Courses/ 
+│ │ ├── course-details.html 
+│ │ ├── free-courses.html 
+│ │ └── paid-course.html 
+│ ├── Progress-Tracking/ 
+│ │ ├── Progress-Tracking.css 
+│ │ ├── Progress-Tracking.html 
+│ │ └── Progress-Tracking.js 
+│ ├── Support-FAQ/ 
+│ │ ├── FAQ.html 
+│ │ └── Support.html 
+│ ├── Video-Player/ 
+│ │ ├── Video-Player.css 
+│ │ ├── Video-Player.html 
+│ │ └── Video-Player.js 
+│ ├── blogs/ 
+│ │ ├── blog-post-1.html 
+│ │ ├── blog-post-2.html 
+│ │ ├── blog-post-3.html 
+│ │ └── blog.html 
+│ ├── Payment.html 
+│ ├── Privacy-Policy.html 
+│ ├── Testimonial.html 
+│ ├── about-us.html 
+│ ├── apply.html 
+│ ├── careers.html 
+│ ├── contact-us.html 
+│ ├── dashboard-teacher.html 
+│ ├── dashboard.html 
+│ ├── edit-course.html 
+│ ├── help-center.html 
+│ ├── job-details.html 
+│ ├── know-us.html 
+│ ├── press.html 
+│ ├── submit-a-ticket.html 
+│ ├── terms-and-conditions.html 
+│ ├── tutorials.html 
+├── Scripts/ 
+│ ├── script.js 
+│ └── validPaths.json 
+├── Styles/ 
+│ ├── Styles.css 
+│ ├── header-footer.css 
+├── images/ 
+│ ├── 404.html 
+│ ├── footer.html 
+│ ├── header.html 
+│ ├── index.html 
+├── .gitignore 
+├── README.md 
+└── package.json
 ```
 
 ## Setup and Installation
@@ -96,61 +139,108 @@ frontend/
 - MySQL
 - PhpMyAdmin
 
-### Backend (PHP) Setup
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Meetmendapara09/WT-Try.git
-   cd course-website/backend
+## Backend (PHP) Setup
+
+### 1. Clone the repository:
    ```
-
-2. Set up the database:
-   - Create a database named `course_website`.
-   - Import `backend/config/db.sql` into your MySQL database.
-
-3. Update database configuration in `backend/config/db.php`.
-
-4. Start the PHP server:
-   ```bash
-   php -S localhost:8000
+   git clone https://github.com/Meetmendapara09/Web_Technology.git
+   cd Web_Technology/BackEnd
    ```
+### 2. Set up the database:
+```
+Create a database named course_website.
+Import backend/config/db.sql into your MySQL database.
+Update database configuration in backend/config/db.php.
+```
 
-### Frontend Setup
-1. Navigate to the frontend directory:
-   ```bash
-   cd ../frontend
-   ```
+### 3. Start the PHP server:
+```
+php -S localhost:8000
+```
 
-2. Open `index.html` in a web browser to view the site.
+### 4. Frontend Setup
+Navigate to the frontend directory:
+```
+cd ../frontend
+```
+Open index.html in a web browser to view the site.
 
 ## Usage
-- Access the frontend at `http://localhost:8000`.
-- The backend API is available at `http://localhost:8000/api`.
 
-## API Endpoints
-### Authentication
-- `POST /api/auth/login`: User login
-- `POST /api/auth/register`: User registration
-- `POST /api/auth/passwordRecovery`: Password recovery
+Access the frontend at 
+```
+http://localhost:8000/
+```
+The backend is available at 
+```
+http://localhost:3307/
 
-### Courses
-- `GET /api/courses/getCourses`: List courses
-- `GET /api/courses/getCourseDetails`: Course details
-- `POST /api/courses/addCourse`: Add a course
-- `PUT /api/courses/updateCourse`: Update a course
-- `DELETE /api/courses/deleteCourse`: Delete a course
+```
 
-### Users
-- `GET /api/users/getUser`: Get user details
-- `PUT /api/users/updateUser`: Update user info
-- `DELETE /api/users/deleteUser`: Delete a user
+## Running the Backend with XAMPP
+- **Install XAMPP**: Download and install XAMPP from Apache Friends.
 
-### Payments
-- `POST /api/payments/processPayment`: Process payment
-- `GET /api/payments/getPaymentHistory`: Payment history
+- **Start XAMPP:** Open the XAMPP Control Panel and start Apache and MySQL.
+
+- **Clone the Repository**:
+
+Go to the htdocs folder in your XAMPP installation 
+```
+(usually C:\xampp\htdocs).
+```
+- **Clone the repository**:
+```
+git clone https://github.com/Meetmendapara09/Web_Technology.git
+```
+
+- **Set Up the Database**:
+
+Open your web browser and go to 
+```
+http://localhost/phpmyadmin.
+```
+- Create a new database named course_website.
+- Import the SQL file (if available) to set up tables.
+- Configure Database Connection:
+Open the config.php file in the backend folder.
+Update the database details:
+```
+$servername = "localhost";
+$username = "root"; // Default XAMPP username
+$password = ""; // Default XAMPP password is empty
+$dbname = "ZenVedaSync";
+```
+
+Access the Backend:
+
+Open your browser and go to:
+```
+http://localhost/Web_technology/BackEnd
+```
+Test: Check different functionalities like login and registration.
+
+
+### Payment Integration and Deployment
+To set up payment processing and integration, please visit the following website to obtain your keys:
+
+For more details, refer to the documentation:
+- **Gmail SMTP Documentation**: [Gmail SMTP Settings](https://support.google.com/a/answer/176600?hl=en)
+- **Razorpay API Documentation**: [Razorpay API Documentation](https://razorpay.com/docs/api/)
+
+```
+SMTP_HOST=         # Your SMTP host (e.g., smtp.example.com)
+SMTP_PORT=         # SMTP port (e.g., 587 for TLS)
+SMTP_USERNAME=     # Your SMTP username
+SMTP_PASSWORD=     # Your SMTP password
+SMTP_SECURE=       # Security protocol (e.g., tls or ssl)
+(Razorpay API Credentials)
+API_KEY=           # Your Razorpay API Key
+API_SECRET=        # Your Razorpay API Secret
+```
+
 
 ## Contributing
 Contributions are welcome! Please fork this repository and submit a pull request.
 
 ## License
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
-
